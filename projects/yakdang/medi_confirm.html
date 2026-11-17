@@ -1,0 +1,492 @@
+ <!DOCTYPE html>
+ <html lang="en">
+ <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>약당 설문조사</title>
+    <link rel="shortcut icon" href="./images/health_logo.png" type="image/x-icon">
+    <link rel="shortcut icon" href="./images/health_logo.png" type="image/x-icon">
+    <link rel="stylesheet" href="./css/medi_confirm.css">
+    <link href="https://hangeul.pstatic.net/hangeul_static/css/maru-buri.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
+  <style>
+    *{margin: 0; padding: 0;}
+    li {list-style: none;}
+    a {color: black; text-decoration: none;}
+  </style>
+ </head>
+ <body>
+   <body class="best_page">
+   <div class="quick_menu">
+  <div class="quick_product">
+    <span class="recent_badge">최근</span>
+    <a href="./medi_detail.html">
+      <img src="./images/product_09.png" alt="">
+    </a>
+  </div>
+  <div class="quick_product">
+    <a href="./medi_detail.html">
+      <img src="./images/product_15.png" alt="">
+    </a>
+  </div>
+  <div class="btn_top">
+    <a href="#top">
+      <i class="fa-solid fa-chevron-up"></i>
+      <span>TOP</span>
+    </a>
+  </div>
+</div>
+  <input type="checkbox" id="cart_popup" class="cart_check">
+  <label for="cart_popup" class="cart_bg"></label>
+  <!-- <div class="cart_bg"></div> -->
+  <div class="cart_wrap">
+    <div class="cart_top">
+      <h2>상품 약바구니</h2>
+      <a href="#!">
+        <p>1만원 이상 구매시 배송 가능</p>
+        <i class="fa-solid fa-angle-right"></i>
+      </a>
+    </div>
+    <div class="cart_center_list">
+      <div class="cart_center_main">
+        <div class="cart_main_img">
+          <img src="./images/product_09.png" alt="약바구니 메인사진">
+        </div>
+        <div class="cart_main_info">
+           <div class="cart_text_top">
+            <h5>여성 건강기능식품 TOP1</h5>
+            <span class="sale">15%</span>
+            <span class="money">424,000원</span>
+           </div>
+           <div class="cart_text_middle">
+            <h5>369,000원</h5>
+           </div>
+           <div class="cart_text_bottom">
+            <p>수량선택</p>
+            <div class="cart_text_btm_count">
+               <i class="fa-solid fa-minus"></i>
+              <p class="number">1</p>
+               <i class="fa-solid fa-plus"></i>
+            </div>
+           </div>
+        </div><!--cart_main_info-->
+      </div><!--cart_center_main-->
+      <div class="cart_title">
+        <h5>추천 상품</h5>
+      </div>
+      <div class="sub_list_wrap">
+        <div class="cart_sub_list">
+        <div class="cart_main_img">
+          <img src="./images/product_11.png" alt="약바구니 메인사진">
+        </div>
+        <div class="cart_sub_info">
+           <div class="sub_text_top">
+            <h5>가정의 달 감사 선물 카드</h5>
+            <span>23%</span>
+            <span>604,000원</span>
+           </div>
+           <div class="sub_text_middle">
+            <h5>339,000원</h5>
+           </div>
+           <div class="sub_text_bottom">
+            <p>수량선택</p>
+            <div class="cart_text_btm_count">
+               <i class="fa-solid fa-minus"></i>
+              <p>1</p>
+               <i class="fa-solid fa-plus"></i>
+            </div>
+           </div>
+        </div><!--cart_sub_info-->
+      </div>
+        <div class="cart_sub_list">
+        <div class="cart_main_img">
+          <img src="./images/product_13.png" alt="약바구니 메인사진">
+        </div>
+        
+        <div class="cart_sub_info">
+           <div class="sub_text_top">
+            <h5>갱년기 치유 **</h5>
+            <span>15%</span>
+            <span>424,000원</span>
+           </div>
+           <div class="sub_text_middle">
+            <h5>199,850원</h5>
+           </div>
+           <div class="sub_text_bottom">
+            <p>수량선택</p>
+            <div class="cart_text_btm_count">
+               <i class="fa-solid fa-minus"></i>
+              <p>1</p>
+               <i class="fa-solid fa-plus"></i>
+            </div>
+           </div>
+        </div><!--cart_sub_info-->
+      </div>
+        <div class="cart_sub_list">
+        <div class="cart_main_img">
+          <img src="./images/product_16.png" alt="약바구니 메인사진">
+        </div>
+        <div class="cart_sub_info">
+           <div class="sub_text_top">
+            <h5>올댓 새로움</h5>
+            <span>15%</span>
+            <span>344,000원</span>
+           </div>
+           <div class="sub_text_middle">
+            <h5>69,000원</h5>
+           </div>
+           <div class="sub_text_bottom">
+            <p>수량선택</p>
+            <div class="cart_text_btm_count">
+               <i class="fa-solid fa-minus"></i>
+              <p>1</p>
+               <i class="fa-solid fa-plus"></i>
+            </div>
+           </div>
+        </div><!--cart_sub_info-->
+      </div>
+      </div>
+    </div><!--cart_center_list-->
+    <div class="sub_text_bottom_btn">
+      <div class="sub_text_bottom_left">
+      <span>약바구니</span>
+      </div>
+      <div class="sub_text_bottom_right">
+      <span>쇼핑하러가기</span>
+      </div>
+    </div>
+  </div><!--cart_wrap-->
+   <div class="gnb_top_outer">
+    <div class="gnb_top_outer_icon">
+     <a href="#!"> <i class="fa-solid fa-magnifying-glass"></i></a>
+     <a href="#!"><i class="fa-solid fa-location-dot"></i></a>
+     <a href="#!"><i class="fa-regular fa-user"></i></a>
+     <label for="cart_popup" class="cart_open_btn">
+     <i class="fa-solid fa-cart-flatbed"></i>
+     </label>
+    </div><!--gnb_top_outer_icon-->
+    <div class="gnb_top">
+      <div class="gnb_top_event_wrap">
+        <div class="gnb_top_nav">
+          <i class="fa-solid fa-angle-left"></i>
+        </div>
+         <div class="gnb_top_event_text">
+      <ul class="gnb_top_event_list">
+        <li><span>초특가 할인 이벤트!</span></li>
+        <li><span>신규회원 10% 할인</span></li>
+        <li><span>무료배송 이벤트 진행</span></li>
+        <li><span>베스트 상품 특가전</span></li>
+      </ul><!--ul gnb_top_event_list-->
+      </div><!--gnb_top_event_text-->
+      <div class="gnb_top_nav">
+          <i class="fa-solid fa-angle-right"></i>
+      </div>
+      </div><!--gnb_top_event_wrap-->
+    </div><!--gnb_top-->
+  </div><!--gnb_top_outer-->
+  <header class="header_wrap" id="header_wrap">
+    <div class="header_top" id="header_top">
+      <div class="header_top_left">
+       <ul>
+        <li><a href="medi_dictionary.html#hongsam">홍삼</a></li>
+        <li><a href="medi_dictionary.html#nokyong">녹용</a></li>
+        <li><a href="medi_dictionary.html#danggui">당귀</a></li>
+        <li><a href="medi_dictionary.html#allmedi">약재</a></li>
+</ul>
+      </div>
+      <div class="header_top_right">
+          <div class="header_top_right_icon">
+             <a href="#!"><i class="fa-regular fa-envelope"></i></a>
+          </div>
+          <div class="header_top_right_text">
+            <span class="pre">신청하기</span>
+          </div>
+        </div><!--header_top_right-->
+    </div><!--header_top-->
+    <input type="checkbox" id="chk_menu">
+<div class="header_bottom">
+  <nav class="gnb_menu">
+    <div class="logo">
+      <label for="chk_menu" class="btn_menu">
+        <i class="fa-solid fa-bars icon_open"></i>
+        <i class="fa-solid fa-xmark icon_close"></i>
+      </label>
+      <div class="logo_box">
+        <a href="./index.html" class="logo_img">
+          <img src="./images/health_logo.png" alt="약당">
+        </a>
+        <label for="chk_menu" class="close_text">닫기</label>
+      </div>
+    </div>
+    <div class="main_gnb">
+      <ul class="ul">
+        <li>
+          <a href="./medi_best.html" class="gnb_best">베스트</a>
+          <ul class="sub">
+            <li><a href="./medi_best.html">TOP 28</a></li>
+            <li><a href="./medi_best.html">신규 TOP</a></li>
+            <li><a href="./medi_best.html">시즌 TOP</a></li>
+          </ul>
+        </li>
+
+        <li>
+          <a href="./medi_new.html" class="gnb_new">신상</a>
+          <ul class="sub">
+            <li><a href="./medi_new.html">홍삼</a></li>
+            <li><a href="./medi_new.html">녹용</a></li>
+            <li><a href="./medi_new.html">당귀</a></li>
+            <li><a href="./medi_new.html">모든 약재</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="./medi_gift.html" class="gnb_gift">선물</a>
+          <ul class="sub">
+            <li><a href="./medi_gift.html">가성비</a></li>
+            <li><a href="./medi_gift.html">프리미엄</a></li>
+            <li><a href="./medi_gift.html">부모님건강</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="#!">구독</a>
+          <ul class="sub">
+            <li><a href="#!">정기배송</a></li>
+            <li><a href="#!">구독하기</a></li>
+          </ul>
+        </li>
+
+        <li>
+          <a href="#!">기획</a>
+          <ul class="sub">
+            <li><a href="#!">공모전</a></li>
+            <li><a href="#!">체험단</a></li>
+          </ul>
+        </li>
+
+            <li class="last">
+          <a href="medi_confirm.html" class="prescription_btn">
+  <span class="deco">✤</span>
+  <span class="line_last"></span>
+  <span class="txt">처방전</span>
+  <span class="line_last"></span>
+</a>
+        </li>
+      </ul>
+      <div class="full_bg">
+      </div>
+    </div>
+  </nav>
+</div>
+<div class="line_header"></div>
+  </header><!--header-->
+<div class="medi_title">
+    <p>처  방  진  단</p>
+    <h3>약당 처방전</h3>
+    <span>전통 한의학에 기반한 개인 맞춤 처방입니다</span>
+</div>
+<div class="medi_confirm_bg">
+    <div class="medi_confirm_left">
+        <div class="border80"></div>
+        <div class="medi_result_text">
+            <div class="typho">
+                <h5>處</h5>
+            </div>
+            <div class="result_text">
+                <h5>처 방 전</h5>
+                <p>HERBAL PRESCRIPTION</p>
+            </div>
+        </div>
+        <div class="border"></div>
+        <div class="border"></div>
+        <div class="border"></div>
+        <div class="manage_title">
+            <p>환 자 정 보</p>
+            <div class="border_small"></div>
+        </div>
+        <div class="manage_info">
+            <div class="info_top">
+            <div class="info01">
+                <h5>성명</h5>
+                <span>김민정</span>
+            </div>
+            <div class="info02">
+                 <h5>생 년 월 일</h5>
+                <span>2002년 09월 22일 ( 만 23세 )</span>
+            </div>
+            </div>
+            <div class="info_btm">
+            <div class="info03">
+                 <h5>체 질</h5>
+                <span>소양인</span>
+            </div>
+            <div class="info04">
+                 <h5>수 신 일</h5>
+                <span>2026년 05월 26일</span>
+            </div>
+            </div>
+        </div>
+        <div class="result_name">
+                <p>진 단 명</p>
+            <div class="border_small2"></div>
+            </div>
+        <div class="manage_result_name">
+            <div class="border_box"></div>
+            
+            <h5>기 혈 양 허 증(氣血兩虛症)</h5>
+            <p>기력이 부족하고 혈이 허한 상태로, 피로감과 
+어지럼증을 동반합니다. <br> 소화기능 저하 및 
+수면의 질 저하가 확인되었습니다. </p>
+        </div>
+         <div class="manage_title">
+            <p>처 방 약 재</p>
+            <div class="border_small"></div>
+        </div>
+        <div class="herb_table">
+
+  <div class="herb_title">
+    <span>갯 수</span>
+    <span>약 재 명</span>
+    <span>효 능</span>
+    <span>맞 춤 용 량</span>
+  </div>
+
+  <div class="herb_body">
+
+    <div class="herb_all">
+      <span class="count">01</span>
+      <span class="name">황기</span>
+      <span class="effect">보기고표, 이수소종</span>
+      <span class="dose">15g</span>
+    </div>
+
+    <div class="herb_all">
+      <span class="count">02</span>
+      <span class="name">당귀</span>
+      <span class="effect">보혈활혈, 조경지통</span>
+      <span class="dose">25g</span>
+    </div>
+
+    <div class="herb_all">
+      <span class="count">03</span>
+      <span class="name">녹용</span>
+      <span class="effect">보중익기, 양혈안신</span>
+      <span class="dose">05g</span>
+    </div>
+  </div>
+  <div class="herb_bottom">
+    <div>
+      <span>1첩 총량</span>
+      <p>90g</p>
+    </div>
+    <div>
+      <span>처방 일수</span>
+      <p>30일분</p>
+    </div>
+    <div>
+      <span>총 용량</span>
+      <p>60첩</p>
+    </div>
+  </div>
+</div>
+    </div><!--medi_confirm_left-->
+    <div class="medi_confirm_right">
+    <div class="medi_confirm_right_top">
+
+  <div class="confirm_title">
+    <h3>체질 분석</h3>
+    <div class="title_line"></div>
+  </div>
+
+  <div class="constitution_wrap">
+
+    <div class="constitution_circle">
+      <span>太</span>
+    </div>
+
+    <p class="constitution_name">소양인</p>
+
+  </div>
+
+  <div class="constitution_info">
+    <div class="info_row">
+      <span class="label">기력</span>
+      <div class="bar">
+        <div class="fill power"></div>
+      </div>
+      <span class="percent">38%</span>
+    </div>
+    <div class="info_row">
+      <span class="label">활기</span>
+      <div class="bar">
+        <div class="fill active"></div>
+      </div>
+      <span class="percent">42%</span>
+    </div>
+    <div class="info_row">
+      <span class="label">소화</span>
+      <div class="bar">
+        <div class="fill digest"></div>
+      </div>
+      <span class="percent">55%</span>
+    </div>
+    <div class="info_row">
+      <span class="label">수면</span>
+      <div class="bar">
+        <div class="fill sleep"></div>
+      </div>
+      <span class="percent">47%</span>
+    </div>
+  </div>
+</div>
+    <div class="medi_confirm_right_bottom">
+        <div class="care_title">
+    <h3>생활 관리 안내</h3>
+    <div class="title_line"></div>
+  </div>
+  <div class="care_list">
+    <div class="care_item">
+      <span class="care_num">01</span>
+      <div class="care_text">
+        <strong>규칙적인 식사</strong>
+        <p>
+          기력이 쉽게 떨어질 수 있으므로
+          끼니를 거르지 않고 따뜻한 음식을 섭취해 주세요.
+        </p>
+      </div>
+    </div>
+    <div class="care_item">
+      <span class="care_num">02</span>
+      <div class="care_text">
+        <strong>충분한 휴식</strong>
+        <p>
+          과도한 활동은 피하고 하루 7시간 이상의
+          충분한 수면을 권장합니다.
+        </p>
+      </div>
+    </div>
+    <div class="care_item">
+      <span class="care_num">03</span>
+      <div class="care_text">
+        <strong>가벼운 운동</strong>
+        <p>
+          가벼운 걷기와 스트레칭을 통해
+          혈액순환과 활력 회복에 도움을 주세요.
+        </p>
+      </div>
+    </div>
+  </div>
+  <div class="care_notice">
+    <i class="fa-solid fa-circle-exclamation"></i>
+
+    <div>
+      <strong>복용 시 유의사항</strong>
+      <p>
+        처방된 용량을 지켜 복용하시고,
+        이상 증상이 나타날 경우 복용을 중단해 주세요.
+      </p>
+    </div>
+  </div>
+    </div>
+</div>
+</div>
+ </body>
+ </html>

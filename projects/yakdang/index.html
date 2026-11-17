@@ -1,0 +1,2264 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>약당 jQuery</title>
+   <link rel="shortcut icon" href="./images/health_logo.png" type="image/x-icon">
+  <!--jQuery-->
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+   <script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
+  <link rel="stylesheet" href="./css/medi_jQuery_ver.css">
+  <!-- <script src="./js/medi.js" defer></script> -->
+  <link href="https://hangeul.pstatic.net/hangeul_static/css/maru-buri.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css"/>
+
+  <script>
+    //수량 변경l
+  $(function(){
+  // $('.btn_plus').click(function(){
+  //   let num = $(this).prev('.number').text();
+  //   num++;
+  //   if(num > 10){
+  //     num = 10;
+  //     alert('최대 10개까지만 구매 해주세요.');
+  //   }
+  //   $(this).prev('.number').text(num);
+  // });
+  // $('.btn_minus').click(function(){
+  //   let num = $(this).next('.number').text();
+  //   num--;
+  //   if(num < 1){
+  //     num = 1;
+  //     alert('최소 1개 이상 구매 가능합니다.');
+  //    }
+  //   $(this).next('.number').text(num);
+  // });
+  //약바구니 클릭시 그 상품이 약바구니에 그대로 담기는 기능
+  $('.popular_btn_box label').click(function(){
+  let item = $(this).parents('.popular_item');
+  let img = item.find('.popular_img_box img').attr('src');
+  let title = item.find('.popular_title_box h5').text();
+  let origin = item.find('.money_left .sale').text();
+  let sale = item.find('.money_left span').eq(1).text();
+  let price = item.find('.money_right h6').text();
+  $('.cart_change_img').attr('src', img);
+  $('.cart_change_title').text(title);
+  $('.cart_change_origin').text(origin);
+  $('.cart_change_sale').text(sale);
+  $('.cart_change_price').text(price);
+  $('.cart_center_main .number').text(1);
+});
+});
+
+    /*상단 공지사항 버튼 클릭 후 수직 이동 버튼 조작*/
+    /*헤더  스크롤 후 고정 및 퀵메뉴 영역 이후 표시*/
+    $(function(){
+      $(window).scroll(function(){
+      if($(window).scrollTop()>=800) {
+        $('.header_bottom').addClass('header_fixed');
+        $(".quick_menu").fadeIn(500);
+      } else {
+        $('.header_bottom').removeClass("header_fixed");
+        $('.quick_menu').fadeOut(500);
+      }
+      });
+      $('.btn_top a').click(function(e){
+        e.preventDefault();
+        $('html,body').stop().animate({scrollTop:0},1000);
+        $(window).scrollTo({top:0,left:0},500);
+        // $(window).scrollTo(this.hash || 0,500);
+      }); //top 버튼 클릭시 부드럽게 화면 최상단 이동
+    }); //jQuery
+
+   /* 풀다운 메뉴 내려옴 */
+   $(function(){
+    const iconOpen = $(".icon_open");
+    const iconClose = $(".icon_close");
+    const logoImg = $(".logo_img");
+    const fullBg = $(".full_bg");
+    const closeText = $(".close_text");
+    const subMenu = $(".main_gnb .sub");
+      iconOpen.click(function(){
+        fullBg.stop().animate({
+          height:300
+        },300);
+        subMenu.stop().fadeIn(400);
+        iconOpen.hide();
+        iconClose.css('display','inline-block');
+        logoImg.hide();
+        closeText.css('display','inline-block');
+        // fullBg.css('display','block');
+      }); //아이콘 오픈 클릭 이벤트 : 햄버거 버튼 클릭 후 아이콘 사라짐 및 X버튼 생성
+      iconClose.click(function(){
+        fullBg.stop().animate({
+          height:0
+        },600);
+        subMenu.stop().fadeOut(200,function(){
+          subMenu.removeAttr('style');
+        });
+        iconClose.hide();
+        iconOpen.css('display','inline-block');
+        closeText.hide();
+        logoImg.show();
+      }); // 아이콘 클로즈 클릭 이벤트 : X 버튼 클릭 후 배경 사라짐 및 햄버거 생성
+      closeText.click(function(){
+        fullBg.stop().animate({
+          height:0
+        },600);
+        subMenu.stop().fadeOut(200,function(){
+          subMenu.removeAttr('style');
+        });
+        iconClose.hide();
+        iconOpen.css('display','inline-block');
+        closeText.hide();
+        logoImg.show();
+      });
+   });
+   //메인배너 외부라이브러리 연동
+$(function(){
+  const mainSwiper = new Swiper(".main_slide", {
+    loop: true,
+    slidesPerView: 1,
+    speed: 800,
+    autoplay: {
+      delay: 2500,
+      disableOnInteraction: false
+    },
+    pagination: {
+      el: ".swiper-pagination",
+      clickable: true
+    }
+  });
+  $(window).scroll(function(){
+  if($('.medi_list_wrap').offset().top <= $(window).scrollTop() + 300) {
+    $('.medi_list_wrap .hongsam').stop().fadeIn(500).css('display','block');
+    $('.medi_list_wrap .nokyong').stop().delay(500).fadeIn(500).css('display','block');
+    $('.medi_list_wrap .dangui').stop().delay(1000).fadeIn(500).css('display','block');
+  } else {
+    $('.medi_list_wrap .list_box').stop().fadeOut(300);
+  }
+});
+});
+   /* 마우스오버 이벤트 */
+  $(function(){
+  const tab = $('.title_wrap label');
+  const sheet = $('.best_wrap');
+  const moreSheet = $('.best_wrap_bt');
+  sheet.hide();
+  moreSheet.hide();
+  sheet.eq(0).show();
+  tab.eq(0).addClass('on');
+  tab.click(function(){
+    let index = $(this).index();
+    tab.removeClass('on');
+    $(this).addClass('on');
+    sheet.hide();
+    sheet.eq(index).fadeIn(300).css('display','flex');
+    moreSheet.hide();
+    $('#chk_more').prop('checked', false);
+    $('.more').show();
+    $('.close').hide();
+  });
+  $('.more_btn_wrap label').click(function(){
+    let index = $('.title_wrap label.on').index();
+    if($('#chk_more').prop('checked') == false){
+      moreSheet.eq(index).fadeIn(300).css('display','flex');
+      $('.more').hide();
+      $('.close').show();
+    } else {
+      moreSheet.eq(index).fadeOut(300);
+      $('.more').show();
+      $('.close').hide();
+    }
+  });
+});
+/* 마우스 호버 및 이동에 따른 인터렉션 변경*/
+/* -- 시트 변경 */
+$(function(){
+  const btn = $('.event_btn label');
+  const sheet = $('.event_set');
+  sheet.hide();
+  sheet.eq(0).fadeIn(300).css('display','flex');
+  btn.eq(0).addClass('on');
+  btn.click(function(){
+    let index = $(this).index();
+    btn.removeClass('on');
+    $(this).addClass('on');
+    sheet.stop().fadeOut(300);
+    sheet.eq(index).stop().fadeIn(500).css('display','flex');
+  });
+});
+$(function(){
+  $('.prt_title_left').click(function(){
+    $('.line_inner').stop().animate({
+      marginLeft: 0
+    }, 300);
+  });
+  $('.prt_title_right').click(function(){
+    $('.line_inner').stop().animate({
+      marginLeft: 360
+    }, 300);
+  });
+});
+/*홍삼 녹용 당귀 약재 ----- header_top*/
+$(function(){
+ $('.header_top_left li').hover(
+  function() {
+    $(this).find('a').css({
+      color:'#791717',
+      backgroundColor:'rgba(255, 255, 255, 0.35)'
+    });
+  }, 
+    //   function(){
+    //   $(this).find('a').css({
+    //     color: '#795114',
+    //     backgroundColor: 'none'
+    //   });
+    // } //마우스가 호버 상태 아닐 때 원래대로 돌아오는 코드
+ );
+});
+//지도 아이콘 클릭 시 같은 페이지 다른 섹션으로 이동함
+$(function(){
+
+  $('.btn_map').click(function(e){
+    e.preventDefault();
+    $('html, body').stop().animate({
+      scrollTop: $('#map').offset().top-250
+    },1000);
+  });
+});
+/* 카테고리 분류 ----- header_bottom*/
+$(function(){
+  $('.sub li').hover(function(){
+    $(this).find('a').css({
+      backgroundColor: "#F2E9DE",
+      color: "#791717"
+    });
+  },
+  function(){
+    $(this).find('a').css({
+      color:'#795114',
+      backgroundColor:' rgba(255, 248, 238, 0.98)'
+    });
+  });
+});
+//하트 클릭 후 변환
+$(function(){
+  $('.best_img_box i').click(function(){
+    $(this).toggleClass('on');
+    if($(this).hasClass('on')){
+      $(this)
+        .removeClass('fa-regular')
+        .addClass('fa-solid');
+    }else{
+      $(this)
+        .removeClass('fa-solid')
+        .addClass('fa-regular');
+    }
+  });
+});
+
+// <div class="gnb_top_outer_icon">
+//      <a href="#!"> <i class="fa-solid fa-magnifying-glass"></i></a>
+//      <a href="#!"><i class="fa-solid fa-location-dot"></i></a>
+//      <label for="join_popup" class="join_open_btn">
+//      <i class="fa-regular fa-user"></i>
+//      </label>
+//      <label for="cart_popup" class="cart_open_btn">
+//      <i class="fa-solid fa-cart-flatbed"></i>
+//      </label>
+//     </div><!--gnb_top_outer_icon-->
+//  <input type="radio" name="medi_tab" id="card01" checked>
+//   <input type="radio" name="medi_tab" id="card02">
+//   <input type="radio" name="medi_tab" id="card03">
+//   <input type="radio" name="medi_tab" id="card04">
+//    <div class="title">
+//     <h3 class="new_title">신상 약재</h3>
+//     <div class="title_sub_text">
+//       <div class="sub_box">
+//      <label for="card01" class="tab_hongsam">홍삼</label>
+// <label for="card02" class="tab_nokyong">녹용</label>
+//       </div>
+//       <div class="sub_box">
+// <label for="card03" class="tab_danggui">당귀</label>
+// <label for="card04" class="tab_all">약재</label>
+//       </div>
+//     </div>
+//    </div><!--title-->
+  
+// $(window).scroll(function(){
+//   if ($(".title .new_title .title_sub_text").offset().top == $(window).scrollTop()) {
+//     $('.sub_box .tab_hongsam').fadeIn(500);
+//     $('.sub_box .tab_nokyong').delay(1000).fadeIn(500);
+//     $('.sub_box .tab_danggui').delay(1500).fadeIn(500);
+//     $('.sub_box .tab_all').delay(2000).fadeIn(500);
+//   } 
+// });
+//약재 탭 클릭 후 선과 함께 페이드인 페이드아웃
+$(function(){
+  const tab = $('.title_sub_text label');
+  const banner = $('.banner_sub .sub_img');
+  const card = $('.card_new');
+  banner.hide();
+  card.hide();
+  banner.eq(0).show();
+  card.eq(0).css('display','flex');
+  tab.click(function(){
+    let index = $(this).index('.title_sub_text label');
+    banner.hide();
+    banner.eq(index).fadeIn(300);
+       card.hide();
+    card.eq(index).css('display','flex').hide().fadeIn(300);
+    $('.card_line').css({
+      height: 0
+    });
+  }); //카드라인 0부터 시작 스크롤 후 등장
+  $(window).scroll(function(){
+    if($('.banner_sub').offset().top <= $(window).scrollTop() + 10) {
+      $('.card_new:visible .card_line').stop().animate({
+        height: 260
+      },500);
+    }
+  });
+});
+//인스타그램 사진 온오프
+ $(function(){
+      const imgBox = $('section div');
+      imgBox.hover(function(){
+        $(this).find('img').attr('src',$(this).find('img').attr('src').replace('off','on'));
+      },function(){
+        $(this).find('img').attr('src',$(this).find('img').attr('src').replace('on','off'));
+      });
+    }); // jQuery
+  </script>
+  <style>
+
+    *{margin: 0; padding: 0;}
+    li {list-style: none;}
+    a {color: black; text-decoration: none;}
+html,
+body {
+  display: block !important;
+  width: 100% !important;
+  min-height: 100% !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+  overflow: visible !important;
+}
+.member_popup_bg {
+  width: 100%;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(90, 73, 73, 0.45);
+  z-index: 999999999999999999999999999999999999;
+}
+.member_popup {
+  width: 600px;
+  padding: 50px;
+  position: relative;
+  background-color: #fff;
+  border-radius: 20px;
+  box-sizing: border-box;
+}
+.member_popup_close {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  padding: 0;
+  font-size: 22px;
+  background: none;
+  border: none;
+}
+.member_popup_title {
+  margin-bottom: 40px;
+  text-align: center;
+}
+.member_popup_title > span {
+  display: block;
+  margin-bottom: 10px;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 2px;
+  color: #704c20;
+}
+.member_popup_title h2 {
+  margin-bottom: 10px;
+  font-size: 26px;
+  font-weight: 700;
+}
+.member_popup_title p {
+  font-size: 14px;
+  color: #777;
+}
+.member_popup_menu {
+  display: flex;
+  gap: 20px;
+}
+.member_popup_link {
+  width: 50%;
+  height: 180px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  color: #5b4333;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 12px;
+  text-decoration: none;
+  transition: 0.3s;
+}
+.member_popup_link i {
+  font-size: 28px;
+  color: #704c20;
+}
+.member_popup_link strong {
+  font-size: 18px;
+  font-weight: 700;
+}
+.member_popup_link span {
+  font-size: 13px;
+  color: #5b4333;
+}
+/* hover */
+.member_popup_link:hover {
+  background-color: #faf6ef;
+  border-color: #704c20;
+  transform: translateY(-3px);
+}
+  </style>
+</head>
+<body>
+  <!-- 로그인 / 회원가입 팝업  평가 이후 삭제-->
+<!-- <div class="member_popup_bg">
+  <div class="member_popup">
+    <button type="button" class="member_popup_close">
+      <i class="fa-solid fa-xmark"></i>
+    </button>
+    <div class="member_popup_title">
+      <span>MEMBER</span>
+      <h2>약당에 오신 것을 환영합니다.</h2>
+      <p>서비스 이용을 위해 로그인 또는 회원가입을 진행해 주세요.</p>
+    </div>
+    <div class="member_popup_menu">
+      <a href="./sign.html" class="member_popup_link">
+        <i class="fa-solid fa-user-plus"></i>
+        <strong>회원가입</strong>
+        <span>
+          약당의 새로운 회원이 되어보세요.
+        </span>
+      </a>
+      <a href="./login_medi.html" class="member_popup_link">
+        <i class="fa-solid fa-user"></i>
+        <strong>로그인</strong>
+        <span>
+          기존 회원은 로그인해 주세요.
+        </span>
+      </a>
+    </div>
+  </div>
+</div>
+ -->
+
+
+     <div class="quick_menu">
+  <div class="quick_product">
+    <span class="recent_badge">최근</span>
+    <a href="./">
+      <img src="./images/product_09.png" alt="">
+    </a>
+  </div>
+  <div class="quick_product">
+    <a href="./medi_detail.html">
+      <img src="./images/product_15.png" alt="">
+    </a>
+  </div>
+  <div class="btn_top">
+    <a href="#top">
+      <i class="fa-solid fa-chevron-up"></i>
+      <span>TOP</span>
+    </a>
+  </div>
+</div>
+  <input type="checkbox" id="cart_popup" class="cart_check">
+  <label for="cart_popup" class="cart_bg"></label>
+  <div class="cart_wrap">
+    <div class="cart_top">
+      <h2>상품 약바구니</h2>
+      <a href="#!">
+        <p>1만원 이상 구매시 배송 가능</p>
+        <i class="fa-solid fa-angle-right"></i>
+      </a>
+    </div>
+    <div class="cart_center_list">
+      <div class="cart_center_main">
+        <div class="cart_main_img">
+          <img src="./images/product_09.png" alt="약바구니 메인사진" class="cart_change_img">
+        </div>
+        <div class="cart_main_info">
+           <div class="cart_text_top">
+            <h5 class="cart_change_title">여성 건강기능식품 TOP1</h5>
+            <span class="sale cart_change_sale">15%</span>
+            <span class="money cart_change_origin">424,000원</span>
+           </div>
+           <div class="cart_text_middle">
+            <h5 class="cart_change_price">369,000원</h5>
+           </div>
+           <div class="cart_text_bottom">
+            <p>수량선택</p>
+            <div class="cart_text_btm_count">
+               <i class="fa-solid fa-minus btn_minus"></i>
+              <p class="number">1</p>
+               <i class="fa-solid fa-plus btn_plus"></i>
+            </div>
+           </div>
+        </div><!--cart_main_info-->
+      </div><!--cart_center_main-->
+      <div class="cart_title">
+        <h5>추천 상품</h5>
+      </div>
+      <div class="sub_list_wrap">
+        <div class="cart_sub_list">
+        <div class="cart_main_img">
+          <img src="./images/product_11.png" alt="약바구니 메인사진">
+        </div>
+        <div class="cart_sub_info">
+           <div class="sub_text_top">
+            <h5>가정의 달 감사 선물 카드</h5>
+            <span>23%</span>
+            <span>604,000원</span>
+           </div>
+           <div class="sub_text_middle">
+            <h5>339,000원</h5>
+           </div>
+           <div class="sub_text_bottom">
+            <p>수량선택</p>
+            <div class="cart_text_btm_count">
+               <i class="fa-solid fa-minus btn_minus"></i>
+              <p class="number">1</p>
+               <i class="fa-solid fa-plus btn_plus"></i>
+            </div>
+           </div>
+        </div><!--cart_sub_info-->
+      </div>
+        <div class="cart_sub_list">
+        <div class="cart_main_img">
+          <img src="./images/product_13.png" alt="약바구니 메인사진">
+        </div>
+        
+        <div class="cart_sub_info">
+           <div class="sub_text_top">
+            <h5>갱년기 치유 **</h5>
+            <span>15%</span>
+            <span>424,000원</span>
+           </div>
+           <div class="sub_text_middle">
+            <h5>199,850원</h5>
+           </div>
+           <div class="sub_text_bottom">
+            <p>수량선택</p>
+            <div class="cart_text_btm_count">
+               <i class="fa-solid fa-minus btn_minus"></i>
+              <p class="number">1</p>
+               <i class="fa-solid fa-plus btn_plus"></i>
+            </div>
+           </div>
+        </div><!--cart_sub_info-->
+      </div>
+        <div class="cart_sub_list">
+        <div class="cart_main_img">
+          <img src="./images/product_16.png" alt="약바구니 메인사진">
+        </div>
+        <div class="cart_sub_info">
+           <div class="sub_text_top">
+            <h5>올댓 새로움</h5>
+            <span>15%</span>
+            <span>344,000원</span>
+           </div>
+           <div class="sub_text_middle">
+            <h5>69,000원</h5>
+           </div>
+           <div class="sub_text_bottom">
+            <p>수량선택</p>
+            <div class="cart_text_btm_count">
+               <i class="fa-solid fa-minus btn_minus"></i>
+              <p class="number">1</p>
+               <i class="fa-solid fa-plus btn_plus"></i>
+            </div>
+           </div>
+        </div><!--cart_sub_info-->
+      </div>
+      </div>
+    </div><!--cart_center_list-->
+    <div class="sub_text_bottom_btn">
+      <div class="sub_text_bottom_left">
+      <span>약바구니</span>
+      </div>
+      <div class="sub_text_bottom_right">
+      <span>쇼핑하러가기</span>
+      </div>
+    </div>
+  </div><!--cart_wrap-->
+    <input type="checkbox" id="join_popup" class="join_check">
+    <label for="join_popup" class="join_bg"></label>
+ <div class="join_wrap">
+  <div class="join_box">
+    <ul class="join_list">
+      <li>
+        <!-- <input type="checkbox" id="login_popup"> -->
+        <a href="login_medi.html">
+          <i class="fa-regular fa-user"></i>
+          <span>로그인</span>
+        </a>
+      </li>
+
+      <li>
+        <a href="#!">
+          <i class="fa-solid fa-user-plus"></i>
+          <span>회원가입</span>
+        </a>
+      </li>
+      <li>
+        <a href="#!">
+          <i class="fa-regular fa-circle-question"></i>
+          <span>문의하기</span>
+        </a>
+      </li>
+
+      <li>
+        <a href="#!">
+          <i class="fa-solid fa-truck-fast"></i>
+          <span>배송 현황</span>
+        </a>
+      </li>
+
+      <li>
+        <a href="#!">
+          <i class="fa-solid fa-location-dot"></i>
+          <span>KOREA</span>
+        </a>
+      </li>
+    </ul>
+  </div>
+</div> <!--join_wrap-->
+
+<input type="checkbox" id="search_popup">
+   <div class="gnb_top_outer">
+    <div class="gnb_top_outer_icon">
+     <label for="search_popup" class="search_open"> <i class="fa-solid fa-magnifying-glass"></i></label>
+     <a href="#map" class="btn_map"><i class="fa-solid fa-location-dot"></i></a>
+     <label for="join_popup" class="join_open_btn">
+     <i class="fa-regular fa-user"></i>
+     </label>
+     <input type="checkbox" id="user_pop" checked>
+     <div class="user_pop">
+      <span class="user_pop_arrow"></span>
+      <p>
+        새롭게 ! <br> 단장한
+        약당
+      </p>
+      <label for="user_pop" class="user_pop_btn">
+        창 닫기
+      </label>
+     </div>
+     <label for="cart_popup" class="cart_open_btn">
+     <i class="fa-solid fa-cart-flatbed"></i>
+     </label>
+    </div><!--gnb_top_outer_icon-->
+    <div class="search_box">
+      <div class="search_inner">
+        <div class="search_input_box">
+          <i class="fa-solid fa-magnifying-glass"></i>
+          <input type="text" class="search_input" placeholder="검색어를 입력해 주세요.">
+        </div>
+        <label for="search_popup" class="search_close">
+           <i class="fa-solid fa-xmark"></i>
+        </label>
+      </div>
+      <div class="search_recommend">
+        <span>추천 검색어</span>
+        <ul>
+          <li><a href="#!">홍삼</a></li>
+          <li><a href="#!">녹용</a></li>
+          <li><a href="#!">면역력</a></li>
+          <li><a href="#!">선물세트</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="gnb_top">
+      <div class="gnb_top_event_wrap">
+        <div class="gnb_top_nav">
+          <i class="fa-solid fa-angle-left"></i>
+        </div>
+         <div class="gnb_top_event_text">
+      <ul class="gnb_top_event_list">
+        <li><span>초특가 할인 이벤트!</span></li>
+        <li><span>신규회원 10% 할인</span></li>
+        <li><span>무료배송 이벤트 진행</span></li>
+        <li><span>베스트 상품 특가전</span></li>
+      </ul><!--ul gnb_top_event_list-->
+      </div><!--gnb_top_event_text-->
+      <div class="gnb_top_nav">
+          <i class="fa-solid fa-angle-right"></i>
+      </div>
+      </div><!--gnb_top_event_wrap-->
+    </div><!--gnb_top-->
+  </div><!--gnb_top_outer-->
+  <header class="header_wrap" id="header_wrap">
+    <div class="header_top" id="header_top">
+      <div class="header_top_left">
+       <ul>
+        <li><a href="medi_dictionary.html#hongsam">홍삼</a></li>
+        <li><a href="medi_dictionary.html#nokyong">녹용</a></li>
+        <li><a href="medi_dictionary.html#danggui">당귀</a></li>
+        <li><a href="medi_dictionary.html#allmedi">약재</a></li>
+</ul>
+      </div>
+      <div class="header_top_right">
+          <div class="header_top_right_icon">
+             <a href="#!"><i class="fa-regular fa-envelope"></i></a>
+          </div>
+          <div class="header_top_right_text">
+            <span class="pre">신청하기</span>
+          </div>
+        </div><!--header_top_right-->
+    </div><!--header_top-->
+    <input type="checkbox" id="chk_menu">
+
+<div class="header_bottom">
+  <nav class="gnb_menu">
+    <div class="logo">
+      <label for="chk_menu" class="btn_menu">
+        <i class="fa-solid fa-bars icon_open"></i>
+        <i class="fa-solid fa-xmark icon_close"></i>
+      </label>
+
+      <div class="logo_box">
+        <a href="./medi_jQuery.html" class="logo_img">
+          <img src="./images/health_logo.png" alt="약당">
+        </a>
+        <label for="chk_menu" class="close_text">닫기</label>
+      </div>
+    </div>
+
+    <div class="main_gnb">
+
+      <ul class="ul">
+        <li>
+          <a href="./medi_best.html" class="gnb_best">베스트</a>
+          <ul class="sub">
+            <li><a href="./medi_best.html">TOP 28</a></li>
+            <li><a href="./medi_best.html">신규 TOP</a></li>
+            <li><a href="./medi_best.html">시즌 TOP</a></li>
+          </ul>
+        </li>
+
+        <li>
+          <a href="./medi_new.html">신상</a>
+          <ul class="sub">
+            <li><a href="./medi_new.html">홍삼</a></li>
+            <li><a href="./medi_new.html">녹용</a></li>
+            <li><a href="./medi_new.html">당귀</a></li>
+            <li><a href="./medi_new.html">모든 약재</a></li>
+          </ul>
+        </li>
+
+        <li>
+          <a href="./medi_gift.html">선물</a>
+          <ul class="sub">
+            <li><a href="./medi_gift.html">가성비</a></li>
+            <li><a href="./medi_gift.html">프리미엄</a></li>
+            <li><a href="./medi_gift.html">부모님건강</a></li>
+          </ul>
+        </li>
+
+        <li>
+          <a href="#!">구독</a>
+          <ul class="sub">
+            <li><a href="#!">정기배송</a></li>
+            <li><a href="#!">구독하기</a></li>
+          </ul>
+        </li>
+
+        <li>
+          <a href="#!">기획</a>
+          <ul class="sub">
+            <li><a href="#!">공모전</a></li>
+            <li><a href="#!">체험단</a></li>
+          </ul>
+        </li>
+
+        <li class="last">
+          <a href="medi_confirm.html" class="prescription_btn">
+  <span class="deco">✤</span>
+  <span class="line_last"></span>
+  <span class="txt">처방전</span>
+  <span class="line_last"></span>
+</a>
+        </li>
+      </ul>
+      <div class="full_bg">
+      </div>
+    </div>
+  </nav>
+</div>
+<div class="line_header"></div>
+  </header><!--header-->
+<input type="radio" name="medi_popup" id="medi01">
+<input type="radio" name="medi_popup" id="medi02">
+<input type="radio" name="medi_popup" id="medi03">
+<input type="radio" name="medi_popup" id="medi04">
+<input type="radio" name="medi_popup" id="medi_close" checked>
+<label for="medi_close" class="medi_bg"></label>
+<div class="medi_popup medi01">
+  <label for="medi_close" class="close_btn">
+    <i class="fa-solid fa-xmark"></i>
+  </label>
+  <h3>약재도감 : 홍삼</h3>
+  <div class="medi_card">
+    <div class="medi_list_img">
+      <img src="./images/medi_product_01.png" alt="">
+    </div>
+    <div class="medi_list_text">
+      <span class="sub_title">효능</span>
+      <p>홍삼은 식약처가 공식 인정한 
+         6대 기능성을 가진 건강기능식품으로, 대표적인 유효성분인 진세노사이드가 면역력 증진, 피로 개선, 
+혈액순환 개선, 항산화 작용, 기억력 개선, 갱년기 여성 건강에 도움을 줍니다.</p>
+      <p class="tag">주요 효능 태그:#피로개선 #면역력 #기억력</p>
+    </div>
+    <label for="medi02" class="next_btn">
+      <i class="fa-solid fa-angle-right"></i>
+    </label>
+  
+  </div>
+</div><!--medi_card-->
+<div class="medi_popup medi02">
+  <label for="medi_close" class="close_btn">
+    <i class="fa-solid fa-xmark"></i>
+  </label>
+  <h3>약재도감 : 녹용</h3>
+  <div class="medi_card">
+    
+    <div class="medi_list_img">
+      <img src="./images/card_l02.png" alt="">
+    </div>
+    <div class="medi_list_text">
+      <span class="sub_title">효능</span>
+      <p>신의 선물이라 불리는 뿔, 무너진 면역과 무한한 성장의 에너지를 깨우다.지친 몸의 피로 개선: 스트레스 호르몬을 조절하고 에너지 대사를 촉진하여, 만성 피로에 시달리는 현대인의 활력을 빠르게 되찾아줍니다.</p>
+      <p class="tag">주요 효능 태그:#면역력 #기력회복 #성장발육</p>
+    </div>
+    <label for="medi03" class="next_btn">
+      <i class="fa-solid fa-angle-right"></i>
+    </label>
+  
+  </div>
+</div><!--medi_card-->
+<div class="medi_popup medi03">
+  <label for="medi_close" class="close_btn">
+    <i class="fa-solid fa-xmark"></i>
+  </label>
+  <h3>약재도감 : 당귀</h3>
+  <div class="medi_card">
+    
+    <div class="medi_list_img">
+      <img src="./images/card_l03.png" alt="">
+    </div>
+    <div class="medi_list_text">
+      <span class="sub_title">효능</span>
+      <p>"여성의 몸을 따뜻하게, 흐트러진 혈액의 질서를 바로잡는 기적의 뿌리 깨끗하고 풍부한 혈액 생성: 헤모글로빈 수치를 늘려 빈혈을 개선하고, 탁해진 피를 맑게 하여 온몸의 혈액 순환을 촉진합니다.</p>
+      <p class="tag">주요 효능 태그:#혈액순환 #여성 #기력회복</p>
+    </div>
+    <label for="medi04" class="next_btn">
+      <i class="fa-solid fa-angle-right"></i>
+    </label>
+  
+  </div>
+</div><!--medi_card-->
+<div class="medi_popup medi04">
+  <label for="medi_close" class="close_btn">
+    <i class="fa-solid fa-xmark"></i>
+  </label>
+  <h3>약재도감 : 모든 약재</h3>
+  <div class="medi_card">
+    
+    <div class="medi_list_img">
+      <img src="./images/in_088.png" alt="">
+    </div>
+    <div class="medi_list_text">
+      <span class="sub_title">약재 탐구</span>
+      <p>"성분 라벨 똑똑하게 읽는 법": 식약처 인증 마크 확인법 가이드.</p>
+    </div>
+    <label for="medi01" class="next_btn">
+      <i class="fa-solid fa-angle-right"></i>
+    </label>
+  </div>
+</div><!--medi_card-->
+<div class="main_slide swiper">
+  <div class="swiper-wrapper">
+    <div class="swiper-slide main_slide_item">
+      <img src="./images/banner_woman.png" alt="">
+    </div>
+    <div class="swiper-slide main_slide_item">
+      <img src="./images/banner_man_main.png" alt="">
+    </div>
+    <div class="swiper-slide main_slide_item">
+      <img src="./images/banner_new (2).png" alt="">
+    </div>
+    <div class="swiper-slide main_slide_item">
+      <img src="./images/banner_both.png" alt="">
+    </div>
+  </div>
+  <div class="swiper-pagination"></div>
+</div> <!--배너 컨테이너 jQuery 외부 라이브러리 스와이퍼 사용-->
+  <section class="meta">
+  <div class="meta_btn gift">
+    <a href="./medi_gift.html">
+      <i class="fa-solid fa-gift"></i>
+      <span>선물하기</span>
+    </a>
+  </div>
+  <div class="meta_btn delivery">
+    <a href="./medi_detail.html">
+      <i class="fa-solid fa-person"></i>
+      <span>남성용품</span>
+    </a>
+  </div>
+  <div class="meta_btn woman">
+    <a href="./medi_gift.html">
+      <i class="fa-solid fa-person-dress"></i>
+      <span>여성용품</span>
+    </a>
+  </div>
+  <div class="meta_btn hongsamm">
+    <a href="./medi_best.html">
+      <i class="fa-solid fa-seedling"></i>
+      <span>홍삼</span>
+    </a>
+  </div>
+  <div class="meta_btn nokyongm">
+    <a href="./medi_best.html">
+      <i class="fa-solid fa-leaf"></i>
+      <span>녹용</span>
+    </a>
+  </div>
+  <div class="meta_btn dangguim">
+    <a href="./medi_best.html">
+      <i class="fa-solid fa-spa"></i>
+      <span>당귀</span>
+    </a>
+  </div>
+  <div class="meta_btn allm">
+    <a href="./medi_best.html">
+      <i class="fa-solid fa-shop"></i>
+      <span>전체상품</span>
+    </a>
+  </div>
+</section><!--meta-->
+  <input type="radio" name="main_prt_sheet" id="best_sheet1" checked>
+  <input type="radio" name="main_prt_sheet" id="best_sheet2">
+  <div class="title_wrap">
+   <label for="best_sheet1" class="prt_title_left">
+    <p>효도 상품</p>
+    <span>28</span>
+   </label>
+   <label for="best_sheet2" class="prt_title_right">
+    <p>추천 상품</p>
+    <span>10</span>
+   </label>
+   </div><!--title_wrap-->
+   <div class="line">
+    <div class="line_inner"></div>
+   </div>
+   <input type="checkbox" id="chk_more">
+   <section class="best_wrap best_sheet01" id="productList">
+    <div class="best_item">
+   <input type="checkbox" id="quick_open">
+      
+      <div class="best_img_box">
+        <a href="./medi_detail.html">
+        <img src="./images/product_09.png" alt="">
+         </a>
+        <i class="fa-regular fa-heart"></i> <!--position-->
+          <label for="quick_open" class="quick_view">
+        <span>
+          <!-- <i class="fa-regular fa-eye"></i> -->
+        </span>
+      </label>
+      </div><!--best_img_box-->
+       <div class="quick_bg">
+            <img src="./images/quick_bg.png" alt="">
+          </div>
+     <div class="quick_popup" id="quick_popup">
+  <input type="radio" name="quick_slide01" id="quick_img01" checked>
+  <input type="radio" name="quick_slide01" id="quick_img02">
+  <label for="quick_open" class="quick_close">X</label>
+
+  <section class="quick_img_btn_wrap">
+    <div class="quick_img_wrap">
+      <div class="quick_img">
+        <img src="./images/detail_img01.png" alt="">
+      </div>
+      <div class="quick_img">
+        <img src="./images/product_39.png" alt="">
+      </div>
+    </div>
+  </section>
+
+  <label for="quick_img02" class="arrow arrow01 arrow_right">
+      <i class="fa-solid fa-chevron-right"></i>
+    </label>
+    <label for="quick_img01" class="arrow arrow02 aooleft">
+      <i class="fa-solid fa-chevron-left"></i>
+    </label>
+    <div class="quick_text">
+      <h3>여화담 진액 : 한뿌리* 30개 3세트</h3>
+      <div class="quick_star_box">
+         <i class="fa-solid fa-star"></i>
+        <i class="fa-solid fa-star"></i>
+        <i class="fa-solid fa-star"></i>
+        <i class="fa-solid fa-star"></i>
+        <i class="fa-solid fa-star"></i>
+        <span>4.7 (2752)</span>
+      </div>
+      <span class="quick_real_money">424,000원</span>
+      <div class="quick_text_money">
+          <span>25%</span>
+          <h5>5만 9천원</h5>
+        </div>
+        <div class="quick_span_box">
+           <span class="quick_left">선물인기</span>
+        <span class="center_man">농축액</span>
+        <span class="quick_right">장건강</span>
+        </div>
+        <div class="line_quick"></div>
+        <div class="quick_info">
+         <span>섭취형 : 분말</span>
+        <div class="line_quick"></div>
+         <span>제품소개 :</span>
+         <p>
+          건강한 장건강을 위한 "여화담" 프리미엄 유산균
+           여성의 호르몬 변화를 즉각적인 효과로 보답하겠습니다
+         </p>
+        </div>
+        <div class="line_quick"></div>
+     <input type="radio" name="ml" id="ml1" checked>
+     <label for="ml1" class="ml_btn">30ml</label>
+
+     <input type="radio" name="ml" id="ml2">
+     <label for="ml2" class="ml_btn2">60ml</label>
+     <div class="detail_count_btn_box">
+     <div class="detail_count_number">
+           <i class="fa-solid fa-minus btn_minus"></i>
+           <p class="number">1</p>
+        <i class="fa-solid fa-plus btn_plus"></i>
+        </div>
+        <div class="quick_btn_box">
+        <label for="cart_popup" class="cart_open_btn">
+          약바구니
+        </label>
+      </div>
+        </div>
+        <a href="medi_detail.html">
+          <p class="quick_detail">상품 상세보기 
+            <i class="fa-solid fa-chevron-right"></i>
+          </p>
+        </a>
+    </div><!--quick_text-->
+</div><!--quick_popup-->
+    <a href="./medi_detail.html">
+      <div class="best_text_box">
+        <div class="best_text_title">
+          <h5>여화담 진액</h5>
+           <p class="best_desc">여성을 위한 프리미엄 건강 진액</p>
+
+        </div>
+        <div class="best_text_money">
+          <div class="money_left">
+            <span class="sale">424,000</span>
+            <span>15%</span>
+          </div>
+          <div class="money_right">
+            <h6>369,000원</h6>
+          </div>
+        </div>
+      </div>
+      </a>
+      <div class="best_star_box">
+        <i class="fa-solid fa-star"></i>
+        <i class="fa-solid fa-star"></i>
+        <i class="fa-solid fa-star"></i>
+        <i class="fa-solid fa-star"></i>
+        <i class="fa-solid fa-star"></i>
+        <span>4.7 (2752)</span>
+      </div>
+      <div class="best_span_box">
+        <span class="left">선물인기</span>
+        <span class="center"> 환 </span>
+        <span class="right">여성용</span>
+      </div>
+    </div>
+    <div class="best_item">
+      <div class="best_img_box">
+        <img src="./images/product_10.png" alt="">
+        <i class="fa-regular fa-heart"></i> <!--position-->
+      </div>
+      
+      <div class="best_text_box">
+        <div class="best_text_title">
+          <h5>남성의 활력 : 한뿌리</h5>
+          <p class="best_desc">남성을 위한 프리미엄 건강 진액</p>
+        </div>
+        <div class="best_text_money">
+          <div class="money_left">
+            <span class="sale">424,000</span>
+            <span>15%</span>
+          </div>
+          <div class="money_right">
+            <h6>369,000원</h6>
+          </div>
+        </div>
+      </div>
+      <div class="best_star_box">
+        <i class="fa-solid fa-star"></i>
+        <span>4.7 (2752)</span>
+      </div>
+      <div class="best_span_box">
+        <span class="left">선물인기</span>
+        <span class="center_man">남성용</span>
+        
+    </div>
+    </div>
+    <div class="best_item">
+      <div class="best_img_box">
+        <img src="./images/product_06.png" alt="">
+        <i class="fa-regular fa-heart"></i> <!--position-->
+      </div>
+      <div class="best_text_box">
+        <div class="best_text_title">
+          <h5>여화담 + 남성의 활력 풀패키지</h5>
+        </div>
+        <div class="best_text_money">
+          <div class="money_left">
+            <span>424,000</span>
+            <span>15%</span>
+          </div>
+          <div class="money_right">
+            <h6>369,000원</h6>
+          </div>
+        </div>
+      </div>
+      <div class="best_star_box">
+         <i class="fa-solid fa-star"></i>
+        <i class="fa-solid fa-star"></i>
+        <i class="fa-solid fa-star"></i>
+        <i class="fa-solid fa-star"></i>
+        <i class="fa-solid fa-star"></i>
+        <span>4.7 (2752)</span>
+      </div>
+      <div class="best_span_box">
+        <span class="left">선물인기</span>
+        <span class="center">농축액</span>
+        <span class="right">장건강</span>
+    </div>
+    </div>
+    <div class="best_item">
+      <div class="best_img_box">
+        <img src="./images/product_11.png" alt="">
+        <i class="fa-regular fa-heart"></i> <!--position-->
+      </div>
+      <div class="best_text_box">
+        <div class="best_text_title">
+          <h5>가정의 달 감사 선물 세트</h5>
+        </div>
+        <div class="best_text_money">
+          <div class="money_left">
+            <span>424,000</span>
+            <span>15%</span>
+          </div>
+          <div class="money_right">
+            <h6>369,000원</h6>
+          </div>
+        </div>
+      </div>
+      <div class="best_star_box">
+       <i class="fa-solid fa-star"></i>
+        <i class="fa-solid fa-star"></i>
+        <i class="fa-solid fa-star"></i>
+        <i class="fa-solid fa-star"></i>
+        <i class="fa-solid fa-star"></i>
+        <span>4.7 (2752)</span>
+      </div>
+      <div class="best_span_box">
+         <span class="left">선물인기</span>
+        <span class="center_man">공통</span>
+        <span class="right">면역</span>
+    </div>
+    </div>
+   </section><!--best_wrap_top-->
+   <section class="best_wrap_bt best_sheet01_more">
+     <div class="best_item">
+      <div class="best_img_box">
+        <img src="./images/product_03 (2).png" alt="">
+        <i class="fa-regular fa-heart"></i> <!--position-->
+      </div>
+      <div class="best_text_box">
+        <div class="best_text_title">
+          <h5>당귀즙 30일분 초특가 할인세일</h5>
+        </div>
+        <div class="best_text_money">
+          <div class="money_left">
+            <span class="sale">424,000</span>
+            <span>15%</span>
+          </div>
+          <div class="money_right">
+            <h6>369,000원</h6>
+          </div>
+        </div>
+      </div>
+      <div class="best_star_box">
+        <i class="fa-solid fa-star"></i>
+        <i class="fa-solid fa-star"></i>
+        <i class="fa-solid fa-star"></i>
+        <i class="fa-solid fa-star"></i>
+        <i class="fa-solid fa-star"></i>
+        <span>4.7 (2752)</span>
+      </div>
+      <div class="best_span_box">
+        <span class="left">선물인기</span>
+        <span class="center">농축액</span>
+        <span class="right">장건강</span>
+      </div>
+
+
+    </div>
+
+    <div class="best_item">
+      <div class="best_img_box">
+        <img src="./images/product_04.png" alt="">
+        <i class="fa-regular fa-heart"></i> <!--position-->
+      </div>
+      <div class="best_text_box">
+        <div class="best_text_title">
+          <h5>공진단 선물세트 한정수량</h5>
+        </div>
+        <div class="best_text_money">
+          <div class="money_left">
+            <span>424,000</span>
+            <span>15%</span>
+          </div>
+          <div class="money_right">
+            <h6>369,000원</h6>
+          </div>
+        </div>
+      </div>
+      <div class="best_star_box">
+         <i class="fa-solid fa-star"></i>
+        <i class="fa-solid fa-star"></i>
+        <i class="fa-solid fa-star"></i>
+        <i class="fa-solid fa-star"></i>
+        <i class="fa-solid fa-star"></i>
+        <span>4.7 (2752)</span>
+      </div>
+      <div class="best_span_box">
+        <span class="left">선물인기</span>
+        <span class="center_man">공진단</span>
+        <span class="right">장건강</span>
+    </div>
+    </div>
+    <div class="best_item">
+      <div class="best_img_box">
+        <img src="./images/product_15.png" alt="">
+        <i class="fa-regular fa-heart"></i> <!--position-->
+      </div>
+      <div class="best_text_box">
+        <div class="best_text_title">
+          <h5>가정의 달 출시 맞이 랜덤박스</h5>
+        </div>
+        <div class="best_text_money">
+          <div class="money_left">
+            <span class="sale">424,000</span>
+            <span>15%</span>
+          </div>
+          <div class="money_right">
+            <h6>369,000원</h6>
+          </div>
+        </div>
+      </div>
+      <div class="best_star_box">
+         <i class="fa-solid fa-star"></i>
+        <i class="fa-solid fa-star"></i>
+        <i class="fa-solid fa-star"></i>
+        <i class="fa-solid fa-star"></i>
+        <i class="fa-solid fa-star"></i>
+        <span>4.7 (2752)</span>
+      </div>
+      <div class="best_span_box">
+        <span class="left">선물인기</span>
+        <span class="center">농축액</span>
+        <span class="right">장건강</span>
+    </div>
+    </div>
+    <div class="best_item">
+      <div class="best_img_box">
+        <img src="./images/product_08 (2).png" alt="">
+        <i class="fa-regular fa-heart"></i> <!--position-->
+      </div>
+      <div class="best_text_box">
+        <div class="best_text_title">
+          <h5>홍삼 로얄앰플</h5>
+        </div>
+        <div class="best_text_money">
+          <div class="money_left">
+            <span>424,000</span>
+            <span>15%</span>
+          </div>
+          <div class="money_right">
+            <h6>369,000원</h6>
+          </div>
+        </div>
+      </div>
+      <div class="best_star_box">
+       <i class="fa-solid fa-star"></i>
+        <i class="fa-solid fa-star"></i>
+        <i class="fa-solid fa-star"></i>
+        <i class="fa-solid fa-star"></i>
+        <i class="fa-solid fa-star"></i>
+        <span>4.7 (2752)</span>
+      </div>
+      <div class="best_span_box">
+         <span class="left">선물인기</span>
+        <span class="center">앰플</span>
+        <span class="right">장건강</span>
+    </div>
+    </div>
+   </section>
+    <section class="best_wrap best_sheet02">
+    <div class="best_item">
+      <a href="./medi_detail.html">
+      <div class="best_img_box">
+        <img src="./images/product_18.png" alt="">
+        <i class="fa-regular fa-heart"></i> <!--position-->
+      </div>
+      <div class="best_text_box">
+        <div class="best_text_title">
+          <h5>청소년 키성장 한약</h5>
+        </div>
+        <div class="best_text_money">
+          <div class="money_left">
+            <span class="sale">154,000</span>
+            <span>15%</span>
+          </div>
+          <div class="money_right">
+            <h6>80,400원</h6>
+          </div>
+        </div>
+      </div>
+      <div class="best_star_box">
+        <i class="fa-solid fa-star"></i>
+        <i class="fa-solid fa-star"></i>
+        <i class="fa-solid fa-star"></i>
+        <i class="fa-solid fa-star"></i>
+        <i class="fa-solid fa-star"></i>
+        <span>4.7 (2752)</span>
+      </div>
+      <div class="best_span_box">
+        <span class="left">선물인기</span>
+        <span class="center">한약</span>
+        <span class="right">청소년</span>
+      </div>
+      </a>
+    </div>
+    <div class="best_item">
+      <div class="best_img_box">
+        <img src="./images/product_17.png" alt="">
+        <i class="fa-regular fa-heart"></i> <!--position-->
+      </div>
+      <div class="best_text_box">
+        <div class="best_text_title">
+          <h5>어린이 키성장 한약</h5>
+        </div>
+        <div class="best_text_money">
+          <div class="money_left">
+            <span>99,000</span>
+            <span>15%</span>
+          </div>
+          <div class="money_right">
+            <h6>59,000원</h6>
+          </div>
+        </div>
+      </div>
+      <div class="best_star_box">
+         <i class="fa-solid fa-star"></i>
+        <i class="fa-solid fa-star"></i>
+        <i class="fa-solid fa-star"></i>
+        <i class="fa-solid fa-star"></i>
+        <i class="fa-solid fa-star"></i>
+        <span>4.7 (2752)</span>
+      </div>
+      <div class="best_span_box">
+        <span class="left">선물인기</span>
+        <span class="center">한약</span>
+        <span class="right">어린이</span>
+    </div>
+    </div>
+    <div class="best_item">
+      <div class="best_img_box">
+        <img src="./images/product_19.png" alt="">
+        <i class="fa-regular fa-heart"></i> <!--position-->
+      </div>
+      <div class="best_text_box">
+        <div class="best_text_title">
+          <h5>홍삼 선물세트 초특가</h5>
+        </div>
+        <div class="best_text_money">
+          <div class="money_left">
+            <span>424,000</span>
+            <span>15%</span>
+          </div>
+          <div class="money_right">
+            <h6>369,000원</h6>
+          </div>
+        </div>
+      </div>
+      <div class="best_star_box">
+         <i class="fa-solid fa-star"></i>
+        <i class="fa-solid fa-star"></i>
+        <i class="fa-solid fa-star"></i>
+        <i class="fa-solid fa-star"></i>
+        <i class="fa-solid fa-star"></i>
+        <span>4.7 (2752)</span>
+      </div>
+      <div class="best_span_box">
+        <span class="left">선물인기</span>
+        <span class="center">농축액</span>
+        <span class="right">장건강</span>
+    </div>
+    </div>
+    <div class="best_item">
+      <div class="best_img_box">
+        <img src="./images/product_20.png" alt="">
+        <i class="fa-regular fa-heart"></i> <!--position-->
+      </div>
+      <div class="best_text_box">
+        <div class="best_text_title">
+          <h5>홍삼 선물세트 초특가</h5>
+        </div>
+        <div class="best_text_money">
+          <div class="money_left">
+            <span>424,000</span>
+            <span>15%</span>
+          </div>
+          <div class="money_right">
+            <h6>369,000원</h6>
+          </div>
+        </div>
+      </div>
+      <div class="best_star_box">
+       <i class="fa-solid fa-star"></i>
+        <i class="fa-solid fa-star"></i>
+        <i class="fa-solid fa-star"></i>
+        <i class="fa-solid fa-star"></i>
+        <i class="fa-solid fa-star"></i>
+        <span>4.7 (2752)</span>
+      </div>
+      <div class="best_span_box">
+         <span class="left">선물인기</span>
+        <span class="center">농축액</span>
+        <span class="right">장건강</span>
+    </div>
+    </div>
+   </section><!--best_wrap_top-->
+   <section class="best_wrap_bt best_sheet02_more">
+     <div class="best_item">
+      <div class="best_img_box">
+        <img src="./images/card_r02.png" alt="">
+        <i class="fa-regular fa-heart"></i> <!--position-->
+      </div>
+      <div class="best_text_box">
+        <div class="best_text_title">
+          <h5>홍삼 선물세트 초특가</h5>
+        </div>
+        <div class="best_text_money">
+          <div class="money_left">
+            <span class="sale">424,000</span>
+            <span>15%</span>
+          </div>
+          <div class="money_right">
+            <h6>369,000원</h6>
+          </div>
+        </div>
+      </div>
+      <div class="best_star_box">
+        <i class="fa-solid fa-star"></i>
+        <i class="fa-solid fa-star"></i>
+        <i class="fa-solid fa-star"></i>
+        <i class="fa-solid fa-star"></i>
+        <i class="fa-solid fa-star"></i>
+        <span>4.7 (2752)</span>
+      </div>
+      <div class="best_span_box">
+        <span class="left">선물인기</span>
+        <span class="center">농축액</span>
+        <span class="right">장건강</span>
+      </div>
+
+
+    </div>
+
+    <div class="best_item">
+      <div class="best_img_box">
+        <img src="./images/card_r03.png" alt="">
+        <i class="fa-regular fa-heart"></i> <!--position-->
+      </div>
+      <div class="best_text_box">
+        <div class="best_text_title">
+          <h5>홍삼 선물세트 초특가</h5>
+        </div>
+        <div class="best_text_money">
+          <div class="money_left">
+            <span>424,000</span>
+            <span>15%</span>
+          </div>
+          <div class="money_right">
+            <h6>369,000원</h6>
+          </div>
+        </div>
+      </div>
+      <div class="best_star_box">
+         <i class="fa-solid fa-star"></i>
+        <i class="fa-solid fa-star"></i>
+        <i class="fa-solid fa-star"></i>
+        <i class="fa-solid fa-star"></i>
+        <i class="fa-solid fa-star"></i>
+        <span>4.7 (2752)</span>
+      </div>
+      <div class="best_span_box">
+        <span class="left">선물인기</span>
+        <span class="center">농축액</span>
+        <span class="right">장건강</span>
+    </div>
+    </div>
+    <div class="best_item">
+      <div class="best_img_box">
+        <img src="./images/card_r04.png" alt="">
+        <i class="fa-regular fa-heart"></i> <!--position-->
+      </div>
+      <div class="best_text_box">
+        <div class="best_text_title">
+          <h5>가정의 달 출시 맞이</h5>
+        </div>
+        <div class="best_text_money">
+          <div class="money_left">
+            <span class="sale">424,000</span>
+            <span>15%</span>
+          </div>
+          <div class="money_right">
+            <h6>369,000원</h6>
+          </div>
+        </div>
+      </div>
+      <div class="best_star_box">
+         <i class="fa-solid fa-star"></i>
+        <i class="fa-solid fa-star"></i>
+        <i class="fa-solid fa-star"></i>
+        <i class="fa-solid fa-star"></i>
+        <i class="fa-solid fa-star"></i>
+        <span>4.7 (2752)</span>
+      </div>
+      <div class="best_span_box">
+        <span class="left">선물인기</span>
+        <span class="center">농축액</span>
+        <span class="right">장건강</span>
+    </div>
+    </div>
+    <div class="best_item">
+      <div class="best_img_box">
+        <img src="./images/product_02.png" alt="">
+        <i class="fa-regular fa-heart"></i> <!--position-->
+      </div>
+      <div class="best_text_box">
+        <div class="best_text_title">
+          <h5>홍삼 선물세트 초특가</h5>
+        </div>
+        <div class="best_text_money">
+          <div class="money_left">
+            <span>424,000</span>
+            <span>15%</span>
+          </div>
+          <div class="money_right">
+            <h6>369,000원</h6>
+          </div>
+        </div>
+      </div>
+      <div class="best_star_box">
+       <i class="fa-solid fa-star"></i>
+        <i class="fa-solid fa-star"></i>
+        <i class="fa-solid fa-star"></i>
+        <i class="fa-solid fa-star"></i>
+        <i class="fa-solid fa-star"></i>
+        <span>4.7 (2752)</span>
+      </div>
+      <div class="best_span_box">
+         <span class="left">선물인기</span>
+        <span class="center">농축액</span>
+        <span class="right">장건강</span>
+    </div>
+    </div>
+   </section>
+   <div class="more_btn_wrap">
+    <label for="chk_more">
+      <span class="more">더보기</span>
+      <span class="close">닫기</span>
+    </label>
+   </div>
+    <!-- <input type="radio"> -->
+
+   <div class="title">
+    <h3>오직 약방에서만</h3><!--radio-->
+   </div>
+  <input type="radio" name="event" id="event01" checked>
+  <input type="radio" name="event" id="event02">
+  <input type="radio" name="event" id="event03">
+  <input type="radio" name="event" id="event04">
+   <div class="event_btn">
+  <label for="event01" id="event01"></label>
+  <label for="event02" id="event02"></label>
+  <label for="event03" id="event03"></label>
+  <label for="event04" id="event04"></label>
+</div>
+
+  <div class="event_wrap">
+
+  <div class="event_set set01">
+    <div class="event_left">
+      <img src="./images/event_left.png">
+    </div>
+    <div class="event_right">
+      <img src="./images/sub_banner_02.png">
+    </div>
+  </div>
+
+  <div class="event_set set02">
+    <div class="event_left">
+      <img src="./images/event_left.png">
+    </div>
+    <div class="event_right">
+      <img src="./images/sub_banner_0.png">
+    </div>
+  </div>
+
+  <div class="event_set set03">
+     <div class="event_left">
+      <img src="./images/event_left.png">
+    </div>
+    <div class="event_right">
+      <img src="./images/sub_banner_04.png">
+    </div>
+  </div>
+
+  <div class="event_set set04">
+    <div class="event_left">
+      <img src="./images/event_left.png">
+    </div>
+    <div class="event_right">
+      <img src="./images/sub_banner_05.png">
+    </div>
+  </div>
+
+</div>
+
+  <input type="radio" name="medi_tab" id="card01" checked>
+  <input type="radio" name="medi_tab" id="card02">
+  <input type="radio" name="medi_tab" id="card03">
+  <input type="radio" name="medi_tab" id="card04">
+   <div class="title">
+    <h3 class="new_title">신상 약재</h3>
+    <div class="title_sub_text">
+      <div class="sub_box">
+     <label for="card01" class="tab_hongsam">홍삼</label>
+<label for="card02" class="tab_nokyong">녹용</label>
+      </div>
+      <div class="sub_box">
+<label for="card03" class="tab_danggui">당귀</label>
+<label for="card04" class="tab_all">약재</label>
+      </div>
+    </div>
+   </div><!--title-->
+  
+    <div class="banner_sub">
+      <div class="sub_img hong">
+        <img src="./images/final_banner1.jpg" alt="">
+      </div>
+       <div class="sub_img nok">
+        <img src="./images/final_banner2.jpg" alt="">
+      </div>
+       <div class="sub_img dang">
+        <img src="./images/final_banner3.jpg" alt="">
+      </div>
+       <div class="sub_img all">
+        <img src="./images/final_banner4.jpg" alt="">
+      </div>
+    </div><!--banner_sub-->
+    
+     <div class="card_new hong_card">
+  <div class="card_left">
+    <div class="card_left_img">
+      <img src="./images/medi_product_01.png" alt="">
+    </div>
+    <div class="card_text_btn">
+      <a href="#!">
+        <span>홍삼 효능 더보기</span>
+        <i class="fa-regular fa-circle-right"></i>
+      </a>
+    </div>
+  </div>
+  <div class="card_line"></div>
+  <div class="card_right">
+    <div class="card_right_img">
+      <img src="./images/card_r01.png" alt="">
+    </div>
+    <div class="card_text_btn">
+      <a href="./medi_best.html">
+        <span>홍삼 상품 더보기</span>
+        <i class="fa-regular fa-circle-right"></i>
+      </a>
+    </div>
+  </div>
+</div><!--hong-->
+<div class="card_new nok_card">
+  <div class="card_left">
+    <div class="card_left_img">
+      <img src="./images/card_l02.png" alt="">
+    </div>
+    <div class="card_text_btn">
+      <a href="#!">
+        <span>녹용 효능 더보기</span>
+        <i class="fa-regular fa-circle-right"></i>
+      </a>
+    </div>
+  </div>
+
+  <div class="card_line"></div>
+
+  <div class="card_right">
+    <div class="card_right_img">
+      <img src="./images/card_r02.png" alt="">
+    </div>
+    <div class="card_text_btn">
+      <a href="./medi_best.html">
+        <span>녹용 상품 더보기</span>
+        <i class="fa-regular fa-circle-right"></i>
+      </a>
+    </div>
+  </div>
+</div>
+<div class="card_new dang_card">
+  <div class="card_left">
+    <div class="card_left_img">
+      <img src="./images/card_l03.png" alt="">
+    </div>
+    <div class="card_text_btn">
+      <a href="#!">
+        <span>당귀 효능 더보기</span>
+        <i class="fa-regular fa-circle-right"></i>
+      </a>
+    </div>
+  </div>
+
+  <div class="card_line"></div>
+
+  <div class="card_right">
+    <div class="card_right_img">
+      <img src="./images/card_r03.png" alt="">
+    </div>
+    <div class="card_text_btn">
+      <a href="./medi_best.html">
+        <span>당귀 상품 더보기</span>
+        <i class="fa-regular fa-circle-right"></i>
+      </a>
+    </div>
+  </div>
+</div>
+<div class="card_new all_card">
+  <div class="card_left">
+    <div class="card_text_btn">
+      <a href="#top">
+        <span>모든 효능 더보기</span>
+        <i class="fa-regular fa-circle-right"></i>
+      </a>
+    </div>
+  </div>
+
+  <div class="card_line"></div>
+
+  <div class="card_right">
+    <div class="card_right_img">
+      <img src="./images/card_r04.png" alt="">
+    </div>
+    <div class="card_text_btn">
+      <a href="./medi_best.html">
+        <span>모든 상품 더보기</span>
+        <i class="fa-regular fa-circle-right"></i>
+      </a>
+    </div>
+  </div>
+</div>
+
+   <div class="title">
+      <h3 class="title_popular">
+        <i class="fa-solid fa-bag-shopping"></i>
+        인기 급상승
+      </h3>
+    </div>
+   <div class="popular_wrap">
+    
+    <div class="popular_item">
+      <div class="popular_img_box">
+        <img src="./images/product_12.png" alt="">
+        <i class="fa-regular fa-heart"></i> <!--position-->
+      </div>
+      <div class="popular_text_box">
+        <div class="popular_title_box">
+          <h5>가정의 달 출시: 활력환</h5>
+        </div>
+        <div class="popular_text_money">
+          <div class="money_left">
+            <span class="sale">354,000</span>
+            <span>24%</span>
+          </div>
+          <div class="money_right">
+            <h6>329,000원</h6>
+          </div>
+        </div>
+      </div>
+      <div class="popular_star_box">
+         <i class="fa-solid fa-star"></i>
+        <i class="fa-solid fa-star"></i>
+        <i class="fa-solid fa-star"></i>
+        <i class="fa-solid fa-star"></i>
+        <i class="fa-solid fa-star"></i>
+        <span>4.7 (2752)</span>
+      </div>
+      <div class="popular_span_box">
+         <span class="left">선물인기</span>
+        <span class="center">농축액</span>
+        
+      </div>
+      <div class="popular_btn_box">
+        <label for="cart_popup" class="cart_open_btn">
+          약바구니
+        </label>
+      </div>
+
+    </div>
+    <div class="popular_item">
+      <div class="popular_img_box">
+        <img src="./images/product_13.png" alt="">
+        <i class="fa-regular fa-heart"></i> <!--position-->
+      </div>
+      <div class="popular_text_box">
+        <div class="popular_title_box">
+          <h5>가정의 달 출시: 프로바이오틱스</h5>
+        </div>
+        <div class="popular_text_money">
+          <div class="money_left">
+            <span class="sale">354,000</span>
+            <span>24%</span>
+          </div>
+          <div class="money_right">
+            <h6>329,000원</h6>
+          </div>
+        </div>
+      </div>
+      <div class="popular_star_box">
+         <i class="fa-solid fa-star"></i>
+        <i class="fa-solid fa-star"></i>
+        <i class="fa-solid fa-star"></i>
+        <i class="fa-solid fa-star"></i>
+        <i class="fa-solid fa-star"></i>
+        <span>4.7 (2752)</span>
+      </div>
+      <div class="popular_span_box">
+         <span class="left">선물인기</span>
+        <span class="center">농축액</span>
+        <span class="right">장건강</span>
+      </div>
+      <div class="popular_btn_box">
+     <label for="cart_popup" class="cart_open_btn">
+          약바구니
+        </label>
+      </div>
+    </div>
+    <div class="popular_item">
+      <div class="popular_img_box">
+        <img src="./images/product_14.png" alt="">
+        <i class="fa-regular fa-heart"></i> <!--position-->
+      </div>
+      <div class="popular_text_box">
+        <div class="popular_title_box">
+          <h5>하나미 비컴 궁: 효자상품</h5>
+        </div>
+        <div class="popular_text_money">
+          <div class="money_left">
+            <span class="sale">354,000</span>
+            <span>24%</span>
+          </div>
+          <div class="money_right">
+            <h6>329,000원</h6>
+          </div>
+        </div>
+      </div>
+      <div class="popular_star_box">
+         <i class="fa-solid fa-star"></i>
+        <i class="fa-solid fa-star"></i>
+        <i class="fa-solid fa-star"></i>
+        <i class="fa-solid fa-star"></i>
+        <i class="fa-solid fa-star"></i>
+        <span>4.7 (2752)</span>
+      </div>
+      <div class="popular_span_box">
+         <!-- <span class="left">선물인기</span> -->
+        <!-- <span class="center">농축액</span> -->
+        <span class="right">갱년기</span>
+      </div>
+      <div class="popular_btn_box">
+         <label for="cart_popup" class="cart_open_btn">
+          약바구니
+        </label>
+      </div>
+
+    </div>
+    <div class="popular_item">
+      <div class="popular_img_box">
+        <img src="./images/product_16.png" alt="">
+        <i class="fa-regular fa-heart"></i> <!--position-->
+      </div>
+      <div class="popular_text_box">
+        <div class="popular_title_box">
+          <h5>올댓 시크릿 : 스윗상품</h5>
+        </div>
+        <div class="popular_text_money">
+          <div class="money_left">
+            <span class="sale">124,000</span>
+            <span>24%</span>
+          </div>
+          <div class="money_right">
+            <h6>99,000원</h6>
+          </div>
+        </div>
+      </div>
+      <div class="popular_star_box">
+         <i class="fa-solid fa-star"></i>
+        <i class="fa-solid fa-star"></i>
+        <i class="fa-solid fa-star"></i>
+        <i class="fa-solid fa-star"></i>
+        <i class="fa-solid fa-star"></i>
+        <span>4.7 (2752)</span>
+      </div>
+      <div class="popular_span_box">
+         <!-- <span class="left">선물인기</span> -->
+        <span class="center">농축액</span>
+        <span class="right">장건강</span>
+      </div>
+      <div class="popular_btn_box">
+         <label for="cart_popup" class="cart_open_btn">
+          약바구니
+        </label>
+      </div>
+    </div>
+    
+   </div><!--popular_wrap-->
+      <div class="title">
+      <h3>
+        약재 리스트 소개
+      </h3>
+    </div>
+    <section class="medi_list_wrap">
+      <div class="list_box hongsam">
+        <div class="list_img_box">
+          <img src="./images/medi_product_01.png" alt="">
+        </div>
+        <div class="list_text_box">
+          <a href="#!">
+            <p>홍삼 효능 더보기</p>
+            <i class="fa-regular fa-circle-right"></i>
+          </a>
+        </div>
+      </div>
+      <div class="list_box nokyong">
+        <div class="list_img_box">
+          <img src="./images/card_l02.png" alt="">
+        </div>
+        <div class="list_text_box">
+          <a href="#!">
+            <p>녹용 효능 더보기</p>
+            <i class="fa-regular fa-circle-right"></i>
+          </a>
+        </div>
+      </div>
+      <div class="list_box dangui">
+        <div class="list_img_box">
+          <img src="./images/list_03.png" alt="">
+        </div>
+        <div class="list_text_box">
+          <a href="#!">
+            <p>당귀 효능 더보기</p>
+            <i class="fa-regular fa-circle-right"></i>
+          </a>
+        </div>
+      </div>
+    </section><!--medi_list_wrap-->
+<div class="middle_line"></div>
+   <div class="basic_banner">
+     <div class="banner_basic">
+      <div class="basic_img">
+        <img src="./images/basic_banner.png" alt="">
+      </div>
+      
+    </div>
+   </div><!--basic_banner-->
+     <div class="title_gift">
+      <h3>
+      <i class="fa-solid fa-gift"></i>
+        선물 세트
+      </h3>
+    </div>
+    <div class="gift_wrap">
+      <div class="gift_text_box">
+        <div class="gift_text">
+          <h6> 마음을 전하는 가장 확실한 방법, 명절 효도 면역 선물세트 💝</h6>
+          <p>늘 우리 걱정뿐인 부모님께 건강을 선물하세요. 장년층 어르신들이 가장 받고 싶어 하는 만족도 1위 면역 보충제를 명절 한정 특별 패키지로 준비했습니다.</p>
+        </div>
+        <div class="gift_line"></div>
+        <div class="gift_text">
+          <h6>환절기 면역력 비상! 면역 보충제 24시간 타임 특가.</h6>
+          <p>여러분들과 함께 즐겨요. <br> 이 선물세트는 노약자 장년층들에게 인기 상품 입니다.</p>
+        </div>
+        <div class="gift_line"></div>
+        <div class="gift_text">
+          <h6>딱 24시간만! 환절기 면역 보충제 역대급 타임 특가 프리패스 ⏳</h6>
+          <p>기온 차가 큰 환절기, 나와 가족의 면역력을 채울 기회!  <br>시니어층 사이에서 이미 입소문 난 베스트 인기 선물세트를 단 하루 초특가로 만나보세요.</p>
+        </div>
+        <div class="gift_text">
+          <h6>사전 예약 마감 임박! 명절 선물세트 최대 혜택 종료 특가 🚨</h6>
+          <p>여러분들과 함께 즐겨요. <br> 이 선물세트는 노약자 장년층들에게 인기 상품 입니다.</p>
+        </div>
+        <div class="gift_text">
+          <h6>갑자기 찾아온 한파 예보 🥶 부모님 댁에 면역력을 보일러처럼 채워주세요!</h6>
+          <p>여러분들과 함께 즐겨요. <br> 이 선물세트는 노약자 장년층들에게 인기 상품 입니다.</p>
+        </div>
+      </div>
+      <div class="gift_img_box">
+        <img src="./images/gift_card.png" alt="">
+        <span>초특가 할인이벤트 선물 구경하기</span>
+      </div>
+      <div class="gift_btn_box">
+        <a href="./medi_gift.html">
+          <span>선물하러가기</span>
+        </a>
+      </div>
+    </div><!--gift_wrap-->
+    <div class="title">
+      <h3 >
+        베스트리뷰
+      </h3>
+    </div>
+    <div class="review_wrap">
+      <h6>숏폼</h6>
+<div class="short_container">
+
+  <!-- 1 -->
+  <div class="short_box">
+    <div class="short_img">
+      <iframe
+        src="https://www.youtube.com/embed/WUehRIwFb9c"
+        title="유튜브 숏폼 영상 1"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allowfullscreen>
+      </iframe>
+    </div>
+
+    <div class="short_text">
+      <span>10만 유튜버 추천 약</span>
+      <p>약 타러가기</p>
+    </div>
+  </div>
+
+
+  <!-- 2 -->
+  <div class="short_box">
+    <div class="short_img">
+      <iframe
+        src="https://www.youtube.com/embed/UQD5BT9nCIc"
+        title="유튜브 숏폼 영상 2"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allowfullscreen>
+      </iframe>
+    </div>
+
+    <div class="short_text">
+      <span>피로회복제 3종세트(약방 조합)</span>
+      <p>약 타러가기</p>
+    </div>
+  </div>
+
+
+  <!-- 3 -->
+  <div class="short_box">
+    <div class="short_img">
+      <iframe
+        src="https://www.youtube.com/embed/UQD5BT9nCIc"
+        title="유튜브 숏폼 영상 2"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allowfullscreen>
+      </iframe>
+    </div>
+
+    <div class="short_text">
+      <span>피로회복제 3종세트(약방 조합)</span>
+      <p>약 타러가기</p>
+    </div>
+  </div>
+
+  <!-- 4 -->
+  <div class="short_box">
+    <div class="short_img">
+      <iframe
+        src="https://www.youtube.com/embed/evilvM2yMj4"
+        title="유튜브 숏폼 영상 4"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allowfullscreen>
+      </iframe>
+    </div>
+
+    <div class="short_text">
+      <span>10만 유튜버 추천 약</span>
+      <p>약 타러가기</p>
+    </div>
+  </div>
+
+</div><!-- short_container -->
+      <h6>인스타그램</h6>
+      <section class="insta_container">
+        <div class="in_img">
+          <img src="./images/in_01_off.png" alt=""onmouseover="on(this)" onmouseout="off(this)">
+        </div>
+          <div class="in_img">
+          <img src="./images/in_033_off.png" alt=""onmouseover="on(this)" onmouseout="off(this)">
+        </div>
+          <div class="in_img">
+          <img src="./images/in_044_off.png" alt=""onmouseover="on(this)" onmouseout="off(this)">
+        </div>
+          <div class="in_img">
+          <img src="./images/in_055_off.png" alt=""onmouseover="on(this)" onmouseout="off(this)">
+        </div>
+          <div class="in_img">
+          <img src="./images/in_066_off.png" alt=""onmouseover="on(this)" onmouseout="off(this)">
+        </div>
+          <div class="in_img">
+          <img src="./images/in_077_off.png" alt=""onmouseover="on(this)" onmouseout="off(this)">
+        </div>
+          <div class="in_img">
+          <img src="./images/product_15.png" alt="">
+        </div>
+          <div class="in_img">
+          <img src="./images/in_088.png" alt="">
+        </div>
+          <div class="in_img">
+          <img src="./images/gift_card.png" alt="">
+        </div>
+          <div class="in_img">
+          <img src="./images/gift_img.png" alt="">
+        </div>
+          <div class="in_img">
+          <img src="./images/product_21.png" alt="">
+        </div>
+          <div class="in_img">
+          <img src="./images/product_22.png" alt="">
+        </div>
+      </section>
+    </div><!--review_wrap-->
+    <section class="map_wrap"id="map">
+  <div class="map_text">
+    <h3>오시는 길</h3>
+    <p>약당 본점을 지도에서 확인해보세요.</p>
+  </div>
+
+  <div class="map_box">
+    <img src="./images/map2.png" alt="약당 오시는 길 지도">
+  </div>
+</section>
+  <footer class="footer">
+  <div class="footer_inner">
+
+    <div class="footer_notice">
+      <h3>공지사항</h3>
+
+      <div class="notice_area">
+        <ul class="notice_list">
+          <li><a href="#!">공모전 이벤트 대상 발표 <span>26.05.31</span></a></li>
+          <li><a href="#!">신규회원 10% 할인 쿠폰 안내 <span>26.05.28</span></a></li>
+          <li><a href="#!">정기배송 서비스 오픈 안내 <span>26.05.20</span></a></li>
+          <li><a href="#!">가정의 달 선물세트 배송 안내 <span>26.05.12</span></a></li>
+        </ul>
+
+        <div class="footer_banner">
+          <img src="./images/top_banner.png" alt="약당 배너">
+        </div>
+      </div>
+    </div>
+
+    <div class="footer_info">
+      <ul class="footer_link">
+        <li><a href="#!">회사소개</a></li>
+        <li><a href="#!">이용약관</a></li>
+        <li><a href="#!">개인정보처리방침</a></li>
+        <li><a href="#!">청소년보호정책</a></li>
+        <li><a href="#!">이메일무단수집거부</a></li>
+        <li><a href="#!">제휴 및 대량구매 문의</a></li>
+      </ul>
+
+      <div class="company_area">
+        <div class="company_text">
+          <p>약방(주) 부산지점</p>
+          <p>사업자등록번호 : 000 - 00 - 26012</p>
+          <p>대표 : 김민정 [사업자정보확인]</p>
+          <p>본사 : 00000 부산광역시 부산진구 가야대로 120번길</p>
+        </div>
+
+        <select class="family_site">
+          <option>약당 OFFICIAL</option>
+          <option>약당 병원</option>
+        </select>
+      </div>
+
+      <div class="footer_cs">
+        <div class="btm_logo">
+          <a href="medi_jQuery.html">
+            <img src="./images/logo_footer.png" alt="약당">
+          </a>
+        </div>
+
+        <div class="tel">
+          <h5>고객센터 <span class="tel_in">051 - 123 - 4567</span></h5>
+          <p>평일 : 09 : 00 ~ 18 : 00</p>
+          <p>점심시간 : 12 : 00 ~ 13 : 00</p>
+          <p>주말 및 공휴일 : 휴무</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <p class="ft_last">Copyright @ medi All Right reserved.</p>
+</footer>
+</body>
+</html>

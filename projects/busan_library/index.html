@@ -1,0 +1,1608 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=2.0, minimum-scale=1.0, user-scalable=no">
+  <title>부산도서관</title>
+    <!--jQuery-->
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.3.0/css/all.min.css">
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200">
+        <link rel="stylesheet" href="https://code.jquery.com/ui/1.14.2/themes/base/jquery-ui.css">
+     <script src="https://code.jquery.com/ui/1.14.2/jquery-ui.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-mousewheel/3.2.2/jquery.mousewheel.min.js"></script>
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-scrollTo/2.1.3/jquery.scrollTo.min.js"></script>
+    <!-- Link Swiper's CSS -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/swiper@14.0.1/swiper-bundle.min.css"
+    />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="./css/busan_real.css">
+  <link rel="stylesheet" href="./css/header_footer.css">
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+  <script src="./js/busan_mobile.js" defer></script>
+   <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    li {
+      list-style: none;
+    }
+    a {
+      color: black;
+      text-decoration: none;
+    }
+    body {
+      /* padding: 0 8px; */
+      font-family: "Inter", sans-serif;
+      font-family: var(--default-font);
+    }
+    /* -------------------- common -------------------- */
+:root {
+  /* Font Size */
+  --main-title-size: 2rem;
+  --section-title-size: 1.5rem;
+  --sub-title-size: 1.25rem;
+  --body-title-size: 1rem;
+  --body-size: 0.875rem;
+  --caption-size: 0.75rem;
+  --small-size: 0.625rem;
+
+  /* Color */
+  --color-bg: #f8fafc;
+  --color-black: #202020;
+  --color-gray: #a2a2a2;
+  --color-navy: #00215e;
+  --color-blue: #0079ff;
+  --color-yellow: #f2f44d;
+  --color-orange: #ff8419;
+  --color-white: #ffffff;
+
+  /* Font */
+  --default-font: "Inter", sans-serif;
+}
+body {
+  font-family: var(--default-font);
+  font-size: var(--body-size);
+  font-weight: 400;
+  color: var(--color-black);
+  background-color: var(--color-bg);
+}
+button,
+input,
+textarea,
+select {
+  font-family: var(--default-font);
+}
+img {
+  display: block;
+  max-width: 100%;
+}
+.pc_only {
+  display: none;
+}
+.mobile_only {
+  display: block;
+}
+@media all and (min-width: 1200px) {
+  .pc_only {
+    display: block;
+  }
+
+  .mobile_only {
+    display: none;
+  }
+}
+      .swiper {
+        width: 100%;
+        padding-top: 50px;
+        padding-bottom: 50px;
+      }
+      .swiper-slide {
+        background-position: center;
+        background-size: cover;
+        width: 300px;
+        height: 300px;
+      }
+      .swiper-slide img {
+        display: block;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+    </style>
+</head>
+<body>
+ <nav class="fullpage_indicator">
+
+  <button class="fullpage_dot active">
+    <span class="fullpage_circle"></span>
+    <span class="fullpage_name">인기도서</span>
+  </button>
+
+  <button class="fullpage_dot">
+    <span class="fullpage_circle"></span>
+    <span class="fullpage_name">이번 주 신간</span>
+  </button>
+
+  <button class="fullpage_dot">
+    <span class="fullpage_circle"></span>
+    <span class="fullpage_name">도서관 소식</span>
+  </button>
+
+  <button class="fullpage_dot">
+    <span class="fullpage_circle"></span>
+    <span class="fullpage_name">SNS</span>
+  </button>
+
+</nav>
+<aside class="quick">
+
+  <button class="quick_toggle">
+    <i class="fa-solid fa-bars"></i>
+    <span>QUICK</span>
+  </button>
+
+  <div class="quick_panel">
+
+    <div class="quick_panel_title">
+      <strong>Quick Menu</strong>
+      <span>자주 찾는 서비스를 이용해보세요.</span>
+    </div>
+
+    <ul class="quick_list">
+
+      <li>
+        <a href="#!" class="quick_menu">
+          <i class="fa-solid fa-magnifying-glass"></i>
+          <span>통합검색</span>
+        </a>
+      </li>
+
+      <li>
+        <a href="#!" class="quick_menu">
+          <i class="fa-solid fa-id-card"></i>
+          <span>모바일회원증</span>
+        </a>
+      </li>
+
+      <li>
+        <a href="#!" class="quick_menu">
+          <i class="fa-solid fa-book-open"></i>
+          <span>전자도서관</span>
+        </a>
+      </li>
+
+      <li>
+        <a href="#!" class="quick_menu">
+          <i class="fa-solid fa-book"></i>
+          <span>대출현황</span>
+        </a>
+      </li>
+
+      <li>
+        <a href="#!" class="quick_menu">
+          <i class="fa-solid fa-calendar-check"></i>
+          <span>시설예약</span>
+        </a>
+      </li>
+
+    </ul>
+
+    <div class="btn_top">
+      <a href="#top">
+        <i class="fa-solid fa-chevron-up"></i>
+        <span>TOP</span>
+      </a>
+    </div>
+
+  </div>
+
+</aside>
+  <input type="checkbox" id="chk_gnb">
+  <header class="header">
+    <div class="header_inner">
+    <label for="chk_gnb" class="btn_gnb">
+      <i class="fa-solid fa-bars-staggered"></i>
+    </label>
+
+<h1 class="logo">
+  <a href="./index.html" aria-label="부산도서관 홈">
+    부산도서관
+  </a>
+</h1>
+
+<nav class="gnb">
+  <div id="accordion">
+    <h3>책너울</h3>
+    <div class="gnb_sub">
+      <a href="./library_sub.html">책너울 소개</a>
+      <a href="#!">완독 웨이브</a>
+      <a href="#!">랜드마크 컬렉션</a>
+    </div>
+    <h3>어린이 도서관</h3>
+    <div class="gnb_sub">
+      <a href="#!">어린이 자료실</a>
+      <a href="#!">어린이 프로그램</a>
+    </div>
+    <h3>전자도서관</h3>
+    <div class="gnb_sub">
+      <a href="#!">전자책</a>
+      <a href="#!">오디오북</a>
+    </div>
+    <h3>자료검색</h3>
+    <div class="gnb_sub">
+      <a href="#!">통합검색</a>
+      <a href="#!">신착자료</a>
+    </div>
+    <h3>부산도서관소개</h3>
+    <div class="gnb_sub">
+      <a href="#!">도서관 안내</a>
+      <a href="#!">오시는 길</a>
+    </div>
+    <h3>신청예약</h3>
+    <div class="gnb_sub">
+      <a href="#!">시설예약</a>
+      <a href="#!">프로그램 신청</a>
+    </div>
+    <h3>북커뮤니티</h3>
+    <div class="gnb_sub">
+      <a href="#!">독서모임</a>
+      <a href="#!">책 리뷰</a>
+    </div>
+    <h3>열린공간</h3>
+    <div class="gnb_sub">
+      <a href="#!">공지사항</a>
+      <a href="#!">문화행사</a>
+    </div>
+  </div>
+</nav>
+    <div class="header_right">
+     <ul class="gnb_menu_right">
+      <li><a href="#!">로그인</a></li>
+      <li><a href="#!">회원가입</a></li>
+      <li><a href="#!">내 서재
+        <span class="material-symbols-outlined">
+arrow_right_alt
+</span>
+      </a></li>
+     </ul>
+    </div>
+ <div class="mobile_user_menu">
+  <a href="#!" class="mobile_login">로그인</a>
+  <a href="#!" class="mobile_join">회원가입</a>
+  <a href="#!" class="mobile_library">
+    내 서재
+    <span class="material-symbols-outlined">
+      arrow_forward
+    </span>
+  </a>
+</div>
+    </div>
+  </header>
+  <div class="official">
+    <a href="#!" class="official_mark">
+      <span class="material-symbols-outlined official_icon">
+      verified
+    </span>
+      <span>부산도서관 공식 홈페이지</span>
+    </a>
+  </div>
+  <h1 class="main_title">오늘도 마음의 양식을 쌓으러 오셨군요 !</h1>
+  <div class="search">
+    <input type="search" class="search_box" placeholder=" 1. 싯다르타">
+    <button type="button" class="search_btn">
+      <i class="fa-solid fa-magnifying-glass"></i>
+    </button>
+  </div>
+  <!-- 인기검색어 순위 전환 -->
+<input type="radio" name="popular_rank" id="popular01" checked>
+<input type="radio" name="popular_rank" id="popular02">
+<input type="radio" name="popular_rank" id="popular03">
+<div class="popular_search tablet_pc_only">
+  <a href="#!" class="popular_keyword">
+    #인기검색어
+  </a>
+  <div class="popular_rank_wrap">
+    <div class="popular_rank popular_rank01">
+      <div class="rank_book">
+        <strong>2위</strong>
+        <span>-</span>
+        <span>수달</span>
+      </div>
+ <div class="rank_nav">
+    <label for="popular03" class="rank_btn">
+    <span class="material-symbols-outlined">
+chevron_left
+</span>
+<span>이전</span>
+</label>
+        <label for="popular02" class="rank_btn">
+          <span>다음</span>
+          <span class="material-symbols-outlined">
+            chevron_right
+          </span>
+        </label>
+      </div>
+    </div>
+    <div class="popular_rank popular_rank02">
+      <div class="rank_book">
+        <strong>3위</strong>
+        <span>-</span>
+        <span>데미안</span>
+      </div>
+      <div class="rank_nav">
+        <label for="popular01" class="rank_btn">
+          <span class="material-symbols-outlined">chevron_left
+          </span>
+          <span>이전</span>
+        </label>
+        <label for="popular03" class="rank_btn">
+          <span>다음</span>
+          <span class="material-symbols-outlined">
+            chevron_right
+          </span>
+        </label>
+      </div>
+    </div>
+    <div class="popular_rank popular_rank03">
+      <div class="rank_book">
+        <strong>4위</strong>
+        <span>-</span>
+        <span>역행자</span>
+      </div>
+      <div class="rank_nav">
+        <label for="popular02" class="rank_btn">
+          <span class="material-symbols-outlined">
+            chevron_left
+          </span>
+          <span>이전</span>
+        </label>
+        <label for="popular01" class="rank_btn">
+          <span>다음</span>
+          <span class="material-symbols-outlined">
+            chevron_right
+          </span>
+        </label>
+      </div>
+    </div>
+  </div><!--popular_rank_wrap-->
+</div><!--popular_search-->
+<!-- <div class="pc_main">
+  <img src="./images/pc_main.png" alt="">
+</div> -->
+<section class="meta">
+ <ul class="meta_list">
+<li><a href="./library_sub.html">
+    <span class="material-symbols-outlined">
+        menu_book
+    </span>
+    <p>책너울</p>
+</a></li>
+    <li><a href="#!">
+    <span class="material-symbols-outlined">
+      computer
+    </span>
+    <p>전자도서관</p>
+  </a></li>
+    <li><a href="#!">
+     <span class="material-symbols-outlined">
+      event_available
+    </span>
+    <p>신청예약</p>
+  </a></li>
+    <li><a href="#!">
+    <span class="material-symbols-outlined">
+      library_books
+    </span>
+    <p>대출현황</p>
+  </a></li>
+    <li><a href="#!">
+    <span class="material-symbols-outlined">
+      explore
+    </span>
+    <p>열린공간</p>
+  </a></li>
+  <li>
+  <a href="#">
+    <span class="material-symbols-outlined">
+      account_circle
+    </span>
+    <p>내 서재</p>
+  </a>
+</li>
+ </ul>
+</section>
+ <section class="header_notice">
+  <div class="notice_left">
+    <div class="notice_left_inner">
+    <div class="notice_top">
+      <button type="button" class="notice_btn notice_prev">
+         <span class="material-symbols-outlined">
+          chevron_left
+        </span>
+      </button>
+      <h3 class="notice_month">2026년 07월 휴관일</h3>
+      <button type="button" class="notice_btn notice_next">
+          <span class="material-symbols-outlined">
+          chevron_right
+        </span>
+      </button>
+    </div>
+    <div class="notice_day">
+    <span>07.06</span>
+      <span>07.13</span>
+      <span>07.20</span>
+      <span>07.27</span>
+    </div>
+    </div>
+  </div>
+  <div class="notice_right">
+    <div class="notice_right_inner">
+    <div class="today_date">
+      <span class="today_day">6</span>
+        <div class="today_text">
+          <p>2026.07</p>
+          <strong>오늘은 휴관일입니다.</strong>
+        </div>
+    </div>
+    <a href="#!" class="notice_more">
+      전체보기
+       <span class="material-symbols-outlined">
+        add
+      </span>
+    </a>
+    </div>
+  </div>
+ </section>
+ <section class="real_time">
+ <div class="real_time_inner">
+<div class="real_time_head_section">
+  <span class="real_time_small_title">
+    REAL - TIME STATUS
+  </span>
+  <h2 class="real_time_title">
+    열람실 좌석 현황
+  </h2>
+  <div class="real_time_head_bottom">
+    <div class="real_time_live">
+      <span class="real_time_live_circle"></span>
+      <span>실시간</span>
+    </div>
+    <button type="button" class="real_time_refresh">
+      <span>새로고침</span>
+      <span class="material-symbols-outlined">
+        sync
+      </span>
+    </button>
+  </div>
+</div>
+ <div class="real_time_content">
+  <input type="radio" name="real_tab" id="sht_tab" class="real_tab" checked>
+  <input type="radio" name="real_tab" id="sht_tab2" class="real_tab">
+ <div class="real_time_chart">
+ <div class="chart_wrap">
+  <svg
+            class="seat_chart"
+            viewBox="0 0 150 150"
+            aria-label="전체 열람실 좌석 이용 현황"
+          >
+            <circle class="chart_background"cx="75"cy="75"
+              r="58"/>
+            <circle
+              class="chart_progress"
+              cx="75"
+              cy="75"
+              r="58"
+            />
+          </svg>
+          <div class="chart_text">
+          <span>이용 가능</span>
+          <strong>612</strong>
+          <p>/ 840석</p>
+          </div>
+
+ </div><!--chart_wrap-->
+ <div class="chart_status">
+ <div class="status_item">
+ <span class="status_circle status_good"></span>
+ <span>여유</span>
+ </div>
+  <div class="status_item">
+ <span class="status_circle status_normal"></span>
+ <span>보통</span>
+ </div>
+   <div class="status_item">
+ <span class="status_circle status_busy"></span>
+ <span>혼잡</span>
+ 
+ </div>
+ </div><!--chart_status-->
+  <div class="chart_update">
+ <span>전체 좌석 이용 현황</span>
+ <strong>13 : 30 기준</strong>
+ </div>
+ </div><!--real_time_chart-->
+ <div class="room_list">
+  <article class="room_card">
+    <span class="room_state room_good">
+      여유
+    </span>
+    <h3>1층 어린이자료실</h3>
+    <p>어린이 자료실을 쾌적하게 이용할 수 있어요.</p>
+    <div class="room_number">
+      <strong>128</strong>
+      <span>/ 160</span>
+    </div>
+  </article>
+
+  <article class="room_card">
+    <span class="room_state room_normal">보통</span>
+    <h3>2층 종합자료실</h3>
+    <p>일부 좌석을 이용할 수 있어요. <br> 좌석 예약을 서둘러 주세요.</p>
+    <div class="room_number">
+      <strong>204</strong>
+      <span>/ 320</span>
+    </div>
+  </article>
+  <article class="room_card">
+    <span class="room_state room_busy">
+      혼잡
+    </span>
+    <h3>3층 열람실</h3>
+    <p>이용자가 많아 대기 시간이 발생할 수 있어요.</p>
+    <div class="room_number">
+      <strong>74</strong>
+      <span>/ 240</span>
+    </div>
+  </article>
+  <article class="room_card">
+    <span class="room_state room_good">여유</span>
+    <h3>4층 디지털존</h3>
+    <p>디지털 기기와 좌석을 여유롭게 이용할 수 있어요</p>
+    <div class="room_number">
+      <strong>92</strong>
+      <span>/ 120</span>
+    </div>
+  </article>
+ </div><!--room_list-->
+  <div class="rental_sheet">
+
+    <div class="rental_sheet_head">
+      <span>RENTAL COLLECTION</span>
+      <h3>대여 모음집</h3>
+      <p>
+        부산도서관에서 대여 가능한 자료를 확인해보세요.
+      </p>
+    </div>
+    <div class="rental_list">
+      <div class="rental_item">
+        <strong>전자기기</strong>
+        <h4>태블릿 PC</h4>
+        <p>도서관 내부에서 자유롭게 이용할 수 있습니다.</p>
+        <span>대여 가능 12개</span>
+      </div>
+      <div class="rental_item">
+        <strong>학습용품</strong>
+        <h4>독서용 스탠드</h4>
+        <p>편안한 독서를 위한 스탠드를 대여할 수 있습니다.</p>
+        <span>대여 가능 8개</span>
+      </div>
+      <div class="rental_item">
+        <strong>디지털기기</strong>
+        <h4>노트북</h4>
+        <p>자료 검색 및 학습용으로 이용할 수 있습니다.</p>
+        <span>대여 가능 6개</span>
+      </div>
+      <div class="rental_item">
+        <strong>편의용품</strong>
+        <h4>보조배터리</h4>
+        <p>도서관 이용 중 필요한 충전 서비스를 제공합니다.</p>
+        <span>대여 가능 15개</span>
+      </div>
+    </div>
+  </div>
+ <div class="real_time_tab">
+  <label for="sht_tab" class="real_tab_btn sht_btn1">
+    열람실 <br>
+    좌석 <br>
+    현황
+  </label>
+  <label for="sht_tab2" class="real_tab_btn sht_btn2">
+    대여 <br>
+    모음집
+  </label>
+ </div><!--real_time_tab-->
+ </div><!--real_time_content-->
+ </div><!--real_time_inner-->
+ </section><!--real_time-->
+ <section class="book_introduce">
+  <div class="book_introduce_inner">
+    <div class="book_introduce_head">
+      <span class="book_introduce_small">
+        BOOK WAVE
+      </span>
+      <h2 class="book_introduce_title">
+        책너울
+      </h2>
+      <strong class="book_introduce_quote">
+        “너울, 바람이 세게 불어 먼 곳에서부터<br>
+        크게 일어오는 강한 파도”
+      </strong>
+      <p class="book_introduce_description">
+        도서관이 전하는 가치를 담은 책너울을 토대로
+        한 권의 책에서 시작된 작은 울림이 사람과 사람을 잇고,
+        지역사회 전반으로 확산되는 독서 문화의 파동을 표현했습니다.
+      </p>
+    </div>
+    <div class="book_introduce_keyword">
+      <article class="book_keyword_item">
+        <span>01</span>
+        <div>
+          <strong>지식의 흐름</strong>
+          <p>깊고 넓은 지식을 자유롭게 경험합니다.</p>
+        </div>
+      </article>
+      <article class="book_keyword_item">
+        <span>02</span>
+        <div>
+          <strong>사람과 연결</strong>
+          <p>책을 통해 사람과 사람이 서로 이어집니다.</p>
+        </div>
+      </article>
+      <article class="book_keyword_item">
+        <span>03</span>
+        <div>
+          <strong>지역사회 확산</strong>
+          <p>작은 독서 경험이 지역 전체의 문화로 퍼집니다.</p>
+        </div>
+      </article>
+
+    </div>
+
+  </div>
+
+</section>
+ <section class="popular_books">
+  <div class="popular_books_inner">
+    <div class="popular_books_head">
+      <span class="popular_books_small_title">
+        POPULAR BOOKS
+      </span>
+      <h2 class="popular_books_title">
+        인기도서 TOP 10
+      </h2>
+      <p class="popular_books_introduce">
+        부산도서관 이용자들이 가장 많이 읽은 도서를 만나보세요.
+      </p>
+    <div class="popular_book_btn">
+      <button class="popular_books_btn popular_book_left">
+                  <span class="material-symbols-outlined">
+            arrow_back
+          </span>
+      </button>
+      <button class="popular_books_btn popular_book_right">
+         <span class="material-symbols-outlined">
+            arrow_forward
+          </span>
+      </button>
+    </div>
+    </div>
+    <!-- 카테고리 -->
+<div class="popular_books_category">
+  <span class="popular_books_category_menu active">
+    전체
+  </span>
+  <span class="popular_books_category_menu">
+    인문
+  </span>
+  <span class="popular_books_category_menu">
+    문학
+  </span>
+  <span class="popular_books_category_menu">
+    사회
+  </span>
+  <span class="popular_books_category_menu">
+    자연과학
+  </span>
+  <span class="popular_books_category_menu">
+    생활/취미
+  </span>
+</div><!-- popular_books_category -->
+<div class="popular_books_slide">
+  <div class="popular_books_list">
+    <!-- 카드 1 -->
+    <article class="popular_books_card">
+      <span class="popular_books_rank">
+        01
+      </span>
+      <div class="popular_books_image">
+        <img
+          src="./images/book30.jpg"
+          alt="데미안"
+        >
+      </div>
+      <div class="popular_books_info">
+        <h3 class="popular_books_book_title">
+          데미안
+        </h3>
+        <span class="popular_books_writer">
+          헤르만 헤세
+        </span>
+        <div class="popular_books_bottom">
+          <span class="popular_books_tag literature">
+            문학
+          </span>
+          <span class="material-symbols-outlined popular_books_bookmark">
+            bookmark
+          </span>
+        </div>
+      </div>
+    </article>
+    <!-- 카드 2 -->
+    <article class="popular_books_card">
+      <span class="popular_books_rank">
+        02
+      </span>
+      <div class="popular_books_image">
+        <img
+          src="./images/book29.jpg"
+          alt="인간 실격" >
+      </div>
+
+      <div class="popular_books_info">
+
+        <h3 class="popular_books_book_title">
+          인간 실격
+        </h3>
+
+        <span class="popular_books_writer">
+          다자이 오사무
+        </span>
+
+        <div class="popular_books_bottom">
+
+          <span class="popular_books_tag literature">
+            문학
+          </span>
+
+          <span class="material-symbols-outlined popular_books_bookmark">
+            bookmark
+          </span>
+
+        </div>
+
+      </div>
+
+    </article>
+
+
+    <!-- 카드 3 -->
+    <article class="popular_books_card">
+
+      <span class="popular_books_rank">
+        03
+      </span>
+
+      <div class="popular_books_image">
+
+        <img
+          src="./images/book28.jpg"
+          alt="삶을 위한 철학 수업"
+        >
+
+      </div>
+
+      <div class="popular_books_info">
+
+        <h3 class="popular_books_book_title">
+          삶을 위한 철학 수업
+        </h3>
+
+        <span class="popular_books_writer">
+          김환주
+        </span>
+
+        <div class="popular_books_bottom">
+          <span class="popular_books_tag humanities">
+            인문
+          </span>
+          <span class="material-symbols-outlined popular_books_bookmark">
+            bookmark
+          </span>
+        </div>
+      </div>
+    </article>
+
+    <article class="popular_books_card">
+
+      <span class="popular_books_rank">
+        04
+      </span>
+
+      <div class="popular_books_image">
+
+        <img
+          src="./images/book26.jpg"
+          alt="소울 인 포메이션"
+        >
+
+      </div>
+
+      <div class="popular_books_info">
+
+        <h3 class="popular_books_book_title">
+          소울 인 포메이션
+        </h3>
+
+        <span class="popular_books_writer">
+          마이클 샌델
+        </span>
+
+        <div class="popular_books_bottom">
+
+          <span class="popular_books_tag humanities">
+            인문
+          </span>
+
+          <span class="material-symbols-outlined popular_books_bookmark">
+            bookmark
+          </span>
+
+        </div>
+
+      </div>
+
+    </article>
+
+
+    <!-- 카드 5 -->
+    <article class="popular_books_card">
+
+      <span class="popular_books_rank">
+        05
+      </span>
+
+      <div class="popular_books_image">
+
+        <img
+          src="./images/book25.jpg"
+          alt="데미안"
+        >
+      </div>
+      <div class="popular_books_info">
+        <h3 class="popular_books_book_title">
+          데미안
+        </h3>
+        <span class="popular_books_writer">
+          헤르만 헤세
+        </span>
+        <div class="popular_books_bottom">
+          <span class="popular_books_tag literature">
+            문학
+          </span>
+          <span class="material-symbols-outlined popular_books_bookmark">
+            bookmark
+          </span>
+        </div>
+      </div>
+    </article>
+  </div><!-- popular_books_list -->
+</div><!-- popular_books_slide -->
+<!-- 하단 공지 -->
+
+<div class="popular_books_notice">
+  <div class="popular_books_notice_left">
+    <div class="popular_books_notice_icon">
+      <span class="material-symbols-outlined">
+        bar_chart
+      </span>
+    </div>
+    <p>
+      부산도서관에서 가장 사랑받는 도서입니다.<br>
+      지금 <strong>대출 가능 여부</strong>를 확인해보세요.
+    </p>
+  </div><!-- popular_books_notice_left -->
+  <a href="#!" class="popular_books_more">
+    <span>
+      전체 인기도서 보기
+    </span>
+    <span class="material-symbols-outlined">
+      chevron_right
+    </span>
+  </a>
+</div><!-- popular_books_notice -->
+
+<div class="popular_books_pagination">
+
+  <span class="popular_books_dot active"></span>
+  <span class="popular_books_dot"></span>
+  <span class="popular_books_dot"></span>
+  <span class="popular_books_dot"></span>
+  <span class="popular_books_dot"></span>
+  <span class="popular_books_dot"></span>
+
+
+</div><!-- popular_books_pagination -->
+  </div><!--popular_inner-->
+ </section>
+<section class="new_books">
+<div class="new_books_inner">
+<div class="new_books_head">
+<span class="new_books_small_title">
+        NEW BOOKS
+      </span>
+<div class="new_books_title_line">
+<h2 class="new_books_title">이번 주 신간</h2>
+<div class="new_books_page">
+<strong>1</strong>
+<span>/ 4</span>
+</div>
+</div>
+<p class="new_books_introduce">
+        새롭게 입고된 도서를 만나보세요.
+      </p>
+      <p class="new_books__guide">
+  <span class="material-symbols-outlined">
+    swipe
+  </span>
+  옆으로 드래그해 이번 주 신간을 확인해보세요.
+</p>
+</div>
+<div class="new_books_slide">
+<!-- 책 1 -->
+<article class="new_books_slide_item active">
+<div class="new_books_visual">
+<div class="new_books_background">
+<img alt="" class="new_books_background_left" src="./images/book11.jpg"/>
+<img alt="" class="new_books_background_right" src="./images/book11.jpg"/>
+</div>
+<div class="new_books_book_image">
+<span class="new_books_badge">NEW</span>
+<img alt="싯다르타" src="./images/book11.jpg"/>
+</div>
+</div>
+<!-- <div class="new_books_pagination">
+<span class="new_books_dot active"></span>
+<span class="new_books_dot"></span>
+<span class="new_books_dot"></span>
+<span class="new_books_dot"></span>
+</div> -->
+<div class="new_books_detail"><div class="new_books_quote">
+<span class="new_books_quote_label"> 책 속 한 줄
+</span>
+<p>
+“좋은 글은 재능이 아니라<br/>
+오랜 연습의 결과입니다.”
+</p>
+<button class="new_books_save" type="button">
+<span class="material-symbols-outlined">
+bookmark
+</span>
+<span>찜하기</span>
+</button>
+</div><div class="new_books_info">
+<h3>싯다르타</h3>
+<p class="new_books_writer">
+            헤르만 헤세 · 세계문학전집 59 · 박경희 옮김
+          </p>
+<p class="new_books_description">
+            한 인간이 자신만의 길을 따라가며 삶과 깨달음의 의미를
+            발견하는 과정을 담은 헤르만 헤세의 대표작입니다.
+          </p>
+<div class="new_books_all">
+<span class="new_books_star">★★★★★</span>
+<strong>4.8</strong>
+<span>(10095)</span>
+<span class="new_books_available">대출 가능</span>
+</div>
+</div><div class="new_books_button_wrap">
+<button class="new_books_reservation" type="button">
+<span class="material-symbols-outlined">
+              bookmark
+            </span>
+<span>예약하기</span>
+</button>
+<a class="new_books_more" href="#!">
+<span>상세보기</span>
+<span class="material-symbols-outlined">
+chevron_right
+</span>
+</a>
+</div>
+</div>
+</article>
+<!-- 책 2 -->
+<article class="new_books_slide_item">
+<div class="new_books_visual">
+<div class="new_books_background">
+<img alt="" class="new_books_background_left" src="./images/book30.jpg"/>
+<img alt="" class="new_books_background_right" src="./images/book30.jpg"/>
+</div>
+<div class="new_books_book_image">
+<span class="new_books_badge">NEW</span>
+<img alt="사랑의 4분의 3은 호기심이다" src="./images/book30.jpg"/>
+</div>
+</div>
+<div class="new_books_pagination">
+<span class="new_books_dot"></span>
+<span class="new_books_dot active"></span>
+<span class="new_books_dot"></span>
+<span class="new_books_dot"></span>
+</div>
+<div class="new_books_detail"><div class="new_books_quote">
+<span class="new_books_quote_label">
+            책 속 한 줄
+          </span>
+<p>
+            "언제나 타인보다 내 자유를 더 사랑하라."
+          </p>
+<button class="new_books_save" type="button">
+<span class="material-symbols-outlined">
+              bookmark
+            </span>
+<span>찜하기</span>
+</button>
+</div>
+<div class="new_books_info">
+<h3>사랑의 4분의 3은 호기심이다</h3>
+<p class="new_books_writer">
+            자코모 카샤노바
+          </p>
+<p class="new_books_description">
+사랑의 4분의 3은 호기심이다는 18세기의 모험가이자 
+전략가인 자코모 카사노바의 삶과 심리를 재해석한 철학 에세이입니다.
+          </p>
+<div class="new_books_all">
+<span class="new_books_star">★★★</span>
+<strong>4.3</strong>
+<span>(653)</span>
+<span class="new_books_not">대출 불가</span>
+</div>
+</div><div class="new_books_button_wrap">
+<button class="new_books_reservation" type="button">
+<span class="material-symbols-outlined">
+              bookmark
+            </span>
+<span>예약하기</span>
+</button>
+<a class="new_books_more" href="#!">
+<span>상세보기</span>
+<span class="material-symbols-outlined">
+              chevron_right
+            </span>
+</a>
+</div></div>
+
+
+</article>
+<!-- 책 3 -->
+<article class="new_books_slide_item">
+<div class="new_books_visual">
+<div class="new_books_background">
+<img alt="" class="new_books_background_left" src="./images/book17.jpg"/>
+<img alt="" class="new_books_background_right" src="./images/book17.jpg"/>
+</div>
+<div class="new_books_book_image">
+<span class="new_books_badge">NEW</span>
+<img alt="여행자" src="./images/book17.jpg"/>
+</div>
+</div>
+<div class="new_books_pagination">
+<span class="new_books_dot"></span>
+<span class="new_books_dot"></span>
+<span class="new_books_dot active"></span>
+<span class="new_books_dot"></span>
+</div>
+<div class="new_books_detail"><div class="new_books_quote">
+<span class="new_books_quote_label">
+            책 속 한 줄
+          </span>
+<p>
+           "나의 감정을 숨기려 노력했지만, 더는 할 수 없습니다.<br/>
+            당신을 너무나도 열렬히 사랑합니다."
+          </p>
+<button class="new_books_save" type="button">
+<span class="material-symbols-outlined">
+              bookmark
+            </span>
+<span>찜하기</span>
+</button>
+</div><div class="new_books_info">
+<h3>오만과 편견</h3>
+<p class="new_books_writer">
+            제인 오스틴 · 전승희, 윤지관 번역
+          </p>
+<p class="new_books_description">
+          오만과 편견, 시대를 초월해 인간 본성을 돌아보게 하는 로맨스 고전
+          </p>
+<div class="new_books_all">
+<span class="new_books_star">★★★★★</span>
+<strong>4.9</strong>
+<span>(776)</span>
+<span class="new_books_available">대출 가능</span>
+</div>
+</div><div class="new_books_button_wrap">
+<button class="new_books_reservation" type="button">
+<span class="material-symbols-outlined">
+              bookmark
+            </span>
+<span>예약하기</span>
+</button>
+<a class="new_books_more" href="#!">
+<span>상세보기</span>
+<span class="material-symbols-outlined">
+              chevron_right
+            </span>
+</a>
+</div></div>
+
+
+</article>
+<!-- 책 4 -->
+<article class="new_books_slide_item">
+<div class="new_books_visual">
+<div class="new_books_background">
+<img alt="" class="new_books_background_left" src="./images/book23.jpg"/>
+<img alt="" class="new_books_background_right" src="./images/book23.jpg"/>
+</div>
+<div class="new_books_book_image">
+<span class="new_books_badge">NEW</span>
+<img alt="달러 역설" src="./images/book23.jpg"/>
+</div>
+</div>
+<div class="new_books_pagination">
+<span class="new_books_dot"></span>
+<span class="new_books_dot"></span>
+<span class="new_books_dot"></span>
+<span class="new_books_dot active"></span>
+</div>
+<div class="new_books_detail"><div class="new_books_quote">
+<span class="new_books_quote_label">
+            책 속 한 줄
+          </span>
+<p>
+           달러는 죽지 않는다
+          </p>
+<button class="new_books_save" type="button">
+<span class="material-symbols-outlined">
+              bookmark
+            </span>
+<span>찜하기</span>
+</button>
+</div><div class="new_books_info">
+<h3>달러 역설</h3>
+<p class="new_books_writer">
+            오태민 지음
+          </p>
+<p class="new_books_description">
+            이 책 안에 미래 금융의 답이 있다
+          </p>
+<div class="new_books_all">
+<span class="new_books_star">★★★★★</span>
+<strong>4.2</strong>
+<span>(65)</span>
+<span class="new_books_available">대출 가능</span>
+</div>
+</div><div class="new_books_button_wrap">
+<button class="new_books_reservation" type="button">
+<span class="material-symbols-outlined">
+              bookmark
+            </span>
+<span>예약하기</span>
+</button>
+<a class="new_books_more" href="#!">
+<span>상세보기</span>
+<span class="material-symbols-outlined">
+              chevron_right
+            </span>
+</a>
+</div></div>
+</article>
+</div><!-- new_books_slide -->
+</div><!-- new_books_inner -->
+</section>
+ <!-- <div class="image_all">
+  <img src="./images/image_section.png" alt="">
+ </div> -->
+ <section class="all_notice">
+  <div class="all_notice_inner">
+    <div class="all_notice_head">
+      <span class="all_notice_small_title">
+        LIBRARY NEWS
+      </span>
+      <h2 class="all_notice_title">
+        도서관 소식
+      </h2>
+    </div><!--all_notice_head-->
+    <div class="all_notice_content">
+      <article class="notice_box">
+        <div class="notice_box_head">
+          <span class="notice_box_badge">
+            공지사항
+          </span>
+        </div>
+        <ul class="notice_box_list">
+          <li class="notice_box_item">
+            <span class="notice_box_category">
+              전체
+            </span>
+            <a href="#!" class="notice_box_link">
+              ▶ 국제 IC 경제 휴관 및 인포 21
+            </a>
+            <span class="notice_box_date">
+              26.07.06
+            </span>
+          </li>
+            <li class="notice_box_item">
+
+            <span class="notice_box_category">
+              전체
+            </span>
+
+            <a href="#!" class="notice_box_link">
+              ▶ 국제 IC 경제 휴관 및 인포 21
+            </a>
+
+            <span class="notice_box_date">
+              26.07.06
+            </span>
+
+          </li>
+  <li class="notice_box_item">
+
+            <span class="notice_box_category">
+              전체
+            </span>
+
+            <a href="#!" class="notice_box_link">
+              ▶ 국제 IC 경제 휴관 및 인포 21
+            </a>
+            <span class="notice_box_date">
+              26.07.06
+            </span>
+          </li>
+  <li class="notice_box_item">
+            <span class="notice_box_category">
+              전체
+            </span>
+            <a href="#!" class="notice_box_link">
+              ▶ 국제 IC 경제 휴관 및 인포 21
+            </a>
+            <span class="notice_box_date">
+              26.07.06
+            </span>
+          </li>
+        </ul>
+      </article>
+      <article class="culture_box">
+        <div class="culture_box_head">
+          <span class="culture_box_badge">
+            문화행사
+          </span>
+        </div>
+        <div class="culture_box_content">
+          <img src="./images/notice_poster.jpg" alt="">
+        </div>
+        <div class="culture_box_bottom">
+          <button class="culture_box_btn">
+            <span class="material-symbols-outlined">
+              chevron_left
+            </span>
+          </button>
+          <strong class="culture_box_page">
+            01
+          </strong>
+          <span class="culture_box_line"></span>
+          <strong class="culture_box_total">
+            05
+          </strong>
+           <button type="button" class="culture_board_btn">
+            <span class="material-symbols-outlined">
+              chevron_right
+            </span>
+          </button>
+        </div>
+      </article>
+      <article class="class_box">
+        <div class="class_box_head">
+          <span class="class_box_badge">
+            강좌안내
+          </span>
+        </div>
+        <ul class="class_box_list">
+          <li class="class_box_item">
+            <strong class="class_box_title">
+              힐링, 세계 미술관 투어
+            </strong>
+            <div class="class_box_info">
+              <span>접수인원</span>
+              <span class="online">
+                온라인 30 / 30
+              </span>
+              <span>
+                 (대기자 3 / 5)
+              </span>
+            </div>
+            <div class="class_box_date">
+              <span>강좌기간</span>
+               <span>2026 - 07 - 28</span>
+               <span>~</span>
+              <span>2026 - 06 - 26</span>
+            </div>
+          </li>
+                    <li class="class_box_item">
+            <strong class="class_box_title">
+              프론트엔드 수업
+            </strong>
+            <div class="class_box_info">
+              <span>접수인원</span>
+              <span class="online">
+                온라인 06 / 10
+              </span>
+              <span>
+                 (대기자 0 / 5)
+              </span>
+            </div>
+            <div class="class_box_date">
+              <span>강좌기간</span>
+               <span>2026 - 09 - 01</span>
+               <span>~</span>
+              <span>2026 - 09 - 28</span>
+            </div>
+          </li>
+        </ul>
+      </article>
+    </div>
+  </div>
+ </section>
+<section class="insta_wrap">
+  <div class="insta_inner">
+    <div class="insta_head">
+      <div class="insta_title_box">
+        <span class="insta_small_title">
+          CONNECT WITH US
+        </span>
+        <h2 class="insta_title">
+          SNS
+        </h2>
+      </div>
+      <div class="insta_sns">
+        <a href="#!" class="insta_sns_link" aria-label="인스타그램">
+          <i class="fa-brands fa-instagram"></i>
+        </a>
+        <a href="#!" class="insta_sns_link" aria-label="유튜브">
+          <i class="fa-brands fa-youtube"></i>
+        </a>
+        <a href="#!" class="insta_sns_link" aria-label="페이스북">
+          <i class="fa-brands fa-facebook-f"></i>
+        </a>
+      </div>
+    </div><!-- insta_head -->
+    <div class="insta_content">
+      <a href="#!" class="insta_item">
+        <img src="./images/in01.png" alt="부산도서관 SNS 게시물">
+      </a>
+      <a href="#!" class="insta_item">
+        <img src="./images/in02.png" alt="부산도서관 SNS 게시물">
+      </a>
+      <a href="#!" class="insta_item">
+        <img src="./images/in03.png" alt="부산도서관 SNS 게시물">
+      </a>
+      <a href="#!" class="insta_item">
+        <img src="./images/in04jpg.jpg" alt="부산도서관 SNS 게시물">
+      </a>
+      <a href="#!" class="insta_item">
+        <img src="./images/notice_poster02.png" alt="부산도서관 SNS 게시물">
+      </a>
+      <a href="#!" class="insta_item">
+        <img src="./images/in01.png" alt="부산도서관 SNS 게시물">
+      </a>
+    </div><!-- insta_content -->
+  </div><!-- insta_inner -->
+</section><!-- insta_wrap -->
+
+<section class="review">
+  <div class="review_inner">
+    <div class="review_head">
+      <h2 class="review_title">
+        부산 시민들의 한줄평
+      </h2>
+      <p class="review_introduce">
+        부산 도서관을 이용하시는 모든 시민들의 리뷰를 지금 즉시 확인해보세요.
+      </p>
+    </div><!-- review_head -->
+    <div class="review_content">
+      <div class="review_card review_left">
+        <span class="material-symbols-outlined review_icon">
+          account_circle
+        </span>
+        <div class="review_text_box">
+          <strong class="review_text">
+            행복한 독서 경험
+          </strong>
+          <span class="review_writer">
+            IT계열 직장인
+          </span>
+        </div>
+      </div>
+      <div class="review_card review_small">
+        <span class="material-symbols-outlined review_icon">
+          account_circle
+        </span>
+        <strong class="review_text">
+          좋은 도서관
+        </strong>
+      </div>
+      <div class="review_card review_center">
+        <span class="material-symbols-outlined review_icon">
+          thumb_up
+        </span>
+        <div class="review_text_box">
+          <strong class="review_text">
+            정말 최고의 독서환경이에요!
+          </strong>
+          <span class="review_writer">
+            매일매일 오고싶어지는 분위기입니다.
+          </span>
+        </div>
+      </div>
+      <div class="review_card review_right">
+        <span class="material-symbols-outlined review_icon">
+          account_circle
+        </span>
+        <strong class="review_text">
+          매일 오고싶어요
+        </strong>
+      </div>
+    </div><!-- review_content -->
+    <div class="review_bottom">
+      <div class="review_message">
+        부산도서관 이즈 굿
+      </div>
+      <a href="#!" class="review_btn">
+        한줄평 쓰기
+      </a>
+    </div><!-- review_bottom -->
+    <p class="review_notice">
+      <span class="material-symbols-outlined">
+        shield
+      </span>
+      작성한 한줄평은 도서관 서비스 개선에 소중히 활용됩니다.
+    </p>
+  </div><!-- review_inner -->
+</section><!-- review -->
+<footer class="footer">
+  <div class="footer_inner">
+
+    <!-- 로고 -->
+    <div class="footer_logo_wrap">
+      <!-- <img
+        src="./images/footer_logo.png"
+        alt="부산도서관 Busan Metropolitan Library"
+        class="footer_logo"
+      > -->
+    </div>
+    <!-- 관련 도서관 -->
+    <section class="footer_section footer_library">
+      <h2 class="footer_title">관련 도서관</h2>
+
+      <div class="footer_family">
+        <a href="#!">
+          <span>부산공공도서관</span>
+
+          <span class="material-symbols-outlined">
+            chevron_right
+          </span>
+        </a>
+
+        <a href="#!">
+          <span>타지역 도서관</span>
+
+          <span class="material-symbols-outlined">
+            chevron_right
+          </span>
+        </a>
+      </div>
+    </section>
+
+    <!-- SNS -->
+    <section class="footer_section footer_sns_section">
+      <h2 class="footer_title">SNS</h2>
+
+      <div class="footer_sns">
+        <a href="#!" class="footer_sns_item" aria-label="트위터">
+          <i class="fa-brands fa-x-twitter"></i>
+          <span>트위터</span>
+        </a>
+
+        <a href="#!" class="footer_sns_item" aria-label="페이스북">
+          <i class="fa-brands fa-facebook-f"></i>
+          <span>페이스북</span>
+        </a>
+
+        <a href="#!" class="footer_sns_item" aria-label="인스타그램">
+          <i class="fa-brands fa-instagram"></i>
+          <span>인스타그램</span>
+        </a>
+      </div>
+    </section>
+
+    <!-- 주소 -->
+    <section class="footer_section footer_address_section">
+      <h2 class="footer_title">주소</h2>
+
+      <address class="footer_address">
+        <p>
+          <span class="material-symbols-outlined">
+            location_on
+          </span>
+
+          <span>
+            (46949) 부산광역시 사상구 사상로310번길 33 (덕포동)
+          </span>
+        </p>
+
+        <p>
+          <span class="material-symbols-outlined">
+            call
+          </span>
+
+          <span>TEL 051-310-5400</span>
+        </p>
+
+        <p>
+          <span class="material-symbols-outlined">
+            fax
+          </span>
+
+          <span>FAX 051-310-5429</span>
+        </p>
+      </address>
+    </section>
+    <section class="footer_section footer_menu_section">
+      <h2 class="footer_title">주요 메뉴</h2>
+
+      <nav class="footer_menu">
+        <a href="#!">책너울</a>
+        <a href="#!">전자도서관</a>
+        <a href="#!">신청·예약</a>
+        <a href="#!">대출현황</a>
+        <a href="#!">열린공간</a>
+        <a href="#!">내 서재</a>
+      </nav>
+    </section>
+
+    <!-- 정책 메뉴 -->
+    <section class="footer_policy">
+      <h2 class="footer_title">정책 메뉴</h2>
+
+      <div class="footer_link">
+        <a href="#!">이용약관</a>
+        <a href="#!">개인정보처리방침</a>
+        <a href="#!">저작권보호정책</a>
+        <a href="#!">키보드보안프로그램 설치안내</a>
+      </div>
+    </section>
+
+    <!-- 저작권 -->
+    <section class="footer_copyright">
+      <h2 class="footer_title">저작권</h2>
+
+      <p class="footer_copy">
+        Copyright © Busan Metropolitan Library.<br>
+        All rights reserved.
+      </p>
+    </section>
+
+  </div>
+</footer>
+</body>
+</html>

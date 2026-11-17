@@ -1,0 +1,472 @@
+
+.join_terms {
+  width: 100%;
+  padding: 80px 20px 100px;
+  background-color: #fffaf4;
+  &_inner {
+    width: 100%;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+  /* -------------------- title -------------------- */
+  &_head {
+    margin-bottom: 40px;
+  }
+  &_small {
+    display: block;
+    margin-bottom: 10px;
+    color: #a36f27;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 2px;
+  }
+  &_title {
+    margin-bottom: 12px;
+    color: #5b4333;
+    font-size: 32px;
+    font-weight: 700;
+  }
+  &_intro {
+    color: #796d64;
+    font-size: 14px;
+    line-height: 1.7;
+  }
+  /* -------------------- all agree -------------------- */
+  &_all {
+    margin-bottom: 18px;
+    padding: 20px 24px;
+    background-color: #f3e7d8;
+    border-radius: 10px;
+
+    label {
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      gap: 10px;
+      cursor: pointer;
+    }
+    input {
+      width: 20px;
+      height: 20px;
+      accent-color: #791717;
+      cursor: pointer;
+    }
+    span {
+      color: #5b4333;
+      font-size: 16px;
+      font-weight: 700;
+    }
+  }
+ 
+  &_box {
+    margin-bottom: 14px;
+    padding: 24px;
+    background-color: #ffffff;
+    border: 1px solid #d8c8b6;
+    border-radius: 14px;
+  }
+  .terms_detail_check {
+    display: none;
+  }
+  &_box_head {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 20px;
+  }
+  &_name {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    strong {
+      color: #4d382b;
+      font-size: 16px;
+      font-weight: 700;
+    }
+  }
+  &_required,
+  &_choice {
+    height: 26px;
+    padding: 0 9px;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 14px;
+    font-size: 12px;
+    font-weight: 700;
+  }
+  &_required {
+    color: #ffffff;
+    background-color: #791717;
+  }
+  &_choice {
+    color: #795114;
+    background-color: #efe2d2;
+  }
+  /* -------------------- detail button -------------------- */
+
+  &_more {
+    padding: 6px 11px;
+    color: #795114;
+    font-size: 12px;
+    background-color: #ffffff;
+    border: 1px solid #c8a77b;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.3s;
+
+    &:hover {
+      color: #ffffff;
+      background-color: #795114;
+    }
+  }
+  /* -------------------- detail contents -------------------- */
+  &_detail {
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    transition: 0.4s;
+  }
+  &_detail_inner {
+    margin-bottom: 18px;
+    padding: 20px;
+    background-color: #f9f3eb;
+    border-top: 1px solid #ddcdbc;
+    border-bottom: 1px solid #ddcdbc;
+    strong {
+      display: block;
+      margin-bottom: 14px;
+      color: #5b4333;
+      font-size: 14px;
+      font-weight: 700;
+    }
+    p {
+      margin-bottom: 10px;
+      color: #6d625b;
+      font-size: 13px;
+      line-height: 1.8;
+      word-break: keep-all;
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+  }
+  .terms_detail_check:checked ~ .join_terms_detail {
+    max-height: 500px;
+    opacity: 1;
+  }
+
+  /*상세보기가 열려있을 때버튼 스타일 변*/
+  .terms_detail_check:checked
+  ~ .join_terms_box_head
+  .join_terms_more {
+    color: #ffffff;
+    background-color: #795114;
+  }
+  /* -------------------- notice -------------------- */
+  &_notice {
+    margin-bottom: 18px;
+    color: #7b6a5e;
+    font-size: 13px;
+    line-height: 1.6;
+  }
+  /* -------------------- agree -------------------- */
+
+  &_agree {
+    min-height: 54px;
+    padding: 14px 16px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    background-color: #fff8ee;
+    border-radius: 8px;
+
+    p {
+      color: #5f5148;
+
+      font-size: 14px;
+      line-height: 1.6;
+    }
+
+    label {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      flex-shrink: 0;
+      cursor: pointer;
+    }
+    input {
+      width: 19px;
+      height: 19px;
+      accent-color: #791717;
+      cursor: pointer;
+    }
+    span {
+      color: #4d382b;
+      font-size: 14px;
+      font-weight: 600;
+      white-space: nowrap;
+    }
+  }
+  /* -------------------- button -------------------- */
+  &_btn_wrap {
+    margin-top: 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  &_prev,
+  &_next {
+    width: 100px;
+    height: 48px;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: 0.3s;
+  }
+  &_prev {
+    color: #795114;
+    background-color: #ffffff;
+    border: 1px solid #795114;
+    &:hover {
+      background-color: #f5eadc;
+    }
+  }
+  &_next {
+    color: #ffffff;
+    background-color: #791717;
+    border: 1px solid #791717;
+    &:hover {
+      background-color: #5d1010;
+    }
+  }
+}
+.join_title {
+  width: 100%;
+  max-width: 1100px;
+  margin: 40px auto 40px;
+  padding-bottom: 20px;
+  color: #4d382b;
+  font-size: 32px;
+  font-weight: 700;
+  line-height: 1.3;
+  border-bottom: 2px solid #791717;
+}
+.header_bottom {
+
+  .logo {
+    width: 264px;
+    height: 62px;
+    margin-left: 24px;
+    display: flex;
+    align-items: center;
+    gap: 60px;
+  }
+  .btn_menu {
+    width: 32px;
+    height: 62px;
+    display: block;
+    margin: 0;
+    padding: 0;
+    line-height: 62px;
+    font-size: 28px;
+    color: #795114;
+    cursor: pointer;
+  }
+  .btn_menu .icon_open,
+  .btn_menu .icon_close {
+    line-height: 62px;
+  }
+}.join_info {
+  width: 100%;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 60px 20px 100px;
+  .join_info_title {
+    margin-bottom: 12px;
+    color: #4d382b;
+    font-size: 30px;
+    font-weight: 700;
+  }
+  .join_info_text {
+    margin-bottom: 40px;
+    color: #76685f;
+    font-size: 14px;
+    line-height: 1.7;
+    span {
+      margin-left: 6px;
+      color: #791717;
+      font-size: 13px;
+      font-weight: 600;
+    }
+  }
+  .join_form {
+    width: 100%;
+  }
+  /* -------------------- input row -------------------- */
+  .join_form_left {
+    width: 100%;
+    margin-bottom: 26px;
+    .join_label {
+      display: block;
+      margin-bottom: 9px;
+      color: #4d382b;
+      font-size: 14px;
+      font-weight: 600;
+      span {
+        margin-left: 3px;
+        color: #791717;
+      }
+    }
+  }
+  /* -------------------- input -------------------- */
+  .join_input {
+    width: 100%;
+    height: 50px;
+    padding: 0 15px;
+    color: #4d382b;
+    font-size: 14px;
+    background-color: #ffffff;
+    border: 1px solid #d8c8b6;
+    border-radius: 7px;
+    box-sizing: border-box;
+    outline: none;
+    transition: 0.3s;
+    &::placeholder {
+      color: #b0a59c;
+    }
+    &:focus {
+      border-color: #795114;
+      box-shadow: 0 0 0 3px rgba(121, 81, 20, 0.08);
+    }
+  }
+  /* -------------------- 아이디 + 중복확인 -------------------- */
+  .join_input_btn {
+    width: 100%;
+    display: flex;
+    gap: 10px;
+    .join_input {
+      flex-grow: 1;
+    }
+  }
+  .id_check_btn {
+    width: 130px;
+    height: 50px;
+    flex-shrink: 0;
+    color: #ffffff;
+    font-size: 13px;
+    font-weight: 600;
+    background-color: #795114;
+    border: none;
+    border-radius: 7px;
+    cursor: pointer;
+    transition: 0.3s;
+    &:hover {
+      background-color: #5b4333;
+    }
+  }
+  .join_input_notice {
+  margin-top: 7px;
+  color: #8b7b70;
+  font-size: 12px;
+  line-height: 1.5;
+}
+  /* -------------------- bottom button -------------------- */
+  .join_form_btn {
+    width: 100%;
+    margin-top: 45px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+  }
+  .join_prev_btn,
+  .join_submit_btn {
+    height: 52px;
+    font-size: 14px;
+    font-weight: 700;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: 0.3s;
+  }
+  .join_prev_btn {
+    width: 120px;
+    color: #795114;
+    background-color: #ffffff;
+    border: 1px solid #795114;
+    &:hover {
+      background-color: #f4eadf;
+    }
+  }
+  .join_submit_btn {
+    width: 180px;
+    color: #ffffff;
+    background-color: #791717;
+    border: 1px solid #791717;
+    &:hover {
+      background-color: #5d1010;
+    }
+  }
+}
+.join_info {
+  .join_postcode_wrap {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 10px;
+    .user_postcode {
+      width: 220px;
+      flex-shrink: 0;
+    }
+  }
+
+  .postcode_btn {
+    width: 130px;
+    height: 50px;
+    flex-shrink: 0;
+    color: #ffffff;
+    font-size: 13px;
+    font-weight: 600;
+    background-color: #795114;
+    border: none;
+    border-radius: 7px;
+    cursor: pointer;
+    transition: 0.3s;
+    &:hover {
+      background-color: #5b4333;
+    }
+  }
+  .user_addr {
+    margin-bottom: 10px;
+  }
+  .user_addr_detail {
+    width: 100%;
+  }
+.pw_check_btn {
+    width: 130px;
+    height: 50px;
+
+    flex-shrink: 0;
+
+    color: #ffffff;
+
+    font-size: 13px;
+    font-weight: 600;
+
+    background-color: #795114;
+
+    border: none;
+    border-radius: 7px;
+
+    cursor: pointer;
+
+    transition: 0.3s;
+
+    &:hover {
+      background-color: #5b4333;
+    }
+  }
+}

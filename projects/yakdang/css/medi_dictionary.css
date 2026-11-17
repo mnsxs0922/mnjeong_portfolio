@@ -1,0 +1,250 @@
+/* -------------------- dictionary page --------------------*/
+ 
+body {
+  font-family: Maruburi;
+  background-image: url(../images/health_bg.jpg);
+  background-repeat: repeat;
+}
+#medi01,
+#medi02,
+#medi03,
+#medi04,
+#medi_close {
+  display: none;
+}
+
+.dic_visual {
+  width: 100%;
+  height: 360px;
+  margin-top: 62px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+.dic_visual_text h2 {
+  color:#5B4333;
+  font-size: 60px;
+  margin: 20px 0;
+}
+
+.dic_visual_text p {
+  color: #795114;
+  font-size: 20px;
+}
+
+.dictionary_wrap {
+  width: 1440px;
+  margin: 100px auto;
+}
+
+.title h3 {
+  text-align: center;
+  font-size: 40px;
+  color: #5B4333;
+  margin-bottom: 30px;
+}
+
+.dictionary_list {
+  display: flex;
+  justify-content: space-between;
+  gap: 30px;
+  margin-top: 100px;
+}
+
+.dictionary_card {
+  width: 337px;
+  padding: 24px;
+  box-sizing: border-box;
+  border-radius: 35px;
+  background: rgba(255, 248, 238, 0.9);
+  box-shadow: 0 4px 20px rgba(121,81,20,.12);
+  cursor: pointer;
+  transition: .4s;
+  position: relative;
+}
+
+.dictionary_card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 12px 30px rgba(121,81,20,.2);
+}
+
+.dictionary_card::before {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  padding: 8px 18px;
+  border-radius: 30px;
+  color: white;
+  font-size: 15px;
+  font-weight: bold;
+}
+
+.dictionary_card.hongsam::before {
+  content: "홍삼";
+  background: #791717;
+}
+
+.dictionary_card.nokyong::before {
+  content: "녹용";
+  background: #333D6D;
+}
+
+.dictionary_card.danggui::before {
+  content: "당귀";
+  background: #7B9A55;
+}
+
+.dictionary_card.allmedi::before {
+  content: "약재";
+  background: #795114;
+}
+
+.dictionary_card img {
+  width: 100%;
+  height: 260px;
+  display: block;
+  border-radius: 25px;
+}
+
+.dictionary_card h3 {
+  font-size: 28px;
+  color: #5B4333;
+  margin-top: 24px;
+}
+
+.dictionary_card p {
+  font-size: 15px;
+  color: #795114;
+  margin-top: 10px;
+}
+
+/* modal */
+.medi_bg,
+.medi_modal {
+  display: none;
+}
+
+#medi01:checked ~ .medi_bg,
+#medi02:checked ~ .medi_bg,
+#medi03:checked ~ .medi_bg,
+#medi04:checked ~ .medi_bg {
+  display: block;
+}
+
+#medi01:checked ~ .medi01,
+#medi02:checked ~ .medi02,
+#medi03:checked ~ .medi03,
+#medi04:checked ~ .medi04 {
+  display: block;
+}
+
+.medi_bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background: rgba(67, 39, 22, 0.35);
+  z-index: 9998;
+}
+
+.medi_modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 760px;
+  min-height: 500px;
+  padding: 55px;
+  box-sizing: border-box;
+  border-radius: 40px;
+  background: #FFF8EE;
+  box-shadow: 0 20px 50px rgba(67, 39, 22, 0.25);
+  z-index: 9999;
+}
+
+.medi_modal h3 {
+  text-align: center;
+  font-size: 40px;
+  color: #795114;
+  margin-bottom: 50px;
+}
+
+.medi_card {
+  display: flex;
+  align-items: center;
+  gap: 45px;
+}
+
+.medi_list_img {
+  width: 260px;
+  height: 260px;
+  flex-shrink: 0;
+}
+
+.medi_list_img img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  border-radius: 30px;
+}
+
+.medi_list_text {
+  width: 350px;
+}
+
+.medi_list_text .sub_title {
+  display: block;
+  font-size: 26px;
+  color: #5B4333;
+  margin-bottom: 18px;
+}
+
+.medi_list_text p {
+  font-size: 17px;
+  line-height: 1.7;
+  color: #5B4333;
+  margin-bottom: 18px;
+}
+
+.medi_list_text .tag {
+  font-size: 14px;
+  color: #791717;
+}
+
+.close_btn i {
+  position: absolute;
+  top: 25px;
+  right: 30px;
+
+  width: 36px;
+  height: 36px;
+  line-height: 36px;
+
+  text-align: center;
+  border-radius: 50%;
+  background: #E0CFBA;
+  color: #5B4333;
+  cursor: pointer;
+}
+
+.close_btn i:hover {
+  background: #791717;
+  color: white;
+}
+
+.next_btn {
+  position: absolute;
+  top: 50%;
+  right: 0;
+  transform: translateY(-50%);
+
+  font-size: 42px;
+  color: #bc9479;
+  cursor: pointer;
+}
+
+.next_btn:hover {
+  color: #791717;
+}

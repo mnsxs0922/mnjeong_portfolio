@@ -1,0 +1,3566 @@
+
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="김민정 프론트엔드 개발자 및 UI/UX 디자이너 포트폴리오">
+  <title>MINJEONG KIM — Portfolio</title>
+
+  <!-- Pretendard -->
+  <link rel="stylesheet" as="style" crossorigin
+    href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/variable/pretendardvariable.css">
+
+  <style>
+
+    /* ========================================
+       01. RESET & COMMON
+    ======================================== */
+
+    :root {
+      --point: #2563eb;
+      --point-hover: #1d4ed8;
+      --point-light: #eff5ff;
+      --black: #15171b;
+      --text: #202329;
+      --gray: #737983;
+      --gray-light: #a4a8b0;
+      --line: #e6e9ee;
+      --white: #ffffff;
+      --background: #f8f9fb;
+      --dark: #14171c;
+      --inner: 1200px;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 90px;
+    }
+
+    body {
+      font-family: "Pretendard Variable", Pretendard,
+        -apple-system, BlinkMacSystemFont,
+        "Segoe UI", sans-serif;
+      color: var(--text);
+      background: var(--white);
+      font-size: 16px;
+      font-weight: 400;
+      line-height: 1.5;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+
+    button,
+    input,
+    textarea {
+      font-family: inherit;
+    }
+
+    button {
+      cursor: pointer;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    ul,
+    ol {
+      list-style: none;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    ::selection {
+      color: #fff;
+      background: var(--point);
+    }
+
+    .inner {
+      width: min(calc(100% - 64px), var(--inner));
+      margin: 0 auto;
+    }
+
+    .section {
+      padding: 145px 0;
+    }
+
+    .section_header {
+      margin-bottom: 58px;
+    }
+
+    .section_label {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 20px;
+      color: var(--point);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: .13em;
+    }
+
+    .section_label::before {
+      content: "";
+      width: 18px;
+      height: 2px;
+      background: var(--point);
+    }
+
+    .section_title {
+      font-size: clamp(30px, 3.5vw, 48px);
+      font-weight: 700;
+      line-height: 1.23;
+      letter-spacing: -.055em;
+      word-break: keep-all;
+    }
+
+    .section_text {
+      margin-top: 20px;
+      color: var(--gray);
+      font-size: 16px;
+      line-height: 1.85;
+      letter-spacing: -.025em;
+      word-break: keep-all;
+    }
+
+
+    /* ========================================
+       02. HEADER
+    ======================================== */
+
+    .header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 1000;
+      width: 100%;
+      height: 80px;
+      border-bottom: 1px solid transparent;
+      transition: background .3s ease, border .3s ease;
+    }
+
+    .header.scrolled {
+      background: rgba(255, 255, 255, .93);
+      border-color: var(--line);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+    }
+
+    .header_inner {
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .logo {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      font-size: 19px;
+      font-weight: 800;
+      letter-spacing: -.065em;
+    }
+
+    .logo_dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--point);
+    }
+
+    .gnb {
+      display: flex;
+      align-items: center;
+      gap: 34px;
+    }
+
+    .gnb a {
+      position: relative;
+      padding: 8px 0;
+      color: #707680;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: .035em;
+      transition: color .3s;
+    }
+
+    .gnb a::after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      background: var(--point);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform .3s;
+    }
+
+    .gnb a:hover,
+    .gnb a.active {
+      color: var(--black);
+    }
+
+    .gnb a:hover::after,
+    .gnb a.active::after {
+      transform: scaleX(1);
+    }
+
+    .menu_button {
+      display: none;
+      width: 42px;
+      height: 42px;
+      border: 0;
+      background: transparent;
+    }
+
+    .menu_button span {
+      display: block;
+      width: 23px;
+      height: 2px;
+      margin: 5px auto;
+      background: var(--black);
+      transition: .3s;
+    }
+
+
+    /* ========================================
+       03. MAIN VISUAL
+    ======================================== */
+
+    .visual {
+      position: relative;
+      min-height: 100svh;
+      display: flex;
+      align-items: center;
+      padding: 155px 0 90px;
+      overflow: hidden;
+      background: #f8f9fb;
+    }
+
+    .visual::before {
+      content: "";
+      position: absolute;
+      top: 80px;
+      right: 0;
+      width: 35%;
+      height: calc(100% - 80px);
+      background: #f1f4f8;
+      pointer-events: none;
+    }
+
+    .visual_grid {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      grid-template-columns: 1.2fr .8fr;
+      align-items: center;
+      gap: 55px;
+    }
+
+    .visual_copy {
+      min-width: 0;
+    }
+
+    .visual_label {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 36px;
+      color: var(--point);
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: .075em;
+    }
+
+    .visual_label::before {
+      content: "";
+      width: 24px;
+      height: 2px;
+      background: var(--point);
+    }
+
+    .visual_title {
+      margin-bottom: 32px;
+      font-size: clamp(58px, 6.5vw, 98px);
+      font-weight: 750;
+      line-height: 1.05;
+      letter-spacing: -.075em;
+    }
+
+    .visual_title span {
+      display: block;
+      color: var(--point);
+    }
+
+    .visual_description {
+      margin-bottom: 43px;
+      color: #626975;
+      font-size: 17px;
+      font-weight: 400;
+      line-height: 1.85;
+      letter-spacing: -.025em;
+      word-break: keep-all;
+    }
+
+    .visual_description strong {
+      color: var(--text);
+      font-weight: 650;
+    }
+
+    .visual_button_wrap {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .visual_button {
+      min-width: 160px;
+      height: 52px;
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      gap: 16px;
+      padding: 0 24px;
+      border: 1px solid #cbd1d9;
+      border-radius: 7px;
+      background: transparent;
+      font-size: 13px;
+      font-weight: 650;
+      transition: .3s ease;
+    }
+
+    .visual_button.main {
+      color: #fff;
+      border-color: var(--point);
+      background: var(--point);
+    }
+
+    .visual_button:hover {
+      transform: translateY(-3px);
+      border-color: var(--point);
+      color: var(--point);
+    }
+
+    .visual_button.main:hover {
+      color: #fff;
+      background: var(--point-hover);
+    }
+
+    .visual_button_arrow {
+      font-size: 18px;
+      font-weight: 400;
+    }
+
+
+    /* ========================================
+       04. MAIN ART
+    ======================================== */
+
+    .visual_art {
+      position: relative;
+      width: 100%;
+      max-width: 450px;
+      aspect-ratio: 1 / 1.1;
+      justify-self: end;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .visual_art_frame {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 1 / 1;
+      border-radius: 16px;
+      overflow: hidden;
+      background: #e9eef6;
+    }
+
+    .visual_art_frame::before {
+      content: "";
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 76%;
+      aspect-ratio: 1 / 1;
+      border: 1px solid rgba(37, 99, 235, .22);
+      border-radius: 50%;
+      transform: translate(-50%, -50%);
+    }
+
+    .visual_art_frame::after {
+      content: "";
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 105%;
+      aspect-ratio: 1 / 1;
+      border: 1px solid rgba(37, 99, 235, .12);
+      border-radius: 50%;
+      transform: translate(-50%, -50%);
+    }
+
+    /* 기존 M. 스타일 유지 */
+
+    .art_big_text {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      z-index: 1;
+      color: var(--point);
+      font-size: clamp(120px, 19vw, 260px);
+      font-weight: 800;
+      line-height: 1;
+      letter-spacing: -.13em;
+      transform: translate(-56%, -54%);
+      user-select: none;
+    }
+
+
+    /* ========================================
+       DESIGN × CODE TYPOGRAPHY
+    ======================================== */
+
+    .art_statement {
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 30px;
+      text-align: center;
+      transform: rotate(-7deg);
+      pointer-events: none;
+    }
+
+    .art_statement_top,
+    .art_statement_bottom {
+      display: block;
+      font-size: clamp(51px, 6vw, 94px);
+      font-weight: 800;
+      line-height: .95;
+      letter-spacing: -.085em;
+    }
+
+    .art_statement_top {
+      color: #18212e;
+    }
+
+    .art_statement_middle {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin: 15px 0 17px;
+      color: #5a6675;
+      font-size: clamp(12px, 1.5vw, 18px);
+      font-weight: 650;
+      letter-spacing: .19em;
+    }
+
+    .art_statement_middle i {
+      color: var(--point);
+      font-size: 27px;
+      font-weight: 400;
+      font-style: normal;
+      letter-spacing: 0;
+    }
+
+    .art_statement_bottom,
+    .art_statement_period {
+      color: var(--point);
+    }
+
+    .art_top {
+      position: absolute;
+      z-index: 2;
+      top: 26px;
+      left: 28px;
+      color: #737d90;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: .1em;
+    }
+
+    .art_bottom {
+      position: absolute;
+      z-index: 2;
+      right: 28px;
+      bottom: 25px;
+      color: #737d90;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: .08em;
+      text-align: right;
+    }
+
+    .art_floating {
+      position: absolute;
+      z-index: 3;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 15px 18px;
+      border: 1px solid rgba(255,255,255,.85);
+      border-radius: 10px;
+      background: rgba(255,255,255,.94);
+      box-shadow: 0 15px 35px rgba(30,50,80,.09);
+      backdrop-filter: blur(12px);
+    }
+
+    .art_floating.top {
+      top: 10%;
+      right: -20px;
+    }
+
+    .art_floating.bottom {
+      bottom: 10%;
+      left: -28px;
+    }
+
+    .floating_symbol {
+      width: 36px;
+      height: 36px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 7px;
+      color: var(--point);
+      background: var(--point-light);
+      font-size: 17px;
+      font-weight: 750;
+    }
+
+    .floating_text strong {
+      display: block;
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    .floating_text span {
+      display: block;
+      margin-top: 4px;
+      color: #939aa4;
+      font-size: 10px;
+    }
+
+
+    /* ========================================
+       05. MAIN NUMBER COUNT
+    ======================================== */
+
+    .visual_bottom {
+      grid-column: 1 / -1;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 40px;
+      padding-top: 28px;
+      border-top: 1px solid #dfe3e9;
+    }
+
+    .visual_meta {
+      display: flex;
+      gap: 44px;
+    }
+
+    .visual_meta_item strong {
+      display: block;
+      font-size: 20px;
+      font-weight: 750;
+      letter-spacing: -.04em;
+      font-variant-numeric: tabular-nums;
+    }
+
+    .visual_meta_item span:not(.count_number) {
+      display: block;
+      margin-top: 5px;
+      color: #89909a;
+      font-size: 11px;
+    }
+
+    .count_number {
+      display: inline;
+      font-variant-numeric: tabular-nums;
+    }
+
+    .scroll_guide {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      color: #7b828c;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: .1em;
+    }
+
+    .scroll_guide::before {
+      content: "";
+      width: 38px;
+      height: 1px;
+      background: #8b929c;
+    }
+
+
+    /* ========================================
+       06. ABOUT
+    ======================================== */
+
+    .about {
+      background: #fff;
+    }
+
+    .about_content {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 70px;
+      align-items: center;
+    }
+
+    .about_card {
+      display: grid;
+      grid-template-columns: 155px minmax(0, 1fr);
+      align-items: center;
+      gap: 28px;
+      padding: 28px;
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      background: #f7f9fc;
+    }
+
+    .about_card_photo {
+      width: 100%;
+      aspect-ratio: 3 / 4;
+      overflow: hidden;
+      border-radius: 8px;
+      background: #e7ecf3;
+    }
+
+    .about_card_photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center top;
+    }
+
+    .about_card_title {
+      margin-bottom: 13px;
+      color: var(--point);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: .12em;
+    }
+
+    .about_card_heading {
+      margin-bottom: 16px;
+      font-size: 24px;
+      font-weight: 700;
+      line-height: 1.4;
+      letter-spacing: -.045em;
+      word-break: keep-all;
+    }
+
+    .about_card_text {
+      margin-bottom: 20px;
+      color: var(--gray);
+      font-size: 13px;
+      line-height: 1.8;
+      word-break: keep-all;
+    }
+
+    .about_keyword {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+
+    .about_keyword span {
+      padding: 6px 9px;
+      border: 1px solid #dce5f5;
+      border-radius: 4px;
+      color: var(--point);
+      background: #fff;
+      font-size: 10px;
+      font-weight: 600;
+    }
+
+    .about_info li {
+      display: grid;
+      grid-template-columns: 125px 1fr;
+      gap: 22px;
+      padding: 24px 0;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .about_info li:first-child {
+      border-top: 1px solid var(--line);
+    }
+
+    .about_info strong {
+      color: var(--point);
+      font-size: 11px;
+      font-weight: 700;
+    }
+
+    .about_info span {
+      color: #606772;
+      font-size: 14px;
+      line-height: 1.8;
+      word-break: keep-all;
+    }
+
+
+    /* ========================================
+       07. SKILL
+       CODING TOOLS / DESIGN TOOLS
+    ======================================== */
+
+    .skill {
+      position: relative;
+      color: #fff;
+      background: var(--dark);
+    }
+
+    .skill .section_title {
+      color: #fff;
+    }
+
+    .skill .section_text {
+      color: #959ca7;
+    }
+
+    .skill_content {
+      border-top: 1px solid #343940;
+    }
+
+    .skill_group {
+      display: grid;
+      grid-template-columns: 260px 1fr;
+      gap: 45px;
+      padding: 50px 0;
+      border-bottom: 1px solid #343940;
+    }
+
+    .skill_group_title {
+      margin-bottom: 12px;
+      color: #fff;
+      font-size: 24px;
+      font-weight: 650;
+      letter-spacing: -.045em;
+    }
+
+    .skill_group_description {
+      color: #858d98;
+      font-size: 13px;
+      line-height: 1.8;
+      word-break: keep-all;
+    }
+
+    .skill_tools {
+      display: grid;
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+      gap: 12px;
+    }
+
+    .skill_tool {
+      position: relative;
+      min-width: 0;
+      min-height: 130px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 17px;
+      padding: 18px 10px;
+      border: 1px solid #343940;
+      border-radius: 9px;
+      background: #1c2026;
+      text-align: center;
+      cursor: default;
+      outline-offset: 3px;
+      transition:
+        background .3s,
+        border-color .3s,
+        transform .3s;
+    }
+
+    .skill_tool:hover,
+    .skill_tool:focus-visible {
+      z-index: 10;
+      border-color: var(--point);
+      background: #232b3a;
+      transform: translateY(-5px);
+    }
+
+    .skill_tool:focus-visible {
+      outline: 2px solid var(--point);
+    }
+
+    .skill_logo_image {
+      width: 43px;
+      height: 43px;
+      display: block;
+      object-fit: contain;
+      transition: transform .3s;
+    }
+
+    .skill_tool:hover .skill_logo_image,
+    .skill_tool:focus-visible .skill_logo_image {
+      transform: scale(1.1);
+    }
+
+    .skill_tool_name {
+      color: #cdd2da;
+      font-size: 12px;
+      font-weight: 500;
+      line-height: 1.3;
+      transition: color .3s;
+    }
+
+    .skill_tool:hover .skill_tool_name,
+    .skill_tool:focus-visible .skill_tool_name {
+      color: #fff;
+    }
+
+    .skill_tool::after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      width: 0;
+      height: 2px;
+      background: var(--point);
+      transform: translateX(-50%);
+      transition: width .3s;
+    }
+
+    .skill_tool:hover::after,
+    .skill_tool:focus-visible::after {
+      width: 45%;
+    }
+
+
+    /* ========================================
+       08. SKILL HOVER PERCENTAGE
+    ======================================== */
+
+    .skill_level {
+      position: absolute;
+      left: 50%;
+      bottom: calc(100% + 12px);
+      z-index: 20;
+      width: 154px;
+      padding: 14px;
+      border: 1px solid #4c5562;
+      border-radius: 10px;
+      background: #262c35;
+      box-shadow: 0 14px 30px rgba(0,0,0,.28);
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+      transform: translate(-50%, 8px);
+      transition:
+        opacity .25s,
+        transform .25s,
+        visibility .25s;
+    }
+
+    .skill_level::after {
+      content: "";
+      position: absolute;
+      top: 100%;
+      left: 50%;
+      width: 9px;
+      height: 9px;
+      border-right: 1px solid #4c5562;
+      border-bottom: 1px solid #4c5562;
+      background: #262c35;
+      transform: translate(-50%, -5px) rotate(45deg);
+    }
+
+    .skill_tool:hover .skill_level,
+    .skill_tool:focus-visible .skill_level {
+      opacity: 1;
+      visibility: visible;
+      transform: translate(-50%, 0);
+    }
+
+    .skill_level_header {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 8px;
+      margin-bottom: 11px;
+    }
+
+    .skill_level_label {
+      color: #a1a8b3;
+      font-size: 9px;
+      font-weight: 550;
+      letter-spacing: .05em;
+    }
+
+    .skill_level_header strong {
+      color: #fff;
+      font-size: 20px;
+      font-weight: 700;
+      line-height: 1;
+    }
+
+    .skill_level_bar {
+      display: block;
+      width: 100%;
+      height: 4px;
+      overflow: hidden;
+      border-radius: 4px;
+      background: #414b59;
+    }
+
+    .skill_level_bar span {
+      display: block;
+      width: 0;
+      height: 100%;
+      border-radius: inherit;
+      background: var(--point);
+      transition: width .6s cubic-bezier(.22, 1, .36, 1);
+    }
+
+    .skill_tool:hover .skill_level_bar span,
+    .skill_tool:focus-visible .skill_level_bar span {
+      width: var(--skill-level);
+    }
+
+    .skill_bottom {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 25px;
+      margin-top: 45px;
+    }
+
+    .skill_bottom_text {
+      color: #878f9b;
+      font-size: 13px;
+      line-height: 1.7;
+    }
+
+    .skill_bottom_text strong {
+      color: #e1e6ed;
+      font-weight: 600;
+    }
+
+    .skill_bottom_line {
+      width: 90px;
+      height: 1px;
+      background: var(--point);
+    }
+
+
+    /* ========================================
+       09. PROJECT
+    ======================================== */
+
+    .project {
+      background: #f8f9fb;
+    }
+
+    .project_list {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 26px;
+    }
+
+    .project_card {
+      min-width: 0;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      background: #fff;
+      transition: transform .35s, box-shadow .35s;
+    }
+
+    .project_card:hover {
+      transform: translateY(-7px);
+      box-shadow: 0 20px 45px rgba(20,30,50,.07);
+    }
+
+    .project_image {
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      background: #f1f4f7;
+    }
+
+    .project_image img {
+      width: 100%;
+      height: 100%;
+      display: block;
+      object-fit: contain;
+      object-position: center;
+      transition: transform .55s ease;
+    }
+
+    .project_card:hover .project_image img {
+      transform: scale(1.035);
+    }
+
+    .project_image.feeup {
+      background: #f2fff1;
+    }
+
+    .project_image.medi {
+      background: #eef3f1;
+    }
+
+    .project_image.medi img {
+      object-fit: cover;
+    }
+
+    .project_image.bookwave {
+      background: #eef4fb;
+    }
+
+    .project_image.csr {
+      background: #f5f4f2;
+    }
+
+    .project_image.csr img {
+      width: 43%;
+      height: 80%;
+    }
+
+    .project_info {
+      padding: 32px;
+    }
+
+    .project_number {
+      margin-bottom: 13px;
+      color: var(--point);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: .08em;
+    }
+
+    .project_title {
+      margin-bottom: 14px;
+      color: var(--black);
+      font-size: 23px;
+      font-weight: 700;
+      letter-spacing: -.04em;
+    }
+
+    .project_text {
+      color: #727984;
+      font-size: 13px;
+      line-height: 1.85;
+      word-break: keep-all;
+    }
+
+    .project_period {
+      margin-top: 13px;
+      color: #9a9fa8;
+      font-size: 12px;
+    }
+
+    .project_tag_list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 7px;
+      margin-top: 22px;
+    }
+
+    .project_tag {
+      padding: 7px 11px;
+      border: 1px solid #e4e8ee;
+      border-radius: 4px;
+      color: #727984;
+      background: #f8f9fb;
+      font-size: 11px;
+      font-weight: 500;
+    }
+
+    .project_button_wrap {
+      display: flex;
+      gap: 9px;
+      margin-top: 28px;
+    }
+
+    .project_button {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 45px;
+      padding: 10px 12px;
+      border: 1px solid #d9dee6;
+      border-radius: 6px;
+      color: #424852;
+      background: #fff;
+      font-size: 12px;
+      font-weight: 600;
+      text-align: center;
+      transition: .3s;
+    }
+
+    /* .project_button:hover {
+      color: #fff;
+      border-color: var(--point);
+      background: var(--point);
+    } */
+/* .project_button .feeup:hover {
+      color: #fff;
+      border-color: var(--point);
+      background: #15a05d;
+    } */
+
+/* ========================================
+   PROJECT BUTTON HOVER
+======================================== */
+
+/* 기존 공통 Hover 주석 유지 */
+
+/* .project_button:hover {
+  color: #fff;
+  border-color: var(--point);
+  background: var(--point);
+} */
+
+
+/* 01. FEEUP */
+.project_button.feeup:hover,
+.project_button.feeup + .project_button:hover {
+  color: #fff;
+  border-color: #16a05d;
+  background-color: #16a05d;
+}
+
+
+/* 02. MEDI */
+.project_button.medi:hover,
+.project_button.medi + .project_button:hover {
+  color: #fff;
+  border-color: #791717;
+  background-color: #791717;
+}
+
+
+/* 03. BUSAN LIBRARY */
+.project_button.busan:hover,
+.project_button.busan + .project_button:hover {
+  color: #fff;
+  border-color: #2563eb;
+  background-color: #2563eb;
+}
+
+
+/* 04. CSR CAMPAIGN */
+.project_button.csr:hover {
+  color: #fff;
+  border-color: #ff0000;
+  background-color: #ff0000;
+}
+
+    /* ========================================
+       10. GALLERY
+    ======================================== */
+
+    .gallery {
+      padding: 140px 0;
+      background: #fff;
+    }
+
+    .gallery_viewport {
+      width: 100%;
+      overflow: hidden;
+    }
+
+    .gallery_track {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 18px;
+      width: min(calc(100% - 64px), 1200px);
+      margin: 0 auto;
+    }
+
+    .gallery_item {
+      position: relative;
+      width: calc((100% - 36px) / 3);
+      aspect-ratio: 12 / 16;
+      overflow: hidden;
+      border-radius: 9px;
+      background: #e9edf2;
+      transition: transform .35s, box-shadow .35s;
+    }
+
+    .gallery_item:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 20px 40px rgba(0,0,0,.1);
+    }
+
+    .gallery_item > img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform .55s;
+    }
+
+    .gallery_item:hover > img {
+      transform: scale(1.04);
+    }
+
+    .gallery_info {
+      position: absolute;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 60px 22px 22px;
+      color: #fff;
+      background: linear-gradient(
+        180deg,
+        transparent,
+        rgba(0,0,0,.75)
+      );
+    }
+
+    .gallery_info strong {
+      font-size: 15px;
+      font-weight: 650;
+    }
+
+    .gallery_info span {
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: .08em;
+    }
+
+
+    /* ========================================
+       11. CONTACT & FOOTER
+    ======================================== */
+
+    .contact {
+      padding: 160px 0;
+      color: #fff;
+      background: var(--dark);
+    }
+
+    .contact_inner {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 45px;
+    }
+
+    .contact .section_label {
+      margin-bottom: 32px;
+    }
+
+    .contact_title {
+      font-size: clamp(38px, 5vw, 70px);
+      font-weight: 700;
+      line-height: 1.2;
+      letter-spacing: -.06em;
+      word-break: keep-all;
+    }
+
+    .contact_title span {
+      color: var(--point);
+    }
+
+    .contact_text {
+      margin-top: 27px;
+      color: #969ca6;
+      font-size: 15px;
+      line-height: 1.9;
+    }
+
+    .contact_email {
+      display: inline-block;
+      padding-bottom: 8px;
+      border-bottom: 1px solid var(--point);
+      color: #fff;
+      font-size: 21px;
+      font-weight: 500;
+      letter-spacing: -.025em;
+      white-space: nowrap;
+      transition: color .3s;
+    }
+
+    .contact_email:hover {
+      color: var(--point);
+    }
+
+    .footer {
+      padding: 26px 0;
+      border-top: 1px solid #343940;
+      color: #818893;
+      background: var(--dark);
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: .025em;
+    }
+
+    .footer_inner {
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+
+    /* ========================================
+       12. SCROLL ANIMATION
+    ======================================== */
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(30px);
+      transition:
+        opacity .8s ease,
+        transform .8s ease;
+    }
+
+    .reveal.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .reveal_delay_1 {
+      transition-delay: .1s;
+    }
+
+    .reveal_delay_2 {
+      transition-delay: .2s;
+    }
+
+
+    /* ========================================
+       13. TABLET
+    ======================================== */
+
+    @media all and (max-width: 1100px) {
+
+      .visual_grid {
+        grid-template-columns: 1.15fr .85fr;
+        gap: 30px;
+      }
+
+      .visual_title {
+        font-size: clamp(55px, 7vw, 78px);
+      }
+
+      .art_statement_top,
+      .art_statement_bottom {
+        font-size: clamp(48px, 6vw, 80px);
+      }
+
+      .art_floating.top {
+        right: 0;
+      }
+
+      .art_floating.bottom {
+        left: 0;
+      }
+
+      .about_content {
+        gap: 35px;
+      }
+
+      .about_card {
+        grid-template-columns: 120px 1fr;
+        gap: 18px;
+        padding: 20px;
+      }
+
+      .about_card_heading {
+        font-size: 20px;
+      }
+
+      .skill_group {
+        grid-template-columns: 190px 1fr;
+        gap: 25px;
+      }
+
+      .skill_tools {
+        grid-template-columns: repeat(4, 1fr);
+      }
+
+    }
+
+
+    /* ========================================
+       14. MOBILE / TABLET
+    ======================================== */
+
+    @media all and (max-width: 768px) {
+
+      .inner {
+        width: calc(100% - 40px);
+      }
+
+      .section {
+        padding: 95px 0;
+      }
+
+      .section_header {
+        margin-bottom: 40px;
+      }
+
+      .section_title {
+        font-size: 32px;
+      }
+
+      .section_text {
+        font-size: 14px;
+      }
+
+      /* Header */
+
+      .header {
+        height: 68px;
+      }
+
+      .logo {
+        font-size: 17px;
+      }
+
+      .menu_button {
+        display: block;
+      }
+
+      .gnb {
+        position: absolute;
+        top: 68px;
+        left: 0;
+        display: none;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0;
+        width: 100%;
+        padding: 12px 20px 24px;
+        border-bottom: 1px solid var(--line);
+        background: rgba(255,255,255,.98);
+      }
+
+      .gnb.open {
+        display: flex;
+      }
+
+      .gnb a {
+        padding: 14px 0;
+        font-size: 14px;
+      }
+
+      .gnb a::after {
+        display: none;
+      }
+
+      /* Visual */
+
+      .visual {
+        min-height: auto;
+        padding: 130px 0 75px;
+      }
+
+      .visual::before {
+        display: none;
+      }
+
+      .visual_grid {
+        grid-template-columns: 1fr;
+        gap: 35px;
+      }
+
+      .visual_title {
+        font-size: clamp(50px, 10vw, 78px);
+      }
+
+      .visual_description {
+        font-size: 15px;
+      }
+
+      .visual_art {
+        max-width: 470px;
+        justify-self: center;
+      }
+
+      .art_statement_top,
+      .art_statement_bottom {
+        font-size: clamp(60px, 10vw, 90px);
+      }
+
+      .visual_bottom {
+        margin-top: 10px;
+      }
+
+      /* About */
+
+      .about_content {
+        grid-template-columns: 1fr;
+      }
+
+      .about_card {
+        grid-template-columns: 150px 1fr;
+      }
+
+      .about_info li {
+        grid-template-columns: 120px 1fr;
+      }
+
+      /* Skill */
+
+      .skill_group {
+        grid-template-columns: 1fr;
+        gap: 25px;
+        padding: 38px 0;
+      }
+
+      .skill_group_title {
+        font-size: 22px;
+      }
+
+      .skill_tools {
+        grid-template-columns: repeat(4, 1fr);
+      }
+
+      /* Project */
+
+      .project_list {
+        grid-template-columns: 1fr;
+      }
+
+      /* Gallery */
+
+      .gallery {
+        padding: 95px 0;
+      }
+
+      .gallery_track {
+        width: calc(100% - 40px);
+        gap: 12px;
+      }
+
+      .gallery_item {
+        width: calc((100% - 12px) / 2);
+      }
+
+      /* Contact */
+
+      .contact {
+        padding: 110px 0;
+      }
+
+      .contact_inner {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 40px;
+      }
+
+      .contact_title {
+        font-size: 42px;
+      }
+
+    }
+
+
+    /* ========================================
+       15. MOBILE
+    ======================================== */
+
+    @media all and (max-width: 480px) {
+
+      .visual_label {
+        font-size: 10px;
+      }
+
+      .visual_title {
+        font-size: clamp(47px, 12vw, 62px);
+      }
+
+      .visual_description {
+        font-size: 14px;
+      }
+
+      .visual_description br {
+        display: none;
+      }
+
+      .visual_button {
+        min-width: 0;
+        flex: 1;
+        padding: 0 14px;
+        font-size: 12px;
+      }
+
+      .visual_art {
+        width: 94%;
+      }
+
+      .art_statement_top,
+      .art_statement_bottom {
+        font-size: clamp(48px, 13vw, 70px);
+      }
+
+      .art_floating {
+        padding: 10px;
+        gap: 8px;
+      }
+
+      .floating_symbol {
+        width: 30px;
+        height: 30px;
+        font-size: 14px;
+      }
+
+      .floating_text strong {
+        font-size: 10px;
+      }
+
+      .floating_text span {
+        font-size: 9px;
+      }
+
+      .visual_meta {
+        gap: 20px;
+      }
+
+      .visual_meta_item strong {
+        font-size: 16px;
+      }
+
+      .visual_meta_item span:not(.count_number) {
+        font-size: 10px;
+      }
+
+      .scroll_guide {
+        display: none;
+      }
+
+      .about_card {
+        grid-template-columns: 105px 1fr;
+        gap: 14px;
+        padding: 14px;
+      }
+
+      .about_card_heading {
+        font-size: 17px;
+      }
+
+      .about_card_text {
+        font-size: 11px;
+      }
+
+      .about_keyword span {
+        font-size: 9px;
+      }
+
+      .about_info li {
+        grid-template-columns: 1fr;
+        gap: 8px;
+      }
+
+      .skill_tools {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 9px;
+      }
+
+      .skill_tool {
+        min-height: 108px;
+        gap: 13px;
+        padding: 15px 7px;
+      }
+
+      .skill_logo_image {
+        width: 36px;
+        height: 36px;
+      }
+
+      .skill_tool_name {
+        font-size: 11px;
+      }
+
+      .skill_level {
+        width: 125px;
+        padding: 11px;
+      }
+
+      .skill_bottom {
+        align-items: flex-start;
+      }
+
+      .skill_bottom_line {
+        display: none;
+      }
+
+      .project_info {
+        padding: 23px 20px;
+      }
+
+      .project_title {
+        font-size: 20px;
+      }
+
+      .project_text {
+        font-size: 12px;
+      }
+
+      .project_button {
+        font-size: 11px;
+      }
+
+      .gallery_item {
+        width: 100%;
+      }
+
+      .contact_title {
+        font-size: 34px;
+      }
+
+      .contact_email {
+        font-size: 18px;
+      }
+
+      .footer_inner {
+        flex-direction: column;
+        gap: 8px;
+      }
+
+    }
+
+
+    /* ========================================
+       16. REDUCED MOTION
+    ======================================== */
+
+    @media (prefers-reduced-motion: reduce) {
+
+      html {
+        scroll-behavior: auto;
+      }
+
+      .reveal {
+        opacity: 1;
+        transform: none;
+        transition: none;
+      }
+
+      *,
+      *::before,
+      *::after {
+        animation-duration: .01ms !important;
+        transition-duration: .01ms !important;
+      }
+
+    }
+
+/* ========================================
+   MAIN VISUAL - RIGHT AREA REMOVE
+======================================== */
+
+/* 오른쪽 그래픽 전체 제거 */
+.visual_art {
+  display: none;
+}
+
+/* 오른쪽 회색 배경 제거 */
+.visual::before {
+  display: none;
+}
+
+/* 메인 화면 단일 컬럼 */
+.visual_grid {
+  display: block;
+}
+
+/* 메인 텍스트 영역 */
+.visual_copy {
+  max-width: 900px;
+}
+
+/* 숫자 카운트 영역 */
+.visual_bottom {
+  margin-top: 85px;
+}
+
+/* 모바일 간격 */
+@media all and (max-width: 768px) {
+  .visual_bottom {
+    margin-top: 65px;
+  }
+}
+
+  </style>
+
+</head>
+
+
+<body>
+
+  <!-- ========================================
+       HEADER
+  ======================================== -->
+
+  <header class="header" id="header">
+
+    <div class="header_inner inner">
+
+      <a href="#home" class="logo">
+        MINJEONG KIM
+        <span class="logo_dot"></span>
+      </a>
+
+      <nav class="gnb" id="gnb">
+        <a href="#home">HOME</a>
+        <a href="#about">ABOUT</a>
+        <a href="#skill">SKILL</a>
+        <a href="#project">PROJECT</a>
+        <a href="#gallery">GALLERY</a>
+        <a href="#contact">CONTACT</a>
+      </nav>
+
+      <button
+        class="menu_button"
+        id="menuButton"
+        type="button"
+        aria-label="메뉴 열기"
+        aria-expanded="false"
+        aria-controls="gnb"
+      >
+        <span></span>
+        <span></span>
+      </button>
+
+    </div>
+
+  </header>
+
+
+  <main>
+
+    <!-- ========================================
+         MAIN VISUAL
+    ======================================== -->
+
+    <section class="visual" id="home">
+
+      <div class="visual_grid inner">
+
+        <div class="visual_copy">
+
+          <p class="visual_label">
+            FRONTEND DEVELOPER · UI/UX DESIGNER
+          </p>
+
+          <h1 class="visual_title">
+            Design.<br>
+            Develop.<br>
+            <span>Deliver.</span>
+          </h1>
+
+          <p class="visual_description">
+            디자인의 감각과 개발의 논리를 연결합니다.<br>
+            <strong>사용자의 경험을 생각하고, 직접 구현하는</strong><br>
+            프론트엔드 개발자 김민정입니다.
+          </p>
+
+          <div class="visual_button_wrap">
+
+            <a href="#project" class="visual_button main">
+              프로젝트 보기
+              <span class="visual_button_arrow">↗</span>
+            </a>
+
+            <a href="#contact" class="visual_button">
+              Contact
+              <span class="visual_button_arrow">↗</span>
+            </a>
+
+          </div>
+
+        </div>
+
+
+        <!-- Main graphic -->
+
+        <div class="visual_art">
+
+          <div class="visual_art_frame">
+
+            <span class="art_top">
+              PORTFOLIO / 2026
+            </span>
+
+            <!-- <span class="art_big_text">
+              M.
+            </span> -->
+
+            <div class="art_statement" aria-label="Design meets Code">
+              <span class="art_statement_top">DESIGN</span>
+              <span class="art_statement_middle"><i>×</i></span>
+              <span class="art_statement_bottom">
+                CODE<span class="art_statement_period">.</span>
+              </span>
+            </div>
+
+            <span class="art_bottom">
+              DESIGN & DEVELOPMENT<br>
+              MINJEONG KIM
+            </span>
+
+          </div>
+
+
+          <div class="art_floating top">
+
+            <div class="floating_symbol">
+              &lt;/&gt;
+            </div>
+
+            <div class="floating_text">
+              <strong>Frontend</strong>
+              <span>HTML · CSS · JS</span>
+            </div>
+
+          </div>
+
+
+          <div class="art_floating bottom">
+
+            <div class="floating_symbol">
+              ◈
+            </div>
+
+            <div class="floating_text">
+              <strong>UI/UX Design</strong>
+              <span>Figma · Adobe</span>
+            </div>
+
+          </div>
+
+        </div>
+
+
+        <!-- Number count up -->
+
+        <div class="visual_bottom">
+
+          <div class="visual_meta">
+
+            <div class="visual_meta_item">
+              <strong>
+                <span class="count_number" data-count="4" data-pad="2">04</span>+
+              </strong>
+              <span>SELECTED PROJECTS</span>
+            </div>
+
+            <div class="visual_meta_item">
+              <strong>
+                <span class="count_number" data-count="57">57</span>+
+              </strong>
+              <span>UI SCREENS</span>
+            </div>
+
+            <div class="visual_meta_item">
+              <strong>
+                <span class="count_number" data-count="3" data-pad="2">03</span>+
+              </strong>
+              <span>DEVICE TYPES</span>
+            </div>
+
+          </div>
+
+          <p class="scroll_guide">
+            SCROLL TO EXPLORE
+          </p>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- ========================================
+         ABOUT
+    ======================================== -->
+
+    <section class="about section" id="about">
+
+      <div class="inner">
+
+        <div class="section_header reveal">
+
+          <span class="section_label">
+            ABOUT ME
+          </span>
+
+          <h2 class="section_title">
+            디자인과 개발 사이를<br>
+            연결합니다.
+          </h2>
+
+          <p class="section_text">
+            보기 좋은 화면을 넘어,
+            구조와 사용성까지 고민하며 작업합니다.
+          </p>
+
+        </div>
+
+
+        <div class="about_content reveal">
+
+          <div class="about_card">
+
+            <div class="about_card_photo">
+
+              <img
+                src="./images/김민정.png"
+                alt="김민정 프로필 사진"
+                loading="lazy"
+              >
+
+            </div>
+
+
+            <div class="about_card_content">
+
+              <p class="about_card_title">
+                MY ATTITUDE
+              </p>
+
+              <h3 class="about_card_heading">
+                작은 차이를 놓치지 않고,<br>
+                끝까지 완성합니다.
+              </h3>
+
+              <p class="about_card_text">
+                사용자에게 더 자연스러운 경험을
+                제공하기 위해 화면의 구조와
+                디테일을 반복해서 확인하고
+                개선합니다.
+              </p>
+
+              <div class="about_keyword">
+                <span>DETAIL</span>
+                <span>RESPONSIBILITY</span>
+                <span>GROWTH</span>
+              </div>
+
+            </div>
+
+          </div>
+
+
+          <ul class="about_info">
+
+            <li>
+              <strong>BACKGROUND</strong>
+              <span>
+                시각디자인 전공을 바탕으로
+                브랜드의 분위기와 사용자의
+                흐름을 함께 설계합니다.
+              </span>
+            </li>
+
+            <li>
+              <strong>DEVELOPMENT</strong>
+              <span>
+                HTML, CSS, JavaScript와 React를 활용해
+                반응형 웹 인터페이스를 구현합니다.
+              </span>
+            </li>
+
+            <li>
+              <strong>COLLABORATION</strong>
+              <span>
+                디자인 의도와 개발 조건을
+                명확하게 연결하는 동료를 지향합니다.
+              </span>
+            </li>
+
+          </ul>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- ========================================
+         SKILL
+         CODING TOOLS / DESIGN TOOLS
+    ======================================== -->
+
+    <section class="skill section" id="skill">
+
+      <div class="inner">
+
+        <div class="section_header reveal">
+
+          <span class="section_label">
+            SKILLS & TOOLS
+          </span>
+
+          <h2 class="section_title">
+            From concept<br>
+            to creation.
+          </h2>
+
+          <p class="section_text">
+            디자인부터 웹 구현까지,
+            실제 프로젝트에서 사용한 도구들입니다.
+          </p>
+
+        </div>
+
+
+        <div class="skill_content">
+
+
+          <!-- CODING TOOLS -->
+
+          <div class="skill_group reveal">
+
+            <div class="skill_group_info">
+
+              <h3 class="skill_group_title">
+                Coding Tools
+              </h3>
+
+              <p class="skill_group_description">
+                웹 표준과 인터랙션을 기반으로<br>
+                다양한 디바이스에 대응하는<br>
+                인터페이스를 구현합니다.
+              </p>
+
+            </div>
+
+
+            <div class="skill_tools">
+
+
+              <!-- HTML5 -->
+
+              <div
+                class="skill_tool"
+                data-level="90"
+                tabindex="0"
+                aria-label="HTML5 숙련도 90%"
+              >
+
+                <img
+                  class="skill_logo_image"
+                  src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/html5/html5-original.svg"
+                  alt="HTML5"
+                  loading="lazy"
+                >
+
+                <span class="skill_tool_name">HTML5</span>
+
+              </div>
+
+
+              <!-- CSS3 -->
+
+              <div
+                class="skill_tool"
+                data-level="88"
+                tabindex="0"
+                aria-label="CSS3 숙련도 88%"
+              >
+
+                <img
+                  class="skill_logo_image"
+                  src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/css3/css3-original.svg"
+                  alt="CSS3"
+                  loading="lazy"
+                >
+
+                <span class="skill_tool_name">CSS3</span>
+
+              </div>
+
+
+              <!-- JavaScript -->
+
+              <div
+                class="skill_tool"
+                data-level="75"
+                tabindex="0"
+                aria-label="JavaScript 숙련도 75%"
+              >
+
+                <img
+                  class="skill_logo_image"
+                  src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/javascript/javascript-original.svg"
+                  alt="JavaScript"
+                  loading="lazy"
+                >
+
+                <span class="skill_tool_name">JavaScript</span>
+
+              </div>
+
+
+              <!-- SCSS -->
+
+              <div
+                class="skill_tool"
+                data-level="72"
+                tabindex="0"
+                aria-label="SCSS 숙련도 72%"
+              >
+
+                <img
+                  class="skill_logo_image"
+                  src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/sass/sass-original.svg"
+                  alt="SCSS"
+                  loading="lazy"
+                >
+
+                <span class="skill_tool_name">SCSS</span>
+
+              </div>
+
+
+              <!-- jQuery -->
+
+              <div
+                class="skill_tool"
+                data-level="78"
+                tabindex="0"
+                aria-label="jQuery 숙련도 68%"
+              >
+
+                <img
+                  class="skill_logo_image"
+                  src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/jquery/jquery-original.svg"
+                  alt="jQuery"
+                  loading="lazy"
+                >
+
+                <span class="skill_tool_name">jQuery</span>
+
+              </div>
+
+
+              <!-- React -->
+
+              <div
+                class="skill_tool"
+                data-level="55"
+                tabindex="0"
+                aria-label="React 숙련도 45%"
+              >
+
+                <img
+                  class="skill_logo_image"
+                  src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/react/react-original.svg"
+                  alt="React"
+                  loading="lazy"
+                >
+
+                <span class="skill_tool_name">React</span>
+
+              </div>
+
+
+              <!-- MySQL -->
+
+              <div
+                class="skill_tool"
+                data-level="55"
+                tabindex="0"
+                aria-label="MySQL 숙련도 75%"
+              >
+
+                <img
+                  class="skill_logo_image"
+                  src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/mysql/mysql-original.svg"
+                  alt="MySQL"
+                  loading="lazy"
+                >
+
+                <span class="skill_tool_name">MySQL</span>
+
+              </div>
+
+
+              <!-- Git -->
+
+              <!-- <div
+                class="skill_tool"
+                data-level="65"
+                tabindex="0"
+                aria-label="Git 숙련도 65%"
+              >
+
+                <img
+                  class="skill_logo_image"
+                  src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/git/git-original.svg"
+                  alt="Git"
+                  loading="lazy"
+                >
+
+                <span class="skill_tool_name">Git</span>
+
+              </div> -->
+
+
+              <!-- GitHub -->
+
+              <div
+                class="skill_tool"
+                data-level="70"
+                tabindex="0"
+                aria-label="GitHub 숙련도 70%"
+              >
+
+                <img
+                  class="skill_logo_image"
+                  src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/github/github-original.svg"
+                  alt="GitHub"
+                  loading="lazy"
+                >
+
+                <span class="skill_tool_name">GitHub</span>
+
+              </div>
+
+
+            </div>
+
+          </div>
+
+
+
+          <!-- DESIGN TOOLS -->
+
+          <div class="skill_group reveal">
+
+            <div class="skill_group_info">
+
+              <h3 class="skill_group_title">
+                Design Tools
+              </h3>
+
+              <p class="skill_group_description">
+                사용자 경험을 고려한 UI 설계부터<br>
+                그래픽, 편집, 모션 디자인까지<br>
+                시각적 완성도를 높입니다.
+              </p>
+
+            </div>
+
+
+            <div class="skill_tools">
+
+
+              <!-- Figma -->
+
+              <div
+                class="skill_tool"
+                data-level="90"
+                tabindex="0"
+                aria-label="Figma 숙련도 90%"
+              >
+
+                <img
+                  class="skill_logo_image"
+                  src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/figma/figma-original.svg"
+                  alt="Figma"
+                  loading="lazy"
+                >
+
+                <span class="skill_tool_name">Figma</span>
+
+              </div>
+
+
+              <!-- Photoshop -->
+
+              <div
+                class="skill_tool"
+                data-level="82"
+                tabindex="0"
+                aria-label="Photoshop 숙련도 82%"
+              >
+
+                <img
+                  class="skill_logo_image"
+                  src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/photoshop/photoshop-original.svg"
+                  alt="Photoshop"
+                  loading="lazy"
+                >
+
+                <span class="skill_tool_name">Photoshop</span>
+
+              </div>
+
+
+              <!-- Illustrator -->
+
+              <div
+                class="skill_tool"
+                data-level="75"
+                tabindex="0"
+                aria-label="Illustrator 숙련도 75%"
+              >
+
+                <img
+                  class="skill_logo_image"
+                  src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/illustrator/illustrator-original.svg"
+                  alt="Illustrator"
+                  loading="lazy"
+                >
+
+                <span class="skill_tool_name">Illustrator</span>
+
+              </div>
+
+
+              <!-- After Effects -->
+
+              <div
+                class="skill_tool"
+                data-level="90"
+                tabindex="0"
+                aria-label="After Effects 숙련도 90%"
+              >
+
+                <img
+                  class="skill_logo_image"
+                  src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/aftereffects/aftereffects-original.svg"
+                  alt="After Effects"
+                  loading="lazy"
+                >
+
+                <span class="skill_tool_name">After Effects</span>
+
+              </div>
+
+
+              <!-- Premiere Pro -->
+<!-- 
+              <div
+                class="skill_tool"
+                data-level="88"
+                tabindex="0"
+                aria-label="Premiere Pro 숙련도 88%"
+              >
+
+                <img
+                  class="skill_logo_image"
+                  src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/premierepro/premierepro-original.svg"
+                  alt="Premiere Pro"
+                  loading="lazy"
+                >
+
+                <span class="skill_tool_name">Premiere Pro</span>
+
+              </div> -->
+
+
+              <!-- Blender -->
+
+              <div
+                class="skill_tool"
+                data-level="68"
+                tabindex="0"
+                aria-label="Blender 숙련도 54%"
+              >
+
+                <img
+                  class="skill_logo_image"
+                  src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/blender/blender-original.svg"
+                  alt="Blender"
+                  loading="lazy"
+                >
+
+                <span class="skill_tool_name">Blender</span>
+
+              </div>
+
+
+            </div>
+
+          </div>
+
+        </div>
+
+
+        <div class="skill_bottom">
+
+          <p class="skill_bottom_text">
+            <strong>
+              Design with purpose. Build with precision.
+            </strong><br>
+            기획의 의도를 이해하고,
+            구현 가능한 결과물로 연결합니다.
+          </p>
+
+          <div class="skill_bottom_line"></div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- ========================================
+         PROJECT
+    ======================================== -->
+
+    <section class="project section" id="project">
+
+      <div class="inner">
+
+        <div class="section_header reveal">
+
+          <span class="section_label">
+            SELECTED WORKS
+          </span>
+
+          <h2 class="section_title">
+            Selected Projects.
+          </h2>
+
+          <p class="section_text">
+            기획, 디자인, 구현 과정에서 고민한 내용과
+            결과를 담았습니다.
+          </p>
+
+        </div>
+
+
+        <div class="project_list">
+
+
+          <!-- PROJECT 01 -->
+
+          <article class="project_card reveal">
+
+            <div class="project_image feeup">
+
+              <img
+                src="./images/nonebg_1.png"
+                alt="골프 전용 금융 앱 FEEUP 목업 이미지"
+                loading="lazy"
+              >
+
+            </div>
+
+            <div class="project_info">
+
+              <p class="project_number">
+                PROJECT 01 / UI UX DESIGN
+              </p>
+
+              <h3 class="project_title">
+                골프 전용 금융 앱 FEEUP
+              </h3>
+
+              <p class="project_text">
+                복잡한 골프 비용 정산을 간편하게 만드는
+                금융 서비스입니다.
+                자동 더치페이, 예약·결제, 미정산 알림과
+                소비 리포트를 하나의 흐름으로 설계했습니다.
+              </p>
+
+              <p class="project_period">
+                2026.04 — 2026.05
+              </p>
+
+              <ul class="project_tag_list">
+                <li class="project_tag">Figma</li>
+                <li class="project_tag">UX Research</li>
+                <li class="project_tag">Prototype</li>
+                <li class="project_tag">57 Screens</li>
+              </ul>
+
+              <div class="project_button_wrap">
+
+                <a
+                  href="./pdf/feeup_plan.pdf"
+                  class="project_button feeup"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  기획서 보기 ↗
+                </a>
+
+                <a
+                  href="https://www.figma.com/design/Nq4KFixq8ZFF1hS74kszNe/golf-app-uiux?node-id=2835-18408&t=iR1L5jW0EY6BGzLY-1"
+                  class="project_button"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  프로토타입 보기 ↗
+                </a>
+
+              </div>
+
+            </div>
+
+          </article>
+
+
+
+          <!-- PROJECT 02 -->
+
+          <article class="project_card reveal">
+
+            <div class="project_image medi">
+
+              <img
+                src="./images/medi_mok.png"
+                alt="건강기능식품 쇼핑몰 약방 목업 이미지"
+                loading="lazy"
+              >
+
+            </div>
+
+            <div class="project_info">
+
+              <p class="project_number">
+                PROJECT 02 / WEB DEVELOPMENT
+              </p>
+
+              <h3 class="project_title">
+                건강기능식품 쇼핑몰 약당
+              </h3>
+
+              <p class="project_text">
+                상품 탐색부터 로그인까지 구현한
+                반응형 쇼핑몰입니다.
+                MySQL 데이터를 JSON으로 변환하고
+                fetch로 상품 정보를 연결했습니다.
+              </p>
+
+              <p class="project_period">
+                2026.05 — 2026.06
+              </p>
+
+              <ul class="project_tag_list">
+                <li class="project_tag">HTML</li>
+                <li class="project_tag">CSS</li>
+                <li class="project_tag">JavaScript</li>
+                <li class="project_tag">MySQL</li>
+                <li class="project_tag">jQuery</li>
+              </ul>
+
+              <div class="project_button_wrap">
+
+                <a
+                  href="./pdf/medical_plan.pdf"
+                  class="project_button medi"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  기획서 보기 ↗
+                </a>
+
+                <a
+                  href="./projects/yakdang/index.html"
+                  class="project_button"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  사이트 바로가기 ↗
+                </a>
+
+              </div>
+
+            </div>
+
+          </article>
+
+
+
+          <!-- PROJECT 03 -->
+
+          <article class="project_card reveal">
+
+            <div class="project_image bookwave">
+
+              <img
+                src="./images/busan_mok.png"
+                alt="부산도서관 리뉴얼 책너울 목업 이미지"
+                loading="lazy"
+              >
+
+            </div>
+
+            <div class="project_info">
+
+              <p class="project_number">
+                PROJECT 03 / RESPONSIVE WEB
+              </p>
+
+              <h3 class="project_title">
+                부산도서관 리뉴얼 책너울
+              </h3>
+
+              <p class="project_text">
+                도서 검색과 좌석 현황을 빠르게 확인할 수
+                있도록 정보 구조를 개선한 모바일 퍼스트
+                반응형 웹사이트입니다.
+              </p>
+
+              <p class="project_period">
+                2026.07 — 2026.08
+              </p>
+
+              <ul class="project_tag_list">
+                <li class="project_tag">Mobile First</li>
+                <li class="project_tag">Responsive</li>
+                <li class="project_tag">JavaScript</li>
+              </ul>
+
+              <div class="project_button_wrap">
+
+                <a
+                  href="./pdf/busanlibrary_plan.pdf"
+                  class="project_button busan"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  기획서 보기 ↗
+                </a>
+
+                <a
+                  href="./projects/busan_library/index.html"
+                  class="project_button"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  사이트 바로가기 ↗
+                </a>
+
+              </div>
+
+            </div>
+
+          </article>
+
+
+
+          <!-- PROJECT 04 -->
+
+          <article class="project_card reveal">
+
+            <div class="project_image bookwave">
+
+              <img
+                src="./images/campaign_logo.png"
+                alt="강남언니 CSR 캠페인 로고"
+                loading="lazy"
+              >
+
+            </div>
+
+            <div class="project_info">
+
+              <p class="project_number">
+                PROJECT 04 / CAMPAIGN DESIGN
+              </p>
+
+              <h3 class="project_title">
+                강남언니 CSR 캠페인
+              </h3>
+
+              <p class="project_text">
+                소방공무원을 위한 기업 CSR 캠페인으로
+                시장조사, SWOT 분석, 캠페인 아이덴티티와
+                웹 경험을 함께 설계했습니다.
+              </p>
+
+              <p class="project_period">
+                2024.03 — 2024.06
+              </p>
+
+              <ul class="project_tag_list">
+                <li class="project_tag">CSR</li>
+                <li class="project_tag">Branding</li>
+                <li class="project_tag">Research</li>
+              </ul>
+
+              <div class="project_button_wrap">
+
+                <!-- <a
+                  href="./pdf/csr_projectplan.pdf"
+                  class="project_button csr"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  기획서 보기 ↗
+                </a> -->
+
+                <a
+                  href="./pdf/csr_campaign_final.pdf"
+                  class="project_button csr"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  프로젝트 보기 ↗
+                </a>
+
+              </div>
+
+            </div>
+
+          </article>
+
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- ========================================
+         GALLERY
+    ======================================== -->
+
+    <section class="gallery" id="gallery">
+
+      <div class="inner">
+
+        <div class="section_header reveal">
+
+          <span class="section_label">
+            DESIGN ARCHIVE
+          </span>
+
+          <h2 class="section_title">
+            
+advertising design
+          </h2>
+
+          <p class="section_text">
+          뻔한 광고 속에서 번뜩이는 디자인을 만듭니다.
+          </p>
+
+        </div>
+
+      </div>
+
+
+      <div class="gallery_viewport">
+
+        <div class="gallery_track">
+
+
+          <div class="gallery_item reveal">
+
+            <img
+              src="./images/lg_ads.jpg"
+              alt="LG 스타일러 광고 디자인"
+              loading="lazy"
+            >
+
+            <div class="gallery_info">
+              <strong>LG Styler</strong>
+              <span>POSTER 01</span>
+            </div>
+
+          </div>
+                    <div class="gallery_item reveal">
+
+            <img
+              src="./images/lg_ads (2).jpg"
+              alt="LG 스타일러 광고 디자인"
+              loading="lazy"
+            >
+
+            <div class="gallery_info">
+              <strong>LG Styler</strong>
+              <span>POSTER 01</span>
+            </div>
+
+          </div>
+
+
+          <!-- <div class="gallery_item reveal">
+
+            <img
+              src="./images/lg_ads (2).jpg"
+              alt="그린 루틴 캠페인 디자인"
+              loading="lazy"
+            >
+
+            <div class="gallery_info">
+              <strong>Green Routine</strong>
+              <span>CAMPAIGN 02</span>
+            </div> -->
+
+          </div>
+
+
+          <!-- <div class="gallery_item reveal">
+
+            <img
+              src="./images/gallery_03.png"
+              alt="119도 CSR 캠페인 디자인"
+              loading="lazy"
+            >
+
+            <div class="gallery_info">
+              <strong>Heat 119°C</strong>
+              <span>CSR DESIGN 03</span>
+            </div>
+
+          </div> -->
+
+
+          <!-- <div class="gallery_item reveal">
+
+            <img
+              src="./images/gallery_05.jpg"
+              alt="블루 라이브러리 광고 디자인"
+              loading="lazy"
+            >
+
+            <div class="gallery_info">
+              <strong>Blue Library</strong>
+              <span>AD DESIGN 04</span>
+            </div>
+
+          </div> -->
+
+
+          <!-- <div class="gallery_item reveal">
+
+            <img
+              src="./images/gallery_06.jpg"
+              alt="소프트 오브젝트 그래픽 디자인"
+              loading="lazy"
+            >
+
+            <div class="gallery_info">
+              <strong>Soft Objects</strong>
+              <span>GRAPHIC 05</span>
+            </div>
+
+          </div> -->
+
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- ========================================
+         CONTACT
+    ======================================== -->
+
+    <section class="contact" id="contact">
+
+      <div class="inner contact_inner reveal">
+
+        <div>
+
+          <span class="section_label">
+            GET IN TOUCH
+          </span>
+
+          <h2 class="contact_title">
+            Let's create<br>
+            <span>something better.</span>
+          </h2>
+
+          <p class="contact_text">
+            배움을 실행으로, 가능성을 결과로.<br>
+            함께 성장하며 더 나은 경험을 만들고 싶습니다.
+          </p>
+
+        </div>
+
+
+        <a
+          href="mailto:rhqnfl36@naver.com"
+          class="contact_email"
+        >
+          rhqnfl36@naver.com ↗
+        </a>
+
+      </div>
+
+    </section>
+
+  </main>
+
+
+  <!-- ========================================
+       FOOTER
+  ======================================== -->
+
+  <footer class="footer">
+
+    <div class="footer_inner inner">
+
+      <p>
+        © 2026 MINJEONG KIM. ALL RIGHTS RESERVED.
+      </p>
+
+      <p>
+        DESIGNED & DEVELOPED BY MINJEONG KIM.
+      </p>
+
+    </div>
+
+  </footer>
+
+
+  <!-- ========================================
+       JAVASCRIPT
+  ======================================== -->
+
+  <script>
+
+    /* ========================================
+       01. HEADER
+    ======================================== */
+
+    const header = document.querySelector('#header');
+
+    const headerLinks = [
+      ...document.querySelectorAll('.gnb a')
+    ];
+
+    const pageLinks = [
+      ...document.querySelectorAll('a[href^="#"]')
+    ];
+
+    const pageSections = [
+      ...document.querySelectorAll('main section[id]')
+    ];
+
+    const menuButton = document.querySelector('#menuButton');
+
+    const gnb = document.querySelector('#gnb');
+
+
+    /* ========================================
+       02. MOBILE MENU
+    ======================================== */
+
+    menuButton.addEventListener('click', function() {
+
+      const isOpen = gnb.classList.toggle('open');
+
+      menuButton.setAttribute(
+        'aria-expanded',
+        String(isOpen)
+      );
+
+      menuButton.setAttribute(
+        'aria-label',
+        isOpen ? '메뉴 닫기' : '메뉴 열기'
+      );
+
+    });
+
+
+    /* ========================================
+       03. SMOOTH SCROLL
+    ======================================== */
+
+    function smoothMove(target, duration) {
+
+      const headerHeight = header.offsetHeight;
+
+      const startPosition = window.scrollY;
+
+      const targetPosition =
+        target.getBoundingClientRect().top
+        + window.scrollY
+        - headerHeight
+        + 1;
+
+      const distance =
+        targetPosition - startPosition;
+
+      let startTime = null;
+
+
+      function move(currentTime) {
+
+        if (startTime === null) {
+          startTime = currentTime;
+        }
+
+        const time = Math.min(
+          (currentTime - startTime) / duration,
+          1
+        );
+
+        const easing = time < .5
+          ? 4 * time * time * time
+          : 1 - Math.pow(-2 * time + 2, 3) / 2;
+
+        window.scrollTo(
+          0,
+          startPosition + distance * easing
+        );
+
+        if (time < 1) {
+          requestAnimationFrame(move);
+        }
+
+      }
+
+      requestAnimationFrame(move);
+
+    }
+
+
+    pageLinks.forEach(function(link) {
+
+      link.addEventListener('click', function(event) {
+
+        const targetId = link.getAttribute('href');
+
+        if (targetId === '#') {
+          return;
+        }
+
+        const target = document.getElementById(
+          targetId.slice(1)
+        );
+
+        if (!target) {
+          return;
+        }
+
+        event.preventDefault();
+
+        gnb.classList.remove('open');
+
+        menuButton.setAttribute(
+          'aria-expanded',
+          'false'
+        );
+
+        menuButton.setAttribute(
+          'aria-label',
+          '메뉴 열기'
+        );
+
+        const reducedMotion = window.matchMedia(
+          '(prefers-reduced-motion: reduce)'
+        ).matches;
+
+        if (reducedMotion) {
+
+          window.scrollTo(
+            0,
+            target.getBoundingClientRect().top
+            + window.scrollY
+            - header.offsetHeight
+          );
+
+        } else {
+
+          smoothMove(target, 850);
+
+        }
+
+      });
+
+    });
+
+
+    /* ========================================
+       04. HEADER SCROLL
+    ======================================== */
+
+    function updateHeader() {
+
+      if (window.scrollY > 40) {
+
+        header.classList.add('scrolled');
+
+      } else {
+
+        header.classList.remove('scrolled');
+
+      }
+
+
+      let currentId = 'home';
+
+      pageSections.forEach(function(section) {
+
+        if (
+          window.scrollY >=
+          section.offsetTop - header.offsetHeight - 140
+        ) {
+
+          currentId = section.id;
+
+        }
+
+      });
+
+
+      headerLinks.forEach(function(link) {
+
+        const isActive =
+          link.getAttribute('href') === '#' + currentId;
+
+        link.classList.toggle('active', isActive);
+
+      });
+
+    }
+
+
+    window.addEventListener(
+      'scroll',
+      updateHeader,
+      { passive: true }
+    );
+
+    updateHeader();
+
+
+    /* ========================================
+       05. SCROLL REVEAL
+    ======================================== */
+
+    const revealItems = document.querySelectorAll(
+      '.reveal'
+    );
+
+
+    if ('IntersectionObserver' in window) {
+
+      const revealObserver = new IntersectionObserver(
+
+        function(entries) {
+
+          entries.forEach(function(entry) {
+
+            if (entry.isIntersecting) {
+
+              entry.target.classList.add('show');
+
+              revealObserver.unobserve(
+                entry.target
+              );
+
+            }
+
+          });
+
+        },
+
+        {
+          threshold: .08,
+          rootMargin: '0px 0px -25px 0px'
+        }
+
+      );
+
+
+      revealItems.forEach(function(item) {
+
+        revealObserver.observe(item);
+
+      });
+
+    } else {
+
+      revealItems.forEach(function(item) {
+
+        item.classList.add('show');
+
+      });
+
+    }
+
+
+    /* ========================================
+       06. CLICK OUTSIDE MOBILE MENU
+    ======================================== */
+
+    document.addEventListener('click', function(event) {
+
+      if (
+        !gnb.contains(event.target) &&
+        !menuButton.contains(event.target)
+      ) {
+
+        gnb.classList.remove('open');
+
+        menuButton.setAttribute(
+          'aria-expanded',
+          'false'
+        );
+
+        menuButton.setAttribute(
+          'aria-label',
+          '메뉴 열기'
+        );
+
+      }
+
+    });
+
+
+    /* ========================================
+       07. RESIZE
+    ======================================== */
+
+    window.addEventListener('resize', function() {
+
+      if (window.innerWidth > 768) {
+
+        gnb.classList.remove('open');
+
+        menuButton.setAttribute(
+          'aria-expanded',
+          'false'
+        );
+
+        menuButton.setAttribute(
+          'aria-label',
+          '메뉴 열기'
+        );
+
+      }
+
+    });
+
+
+    /* ========================================
+       08. SKILL HOVER PERCENTAGE
+
+       data-level 값 기준으로
+       퍼센트 팝업과 진행 막대 생성
+    ======================================== */
+
+    const skillTools = document.querySelectorAll(
+      '.skill_tool[data-level]'
+    );
+
+
+    skillTools.forEach(function(tool) {
+
+      const level = Math.max(
+        0,
+        Math.min(100, Number(tool.dataset.level))
+      );
+
+      tool.style.setProperty(
+        '--skill-level',
+        level + '%'
+      );
+
+
+      const levelBox = document.createElement('span');
+
+      levelBox.className = 'skill_level';
+
+      levelBox.setAttribute(
+        'aria-hidden',
+        'true'
+      );
+
+
+      levelBox.innerHTML = `
+        <span class="skill_level_header">
+          <span class="skill_level_label">
+            PROFICIENCY
+          </span>
+          <strong>${level}%</strong>
+        </span>
+
+        <span class="skill_level_bar">
+          <span></span>
+        </span>
+      `;
+
+
+      tool.appendChild(levelBox);
+
+    });
+
+
+    /* ========================================
+       09. MAIN NUMBER COUNT UP
+
+       04+ / 57+ / 03+
+
+       화면에 들어오면 한 번 실행
+    ======================================== */
+
+    const countArea = document.querySelector(
+      '.visual_meta'
+    );
+
+    const countNumbers = document.querySelectorAll(
+      '.visual_meta .count_number'
+    );
+
+
+    function startCount(number) {
+
+      const target = Number(number.dataset.count);
+
+      const pad = Number(
+        number.dataset.pad || 0
+      );
+
+      const duration = 1300;
+
+      const startTime = performance.now();
+
+
+      function frame(now) {
+
+        const progress = Math.min(
+          (now - startTime) / duration,
+          1
+        );
+
+        const eased = 1 - Math.pow(
+          1 - progress,
+          3
+        );
+
+        const value = Math.round(
+          target * eased
+        );
+
+        number.textContent = String(value).padStart(
+          pad,
+          '0'
+        );
+
+        if (progress < 1) {
+
+          requestAnimationFrame(frame);
+
+        }
+
+      }
+
+
+      number.textContent = String(0).padStart(
+        pad,
+        '0'
+      );
+
+      requestAnimationFrame(frame);
+
+    }
+
+
+    /* ========================================
+       10. COUNT OBSERVER
+    ======================================== */
+
+    if (countArea) {
+
+      const reducedMotion = window.matchMedia(
+        '(prefers-reduced-motion: reduce)'
+      ).matches;
+
+
+      function runCounters() {
+
+        countNumbers.forEach(function(number) {
+
+          if (reducedMotion) {
+
+            number.textContent = String(
+              number.dataset.count
+            ).padStart(
+              Number(number.dataset.pad || 0),
+              '0'
+            );
+
+          } else {
+
+            startCount(number);
+
+          }
+
+        });
+
+      }
+
+
+      if ('IntersectionObserver' in window) {
+
+        const counterObserver = new IntersectionObserver(
+
+          function(entries) {
+
+            entries.forEach(function(entry) {
+
+              if (!entry.isIntersecting) {
+                return;
+              }
+
+              runCounters();
+
+              counterObserver.unobserve(
+                entry.target
+              );
+
+            });
+
+          },
+
+          {
+            threshold: .2
+          }
+
+        );
+
+        counterObserver.observe(countArea);
+
+      } else {
+
+        runCounters();
+
+      }
+
+    }
+
+  </script>
+
+</body>
+</html>

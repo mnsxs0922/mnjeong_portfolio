@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>약당 로그인화면</title>
+     <link rel="shortcut icon" href="./images/health_logo.png" type="image/x-icon">
+       <!--jQuery-->
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+     <script src="./js/login_medi.js"></script>
+  <link rel="stylesheet" href="./css/login_medi.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.3.0/css/all.min.css">
+</head>
+<body>
+  <div class="login_popup">
+    <div class="login_popup_bg"></div>
+    <div class="login_form">
+      <button type="button" class="btn_close">
+      <i class="fa-solid fa-xmark"></i>
+      </button>
+      <div class="login_logo">
+        <!-- <p>건강한 일상을 위한 로그인</p> -->
+          <img src="./images/logo_footer.png" alt="로고">
+      </div>
+      <form action="" name="login">
+        <ul class="login_list">
+          <li>
+            <label for="login_user_id">아이디 또는 전화번호</label>
+            <input type="text" id="login_user_id" class="user_id" required>
+          </li>
+          <li>
+            <label for="login_user_pw">비밀번호</label>
+            <div class="password_box">
+              <input type="password" id="login_user_pw" class="user_pw" required>
+              <button type="button" class="password">
+              <i class="fa-regular fa-eye"></i>
+              </button>
+            </div>
+          </li>
+        </ul>
+        <div class="login_option">
+          <label for="login_add">
+            <input type="checkbox" id="login_add">
+            <span>로그인 상태 유지</span>
+          </label>
+          <a href="#!">보안 로그인</a>
+        </div>
+        <button class="btn_log">
+          <a href="index_jQuery.html">
+          로그인
+          </a>
+        </button>
+      </form>
+      <div class="login_easy">
+        <a href="#!">간편 로그인</a>
+        <span>|</span>
+        <a href="#!">비회원 주문조회</a>
+      </div>
+      <div class="login_find">
+        <a href="#!">아이디 찾기</a>
+        <span>|</span>
+        <a href="#!">비밀번호 찾기</a>
+        <span>|</span>
+        <a href="sign.html" class="join_link">회원가입</a>
+      </div>
+      <div class="login_banner">
+        <strong>오늘도 건강한 하루</strong>
+        <p>약당과 함께 나에게 맞는 건강 습관을 찾아보세요</p>
+      </div>
+    </div><!--login_form-->
+  </div><!--login_popup-->
+</body>
+</html>

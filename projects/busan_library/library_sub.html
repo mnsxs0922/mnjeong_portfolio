@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=2.0, minimum-scale=1.0, user-scalable=no">
+    <title>찐 부산도서관 sub</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.3.0/css/all.min.css">
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
+    rel="stylesheet">
+
+  <link rel="stylesheet" href="./css/busan_real_sub.css">
+    <link rel="stylesheet" href="./css/header_footer.css">
+
+   <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    * {
+      box-sizing: border-box;
+    }
+    li {
+      list-style: none;
+    }
+    a {
+      color: black;
+      text-decoration: none;
+    }
+    body {
+      padding: 0 8px;
+      font-family: "Inter", sans-serif;
+      font-family: var(--default-font);
+    }
+    </style>
+</head>
+<body>
+
+   <input type="checkbox" id="chk_gnb">
+  <header class="header">
+    <div class="header_inner">
+    <label for="chk_gnb" class="btn_gnb">
+      <i class="fa-solid fa-bars-staggered"></i>
+    </label>
+<h1 class="logo">
+  <a href="./index.html" aria-label="부산도서관 홈">
+    부산도서관
+  </a>
+</h1>
+    <nav class="gnb">
+      <ul class="gnb_menu">
+        <li><a href="#!">책너울</a></li>
+        <li><a href="#!">어린이 도서관</a></li>
+        <li><a href="#!">전자도서관</a></li>
+        <li><a href="#!">자료검색</a></li>
+        <li><a href="#!">부산도서관소개</a></li>
+        <li><a href="#!">신청예약</a></li>
+        <li><a href="#!">북커뮤니티</a></li>
+        <li><a href="#!">열린공간</a></li>
+      </ul>
+    </nav>
+    <div class="header_right">
+     <ul class="gnb_menu_right">
+      <li><a href="#!">로그인</a></li>
+      <li><a href="#!">회원가입</a></li>
+      <li><a href="#!" class="join">통합회원인증</a></li>
+      <li><a href="#!">내 서재
+        <span class="material-symbols-outlined">
+arrow_right_alt
+</span>
+      </a></li>
+     </ul>
+    </div>
+    </div>
+  </header>
+  <div class="search">
+  <input type="search" class="search_box" placeholder="도서명 또는 작가를 검색해 보세요">
+  <button type="button" class="search_btn">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+</div>
+<section class="bookwave_page">
+  <nav class="bookwave_breadcrumb">
+    <a href="index.html">홈</a>
+    <span class="material-symbols-outlined">chevron_right</span>
+    <strong>책너울</strong>
+  </nav>
+</section>
+<section class="bookwave_visual">
+  <div class="visual_main">
+    <img src="./images/bookwave_visual.png" alt="부산도서관 메인 이미지">
+  </div>
+
+  <div class="bookwave_visual_text">
+    <span class="bookwave_visual_label">BUSAN LIBRARY</span>
+    <h1>책너울이란?</h1>
+    <p>
+      부산의 바다를 닮은 깊고 넓은 지식의 흐름을 담아,
+      누구나 자유롭게 배우고 소통하며 함께 성장하는
+      부산도서관만의 새로운 경험을 제공합니다.
+    </p>
+  </div>
+</section>
+<section class="bookwave_intro">
+  <h2>완독 웨이브란?</h2>
+  <p>
+    책너울 서비스에서 제공하는<br>
+    부산도서관만의 독자적인 콘텐츠입니다.
+  </p>
+  <p>
+    매달 하나의 테마 도서를 선정하여 정해진 기간 내에
+    독서를 완료하고 완독을 인증하는 독서 참여형 프로그램으로,
+  </p>
+  <p>
+    참여자의 완독 인증이 증가할수록 참여 도서관의
+    '완독 웨이브' 물결이 점차 커지고 퍼져나갑니다.
+  </p>
+    <div class="bookwave_grid">
+    <article class="bookwave_grid_item">
+      <div class="bookwave_grid_image">
+        <img
+          src="./images/subpage_img1.png"
+          alt=""
+        >
+      </div>
+      <div class="bookwave_feature_text">
+        <h3>
+          따로 인증할 필요 없이<br>
+          대출하고, 반납하면 끝
+        </h3>
+        <p>
+          대출·반납 기록이 자동으로 연동돼요.<br>
+          완독하면 별도의 인증 없이 바로 너울지수로 쌓입니다.
+        </p>
+      </div>
+    </article>
+    <article class="bookwave_grid_item">
+      <div class="bookwave_grid_image">
+        <img
+          src="./images/subpage_img2.png"
+          alt="모바일 태그 기능 이미지"
+        >
+      </div>
+      <div class="bookwave_grid_text">
+        <h3>
+          태그 하나,<br>
+          이모지 하나면 충분해요
+        </h3>
+        <p>
+          내 완독을 짧게 표현하면 돼요.<br>
+          짧아도 그 울림은 부산 전역으로 퍼져나가요.
+        </p>
+      </div>
+    </article>
+    <article class="bookwave_grid_item">
+      <div class="bookwave_grid_image">
+        <img
+          src="./images/subpage_img3png.png"
+          alt="">
+      </div>
+      <div class="bookwave_grid_text">
+        <h3>
+          자유게시판 대신<br>
+          안심할 수 있는 참여
+        </h3>
+        <p>
+          확인된 대출 기록과 정해진 태그로만 움직여요.<br>
+          불필요한 글타래 걱정 없이, 누구나 마음 편히 참여할 수 있어요.
+        </p>
+      </div>
+    </article>
+    <article class="bookwave_grid_item">
+      <div class="bookwave_grid_image">
+        <img
+          src="./images/subpage_img4.png"
+          alt="부산 지역 참여 지도 이미지"
+        >
+      </div>
+      <div class="bookwave_grid_text">
+        <h3>
+          우리 동네 참여율,<br>
+          지도 한 번에 확인하세요.
+        </h3>
+        <p>
+          16개 구·군의 참여 현황이 물결처럼 채워져요.<br>
+          어디까지 퍼졌는지 한눈에 볼 수 있어요.
+        </p>
+      </div>
+    </article>
+  </div>
+</section>
+<section class="wave_step">
+<div class="wave_step_inner">
+<h2 class="wave_step_title">완독 웨이브 8 STEP 챌린지</h2>
+
+<div class="wave_step_content">
+
+<div class="wave_step_column">
+<article class="wave_step_item">
+<strong class="wave_step_number">1</strong>
+<div class="wave_step_text">
+<h3>프로그램 접속</h3>
+<p>‘완독 웨이브’ 메뉴에 접속하여<br>이번 달 테마 도서를 확인한다.</p>
+</div>
+</article>
+
+<article class="wave_step_item">
+<strong class="wave_step_number">2</strong>
+<div class="wave_step_text">
+<h3>도서 선택 및 대출</h3>
+<p>원하는 테마 도서를 선택하고<br>대출 시 챌린지 자동 시작한다.</p>
+</div>
+</article>
+
+<article class="wave_step_item">
+<strong class="wave_step_number">3</strong>
+<div class="wave_step_text">
+<h3>독서 진행</h3>
+<p>정해진 기간 동안 도서를 읽으며 진행률(%)과 남은 기간을 확인한다.</p>
+</div>
+</article>
+
+<article class="wave_step_item">
+<strong class="wave_step_number">4</strong>
+<div class="wave_step_text">
+<h3>반납 시 자동 완독 인증</h3>
+<p>독서를 마친 후 반납하면 자동으로 완독이 인증됩니다.</p>
+</div>
+</article>
+</div>
+
+<div class="wave_step_column">
+<article class="wave_step_item">
+<strong class="wave_step_number">5</strong>
+<div class="wave_step_text">
+<h3>인증 완료</h3>
+<p>인증이 승인되면 개인의 완독 기록이 저장되고 참여 이력이 누적된다.</p>
+</div>
+</article>
+<article class="wave_step_item">
+<strong class="wave_step_number">6</strong>
+<div class="wave_step_text">
+<h3>물결 인터랙션</h3>
+<p>새로운 인증이 추가될 때마다 메인 화면의 물결 그래픽이 점차 커지고 퍼져 나가며 참여 확산을 시각적으로 표현한다.</p>
+</div>
+</article>
+<article class="wave_step_item">
+<strong class="wave_step_number">7</strong>
+<div class="wave_step_text">
+<h3>참여 현황 확인</h3>
+<p>전체 참여자 수, 완독률, 실시간 물결 변화 등을 통해 프로그램의 참여 현황을 확인한다.</p>
+</div>
+</article>
+<article class="wave_step_item">
+<strong class="wave_step_number">8</strong>
+<div class="wave_step_text">
+<h3>배지 및 다음 챌린지</h3>
+<p>완독 배지와 리워드를 획득하고, 다음 달 테마 도서 챌린지에 이어 참여할 수 있다.</p>
+</div>
+</article>
+</div>
+</div>
+</div>
+</section>
+<section class="sub_iphone">
+<div class="sub_iphone_inner">
+<div class="sub_iphone_info">
+<div class="sub_iphone_data">
+<span class="sub_iphone_label">누적 완독자 수</span>
+<strong class="sub_iphone_number">+ 1,234,567,890명</strong>
+</div>
+<div class="sub_iphone_data">
+<span class="sub_iphone_label">반납하면 자동누적</span>
+<strong class="sub_iphone_text">남녀노소 연령불문</strong>
+</div>
+<div class="sub_iphone_data">
+<span class="sub_iphone_label">반납하면 자동누적</span>
+<strong class="sub_iphone_text">남녀노소 연령불문</strong>
+</div>
+</div>
+<div class="sub_iphone_visual">
+<div class="sub_iphone_images">
+<div class="sub_iphone_image sub_iphone_image01 active">
+<img src="./images/iphone_01.png" alt="책너울 모바일 화면 1">
+</div>
+
+<div class="sub_iphone_image sub_iphone_image02">
+<img src="./images/iphone_02.png" alt="책너울 모바일 화면 2">
+</div>
+
+<div class="sub_iphone_image sub_iphone_image03">
+<img src="./images/iphone_03.png" alt="책너울 모바일 화면 3">
+</div>
+<!-- <div class="sub_iphone_image sub_iphone_image04">
+<img src="./images/pc_mok4.png" alt="책너울 모바일 화면 4">
+</div> -->
+</div>
+<div class="sub_iphone_page">
+<button type="button" class="sub_iphone_btn" aria-label="이전 화면">
+<span class="material-symbols-outlined">chevron_left</span>
+</button>
+<strong class="sub_iphone_current">1</strong>
+<span class="sub_iphone_total">/3</span>
+<button type="button" class="sub_iphone_btn" aria-label="다음 화면">
+<span class="material-symbols-outlined">chevron_right</span>
+</button>
+</div>
+</div>
+</div>
+</section>
+<section class="sub_grid">
+<div class="sub_grid_inner">
+
+<div class="sub_grid_head">
+<h2 class="sub_grid_title">랜드마크 컬렉션이란?</h2>
+
+<p class="sub_grid_introduce">
+부산을 실내·실외에서 경험하는<br>
+부산도서관만의 독자적인 콘텐츠입니다.
+</p>
+
+<p class="sub_grid_introduce">
+독서를 완료하거나 해당 랜드마크를 방문하면<br>
+소개 페이지에서 부산의 매력을 확인할 수 있습니다.
+</p>
+</div>
+
+<div class="sub_grid_content">
+
+<article class="sub_grid_item sub_grid_item01">
+<div class="sub_grid_image">
+<img src="./images/grid01.png" alt="해운대 기찻길">
+
+<div class="sub_grid_info">
+<span class="sub_grid_rank">TOP 1</span>
+
+<h3 class="sub_grid_name">
+해운대<br>
+기찻길
+</h3>
+
+<p class="sub_grid_comment">
+바다와 기찻길이 만나는<br>
+해운대의 낭만 명소
+</p>
+</div>
+</div>
+</article>
+
+<article class="sub_grid_item sub_grid_item02">
+<div class="sub_grid_image">
+<img src="./images/grid02.png" alt="해운대 해수욕장">
+
+<div class="sub_grid_info">
+<span class="sub_grid_rank">TOP 2</span>
+
+<h3 class="sub_grid_name">
+해운대<br>
+해수욕장
+</h3>
+
+<p class="sub_grid_comment">
+부산을 대표하는<br>
+도심 속 바다
+</p>
+</div>
+</div>
+</article>
+<article class="sub_grid_item sub_grid_item03">
+<div class="sub_grid_image">
+<img src="./images/grid03.png" alt="광안대교">
+<div class="sub_grid_info">
+<span class="sub_grid_rank">TOP 3</span>
+<h3 class="sub_grid_name">
+광안대교
+</h3>
+<p class="sub_grid_comment">
+밤바다를 밝히는<br>
+부산의 대표 야경
+</p>
+</div>
+</div>
+</article>
+<article class="sub_grid_item sub_grid_item04">
+<div class="sub_grid_image">
+<img src="./images/grid04.png" alt="다대포 해수욕장">
+<div class="sub_grid_info">
+<span class="sub_grid_rank">TOP 4</span>
+<h3 class="sub_grid_name">
+다대포<br>
+해수욕장
+</h3>
+<p class="sub_grid_comment">
+넓은 백사장과 노을이<br>
+아름다운 해변
+</p>
+</div>
+</div>
+</article>
+<article class="sub_grid_item sub_grid_item05">
+<div class="sub_grid_image">
+<img src="./images/grid05.png" alt="해동용궁사">
+<div class="sub_grid_info">
+<span class="sub_grid_rank">TOP 5</span>
+<h3 class="sub_grid_name">
+해동<br>
+용궁사
+</h3>
+<p class="sub_grid_comment">
+바다와 사찰이 어우러진<br>
+부산의 대표 명소
+</p>
+</div>
+</div>
+</article>
+</div>
+</div>
+</section>
+<footer class="footer">
+  <div class="footer_inner">
+    <!-- 로고 -->
+    <div class="footer_logo_wrap">
+      <img
+        src="./images/footer_logo.png"
+        alt="부산도서관 Busan Metropolitan Library"
+        class="footer_logo"
+      >
+    </div>
+    <!-- 관련 도서관 -->
+    <section class="footer_section footer_library">
+      <h2 class="footer_title">관련 도서관</h2>
+
+      <div class="footer_family">
+        <a href="#!">
+          <span>부산공공도서관</span>
+
+          <span class="material-symbols-outlined">
+            chevron_right
+          </span>
+        </a>
+
+        <a href="#!">
+          <span>타지역 도서관</span>
+
+          <span class="material-symbols-outlined">
+            chevron_right
+          </span>
+        </a>
+      </div>
+    </section>
+
+    <!-- SNS -->
+    <section class="footer_section footer_sns_section">
+      <h2 class="footer_title">SNS</h2>
+
+      <div class="footer_sns">
+        <a href="#!" class="footer_sns_item" aria-label="트위터">
+          <i class="fa-brands fa-x-twitter"></i>
+          <span>트위터</span>
+        </a>
+
+        <a href="#!" class="footer_sns_item" aria-label="페이스북">
+          <i class="fa-brands fa-facebook-f"></i>
+          <span>페이스북</span>
+        </a>
+
+        <a href="#!" class="footer_sns_item" aria-label="인스타그램">
+          <i class="fa-brands fa-instagram"></i>
+          <span>인스타그램</span>
+        </a>
+      </div>
+    </section>
+
+    <!-- 주소 -->
+    <section class="footer_section footer_address_section">
+      <h2 class="footer_title">주소</h2>
+
+      <address class="footer_address">
+        <p>
+          <span class="material-symbols-outlined">
+            location_on
+          </span>
+
+          <span>
+            (46949) 부산광역시 사상구 사상로310번길 33 (덕포동)
+          </span>
+        </p>
+
+        <p>
+          <span class="material-symbols-outlined">
+            call
+          </span>
+
+          <span>TEL 051-310-5400</span>
+        </p>
+
+        <p>
+          <span class="material-symbols-outlined">
+            fax
+          </span>
+
+          <span>FAX 051-310-5429</span>
+        </p>
+      </address>
+    </section>
+    <section class="footer_section footer_menu_section">
+      <h2 class="footer_title">주요 메뉴</h2>
+
+      <nav class="footer_menu">
+        <a href="#!">책너울</a>
+        <a href="#!">전자도서관</a>
+        <a href="#!">신청·예약</a>
+        <a href="#!">대출현황</a>
+        <a href="#!">열린공간</a>
+        <a href="#!">내 서재</a>
+      </nav>
+    </section>
+
+    <!-- 정책 메뉴 -->
+    <section class="footer_policy">
+      <h2 class="footer_title">정책 메뉴</h2>
+
+      <div class="footer_link">
+        <a href="#!">이용약관</a>
+        <a href="#!">개인정보처리방침</a>
+        <a href="#!">저작권보호정책</a>
+        <a href="#!">키보드보안프로그램 설치안내</a>
+      </div>
+    </section>
+    <!-- 저작권 -->
+    <section class="footer_copyright">
+      <h2 class="footer_title">저작권</h2>
+      <p class="footer_copy">
+        Copyright © Busan Metropolitan Library.<br>
+        All rights reserved.
+      </p>
+    </section>
+  </div>
+</footer>
+<script>
+  const iphoneItems = document.querySelectorAll('.sub_iphone_image');
+  const iphoneBtns = document.querySelectorAll('.sub_iphone_btn');
+  const currentPage = document.querySelector('.sub_iphone_current');
+  let currentIndex = 0;
+  function updateIphoneSlide() {
+    iphoneItems.forEach(function(item) {
+      item.classList.remove('active');
+    });
+    iphoneItems[currentIndex].classList.add('active');
+    currentPage.textContent = currentIndex + 1;
+  }
+  // 이전 버튼
+  iphoneBtns[0].addEventListener('click', function() {
+
+    currentIndex--;
+
+    if (currentIndex < 0) {
+      currentIndex = iphoneItems.length - 1;
+    }
+
+    updateIphoneSlide();
+  });
+  // 다음 버튼
+  iphoneBtns[1].addEventListener('click', function() {
+    currentIndex++;
+    if (currentIndex >= iphoneItems.length) {
+      currentIndex = 0;
+    }
+    updateIphoneSlide();
+  });
+  updateIphoneSlide();
+</script>
+
+</body>
+</html>

@@ -1,0 +1,177 @@
+{
+  "products": [
+    {
+      "product_id": 1,
+      "product_name": "약당건강 락토핏 골드",
+      "brand": "약당",
+      "category": "유산균",
+      "price": 25000,
+      "discount_price": 21900,
+      "image": "./images/product_09.png",
+      "description": "장 건강을 위한 프로바이오틱스"
+    },
+    {
+      "product_id": 2,
+      "product_name": "약당 프리미엄 에브리타임",
+      "brand": "약당",
+      "category": "홍삼",
+      "price": 120000,
+      "discount_price": 109000,
+      "image": "./images/product_10.png",
+      "description": "간편하게 섭취하는 홍삼 제품"
+    },
+    {
+      "product_id": 3,
+      "product_name": "약당 멀티비타민",
+      "brand": "약당",
+      "category": "종합비타민",
+      "price": 35000,
+      "discount_price": 29900,
+      "image": "./images/product_06.png",
+      "description": "하루 한 번 섭취하는 종합비타민"
+    },
+    {
+      "product_id": 4,
+      "product_name": "약당 여성만을 위한 오메가3",
+      "brand": "약당",
+      "category": "오메가3",
+      "price": 28000,
+      "discount_price": 23900,
+      "image": "./images/product_11.png",
+      "description": "EPA 및 DHA 함유 유지 제품"
+    },
+    {
+      "product_id": 5,
+      "product_name": "약당 비타민D3",
+      "brand": "약당",
+      "category": "비타민D",
+      "price": 22000,
+      "discount_price": 18900,
+      "image": "./images/product_03 (2).png",
+      "description": "비타민D 보충용 건강기능식품"
+    },
+    {
+      "product_id": 6,
+      "product_name": "약당 남성전용 비타민C1000",
+      "brand": "약당",
+      "category": "비타민C",
+      "price": 18000,
+      "discount_price": 15900,
+      "image": "./images/product_04.png",
+      "description": "비타민C를 간편하게 섭취할 수 있는 제품"
+    }
+  ],
+
+  "members": [
+    {
+      "member_id": 1,
+      "user_id": "member01",
+      "user_pw": "webd01",
+      "user_name": "김민정",
+      "email": "computer01@naver.com",
+      "phone": "010-1234-5670",
+      "gender": "여성",
+      "birth": "2002-09-22",
+      "address": "강원도 원주시"
+    },
+    {
+      "member_id": 2,
+      "user_id": "member02",
+      "user_pw": "webd02",
+      "user_name": "김가현",
+      "email": "computer02@naver.com",
+      "phone": "010-1234-5671",
+      "gender": "여성",
+      "birth": "2002-04-19",
+      "address": "경상남도 마산시"
+    },
+    {
+      "member_id": 3,
+      "user_id": "member03",
+      "user_pw": "webd03",
+      "user_name": "이진경",
+      "email": "computer03@naver.com",
+      "phone": "010-1234-5672",
+      "gender": "여성",
+      "birth": "2002-06-20",
+      "address": "경상북도 구미시"
+    },
+    {
+      "member_id": 4,
+      "user_id": "member04",
+      "user_pw": "webd04",
+      "user_name": "김경은",
+      "email": "computer04@naver.com",
+      "phone": "010-1234-5673",
+      "gender": "여성",
+      "birth": "2002-07-21",
+      "address": "경상남도 김해시"
+    },
+    {
+      "member_id": 5,
+      "user_id": "member05",
+      "user_pw": "webd05",
+      "user_name": "이다현",
+      "email": "computer05@naver.com",
+      "phone": "010-1234-5674",
+      "gender": "여성",
+      "birth": "2002-08-22",
+      "address": "경상남도 김해시"
+    },
+    {
+      "member_id": 6,
+      "user_id": "member06",
+      "user_pw": "webd06",
+      "user_name": "백승아",
+      "email": "computer06@naver.com",
+      "phone": "010-1234-5675",
+      "gender": "여성",
+      "birth": "2002-09-23",
+      "address": "강원도 원주시"
+    },
+    {
+      "member_id": 7,
+      "user_id": "member07",
+      "user_pw": "webd07",
+      "user_name": "김선형",
+      "email": "computer07@naver.com",
+      "phone": "010-1234-5676",
+      "gender": "남성",
+      "birth": "2002-11-24",
+      "address": "경상북도 김천시"
+    },
+    {
+      "member_id": 8,
+      "user_id": "member08",
+      "user_pw": "webd08",
+      "user_name": "김명재",
+      "email": "computer08@naver.com",
+      "phone": "010-1234-5677",
+      "gender": "남성",
+      "birth": "2002-02-25",
+      "address": "울산광역시"
+    },
+    {
+      "member_id": 9,
+      "user_id": "member09",
+      "user_pw": "webd09",
+      "user_name": "하태현",
+      "email": "computer09@naver.com",
+      "phone": "010-1234-5678",
+      "gender": "남성",
+      "birth": "2002-01-26",
+      "address": "부산광역시 부산진구"
+    },
+    {
+      "member_id": 10,
+      "user_id": "member10",
+      "user_pw": "webd10",
+      "user_name": "손우석",
+      "email": "computer10@naver.com",
+      "phone": "010-1234-5679",
+      "gender": "남성",
+      "birth": "2002-05-27",
+      "address": "경기도 수원시"
+    }
+  ]
+}
